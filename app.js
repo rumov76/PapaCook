@@ -9,7 +9,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const DAYS = ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"];
 
-  // 20 recettes de base (simples, familiales, dont plusieurs très rapides)
   const baseRecipes = [
     {
       id: "poulet-carottes",
@@ -28,7 +27,7 @@ window.addEventListener("DOMContentLoaded", () => {
       steps: [
         "Préchauffe le four à 200°C.",
         "Épluche et coupe les carottes et pommes de terre.",
-        "Mets poulet et légumes sur une plaque, ajoute huile, sel, poivre.",
+        "Mets poulet et légumes sur une plaque avec l’huile, le sel et le poivre.",
         "Enfourne 30 à 40 minutes en mélangeant une fois."
       ]
     },
@@ -48,9 +47,9 @@ window.addEventListener("DOMContentLoaded", () => {
       ],
       steps: [
         "Préchauffe le four à 180°C.",
-        "Place poisson et brocolis dans un plat.",
-        "Assaisonne, ajoute un filet d’huile, cuis 20 minutes.",
-        "Ajoute le jus de citron avant de servir."
+        "Place le poisson et le brocolis dans un plat.",
+        "Arrose d’huile, sale et poivre.",
+        "Cuis 20 minutes puis ajoute le jus de citron."
       ]
     },
     {
@@ -67,8 +66,8 @@ window.addEventListener("DOMContentLoaded", () => {
       ],
       steps: [
         "Fais cuire les pâtes dans une grande casserole d’eau salée.",
-        "Fais revenir l’oignon émincé puis la viande.",
-        "Ajoute la sauce tomate, laisse mijoter 10 minutes.",
+        "Fais revenir l’oignon puis la viande.",
+        "Ajoute la sauce tomate, assaisonne et laisse mijoter 10 minutes.",
         "Mélange avec les pâtes."
       ]
     },
@@ -106,7 +105,7 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Salade verte", quantity: "quelques feuilles", category: "Légumes" }
       ],
       steps: [
-        "Coupe le poulet et le poivron en lamelles et fais-les revenir.",
+        "Coupe le poulet et le poivron en lamelles, fais-les revenir.",
         "Réchauffe les tortillas.",
         "Garnis avec poulet, poivron, salade et sauce de ton choix."
       ]
@@ -158,7 +157,7 @@ window.addEventListener("DOMContentLoaded", () => {
       ],
       steps: [
         "Assemble pain, jambon, fromage.",
-        "Fais griller à la poêle, au four ou dans un appareil à croque.",
+        "Fais griller au four, à la poêle ou dans un appareil à croque.",
         "Sers chaud."
       ]
     },
@@ -175,7 +174,7 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Tomate ou concombre", quantity: "1", category: "Légumes" }
       ],
       steps: [
-        "Étale un peu de sauce (fromage frais, mayo…) sur la tortilla.",
+        "Étale un peu de sauce sur la tortilla.",
         "Ajoute jambon et crudités.",
         "Roule serré, coupe en deux et sers."
       ]
@@ -275,7 +274,7 @@ window.addEventListener("DOMContentLoaded", () => {
       steps: [
         "Préchauffe le four à 180°C.",
         "Dispose la pâte, ajoute lardons et appareil œufs + crème.",
-        "Enfourne 30 minutes."
+        "Enfourne environ 30 minutes."
       ]
     },
     {
@@ -290,7 +289,7 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Fromage râpé", quantity: "80 g", category: "Frais" }
       ],
       steps: [
-        "Mélange les pâtes, la crème et la moitié du fromage.",
+        "Mélange les pâtes, la crème et une partie du fromage.",
         "Verse dans un plat, ajoute le reste du fromage.",
         "Gratine 10 minutes."
       ]
@@ -364,7 +363,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
-  // ---------- PERSISTANCE (localStorage) ----------
+  // ---------- PERSISTANCE ----------
 
   function loadJSON(key, fallback) {
     try {
@@ -381,8 +380,18 @@ window.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem(key, JSON.stringify(value));
   }
 
-  let ratings = loadJSON("papacook_ratings", {}); // { recipeId: "aRefaire" | "aOublier" }
+  let ratings = loadJSON("papacook_ratings", {});
   let customRecipes = loadJSON("papacook_custom_recipes", []);
+  let recipeOverrides = loadJSON("papacook_recipe_overrides", {});
+  let storedWeekPlanIds = loadJSON("papacook_week_plan_ids", null);
+  let storedWeekIncluded = loadJSON("papacook_week_included", null);
+
+  function saveWeekState() {
+    const ids = currentWeekPlan.map(r => r ? r.id : null);
+    saveJSON("papacook_week_plan_ids", ids);
+    saveJSON("papacook_week_included", currentWeekIncluded);
+  }
+
 
   function getRating(id) {
     return ratings[id] || "none";
@@ -397,8 +406,20 @@ window.addEventListener("DOMContentLoaded", () => {
     saveJSON("papacook_custom_recipes", customRecipes);
   }
 
+  function saveOverrides() {
+    saveJSON("papacook_recipe_overrides", recipeOverrides);
+  }
+
+  function applyOverrides(recipe) {
+    const o = recipeOverrides[recipe.id];
+    if (!o) return recipe;
+    return { ...recipe, ...o };
+  }
+
   function getAllRecipes() {
-    return baseRecipes.concat(customRecipes);
+    const base = baseRecipes.map(applyOverrides);
+    const custom = customRecipes.map(applyOverrides);
+    return base.concat(custom);
   }
 
   // ---------- LOGIQUE SEMAINE ----------
@@ -424,6 +445,7 @@ window.addEventListener("DOMContentLoaded", () => {
     if (pool.length < DAYS.length) {
       pool = pool.concat(shuffle(source));
     }
+    if (pool.length === 0) return new Array(DAYS.length).fill(null);
 
     const plan = [];
     for (let i = 0; i < DAYS.length; i++) {
@@ -432,8 +454,33 @@ window.addEventListener("DOMContentLoaded", () => {
     return plan;
   }
 
-  let currentWeekPlan = generateWeekPlan();
-  let currentWeekIncluded = new Array(DAYS.length).fill(true);
+  let currentWeekPlan;
+  let currentWeekIncluded = new Array(DAYS.length).fill(false);
+
+  function rebuildWeekFromStored() {
+    if (!storedWeekPlanIds || !Array.isArray(storedWeekPlanIds) || storedWeekPlanIds.length !== DAYS.length) {
+      return false;
+    }
+    const all = getAllRecipes();
+    const byId = {};
+    all.forEach(r => {
+      byId[r.id] = r;
+    });
+    const plan = storedWeekPlanIds.map(id => (id && byId[id]) ? byId[id] : null);
+    currentWeekPlan = plan;
+    if (Array.isArray(storedWeekIncluded) && storedWeekIncluded.length === DAYS.length) {
+      currentWeekIncluded = storedWeekIncluded.slice();
+    } else {
+      currentWeekIncluded = new Array(DAYS.length).fill(false);
+    }
+    return true;
+  }
+
+  if (!rebuildWeekFromStored()) {
+    currentWeekPlan = generateWeekPlan();
+    currentWeekIncluded = new Array(DAYS.length).fill(false);
+    saveWeekState();
+  }
 
   // ---------- AFFICHAGE ----------
 
@@ -468,14 +515,15 @@ window.addEventListener("DOMContentLoaded", () => {
     headerRow.appendChild(title);
     card.appendChild(headerRow);
 
-    // Bouton retour au planning si on vient de l'organisation de la semaine
-    if (options.fromWeek) {
+    // Bouton de retour contextuel
+    if (options.fromWeek || options.fromForgotten) {
       const backRow = document.createElement("div");
       backRow.className = "button-row";
       const btnBack = document.createElement("button");
-      btnBack.textContent = "Retour au planning";
+      btnBack.textContent = options.fromForgotten ? "Retour aux recettes oubliées" : "Retour au planning";
       btnBack.onclick = () => {
-        renderWeek();
+        if (options.fromForgotten) renderForgottenRecipes();
+        else renderWeek();
       };
       backRow.appendChild(btnBack);
       card.appendChild(backRow);
@@ -528,6 +576,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const val = cur === "aRefaire" ? "none" : "aRefaire";
       setRating(recipe.id, val);
       currentWeekPlan = generateWeekPlan();
+      saveWeekState();
       renderRecipeDetail(recipe, options);
     };
 
@@ -539,6 +588,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const val = cur === "aOublier" ? "none" : "aOublier";
       setRating(recipe.id, val);
       currentWeekPlan = generateWeekPlan();
+      saveWeekState();
       renderRecipeDetail(recipe, options);
     };
 
@@ -585,6 +635,19 @@ window.addEventListener("DOMContentLoaded", () => {
     });
     card.appendChild(stepsList);
 
+    // Bouton Modifier
+    const editRow = document.createElement("div");
+    editRow.className = "button-row";
+
+    const btnEdit = document.createElement("button");
+    btnEdit.textContent = "Modifier";
+    btnEdit.onclick = () => {
+      renderEditRecipe(recipe, options);
+    };
+
+    editRow.appendChild(btnEdit);
+    card.appendChild(editRow);
+
     contentDiv.appendChild(card);
   }
 
@@ -623,12 +686,13 @@ window.addEventListener("DOMContentLoaded", () => {
     btnNewWeek.textContent = "Nouvelle proposition";
     btnNewWeek.onclick = () => {
       const newPlan = generateWeekPlan();
-      // On ne remplace que les jours NON cochés
       for (let i = 0; i < DAYS.length; i++) {
+        // v7 : on ne remplace QUE les jours décochés
         if (!currentWeekIncluded[i]) {
           currentWeekPlan[i] = newPlan[i];
         }
       }
+      saveWeekState();
       renderWeek();
     };
 
@@ -639,12 +703,19 @@ window.addEventListener("DOMContentLoaded", () => {
       renderShoppingList();
     };
 
+    const btnForgotten = document.createElement("button");
+    btnForgotten.textContent = "Recettes oubliées";
+    btnForgotten.onclick = () => {
+      renderForgottenRecipes();
+    };
+
     buttonBar.appendChild(btnNewWeek);
     buttonBar.appendChild(btnList);
+    buttonBar.appendChild(btnForgotten);
     card.appendChild(buttonBar);
 
     DAYS.forEach((dayName, index) => {
-      const recipe = currentWeekPlan[index % currentWeekPlan.length];
+      const recipe = currentWeekPlan[index];
 
       const row = document.createElement("div");
       row.className = "day-row";
@@ -669,6 +740,7 @@ window.addEventListener("DOMContentLoaded", () => {
       includeCheckbox.checked = currentWeekIncluded[index];
       includeCheckbox.onchange = () => {
         currentWeekIncluded[index] = includeCheckbox.checked;
+        saveWeekState();
       };
       includeLabel.appendChild(includeCheckbox);
       const spanText = document.createElement("span");
@@ -683,12 +755,14 @@ window.addEventListener("DOMContentLoaded", () => {
         if (source.length === 0) return;
         const newRecipe = source[Math.floor(Math.random() * source.length)];
         currentWeekPlan[index] = newRecipe;
+        saveWeekState();
         renderWeek();
       };
 
       const btnDetail = document.createElement("button");
       btnDetail.textContent = "Voir";
       btnDetail.onclick = () => {
+        if (!recipe) return;
         renderRecipeDetail(recipe, { fromWeek: true });
       };
 
@@ -792,6 +866,84 @@ window.addEventListener("DOMContentLoaded", () => {
     contentDiv.appendChild(card);
   }
 
+  function renderForgottenRecipes() {
+    contentDiv.innerHTML = "";
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const headerRow = document.createElement("div");
+    headerRow.className = "flex-between";
+
+    const title = document.createElement("h2");
+    title.textContent = "Recettes oubliées";
+    headerRow.appendChild(title);
+    card.appendChild(headerRow);
+
+    const subtitle = document.createElement("div");
+    subtitle.className = "small";
+    subtitle.textContent = "Recettes marquées 'À oublier' (tu peux les récupérer si besoin).";
+    card.appendChild(subtitle);
+
+    const backRow = document.createElement("div");
+    backRow.className = "button-row";
+    const btnBack = document.createElement("button");
+    btnBack.textContent = "Retour au planning";
+    btnBack.onclick = () => {
+      renderWeek();
+    };
+    backRow.appendChild(btnBack);
+    card.appendChild(backRow);
+
+    const all = getAllRecipes();
+    const forgotten = all.filter(r => getRating(r.id) === "aOublier");
+
+    if (forgotten.length === 0) {
+      const msg = document.createElement("p");
+      msg.textContent = "Aucune recette marquée 'À oublier' pour l’instant.";
+      card.appendChild(msg);
+      contentDiv.appendChild(card);
+      return;
+    }
+
+    forgotten.forEach(recipe => {
+      const row = document.createElement("div");
+      row.className = "day-row";
+
+      const nameDiv = document.createElement("div");
+      nameDiv.className = "day-recipe";
+      nameDiv.textContent = recipe.name;
+
+      const controls = document.createElement("div");
+      controls.style.display = "flex";
+      controls.style.gap = "0.25rem";
+      controls.style.alignItems = "center";
+
+      const btnView = document.createElement("button");
+      btnView.textContent = "Voir";
+      btnView.onclick = () => {
+        renderRecipeDetail(recipe, { fromForgotten: true });
+      };
+
+      const btnRecover = document.createElement("button");
+      btnRecover.textContent = "Récupérer";
+      btnRecover.onclick = () => {
+        setRating(recipe.id, "none");
+        renderForgottenRecipes();
+      };
+
+      controls.appendChild(btnView);
+      controls.appendChild(btnRecover);
+
+      row.appendChild(nameDiv);
+      row.appendChild(controls);
+
+      card.appendChild(row);
+    });
+
+    contentDiv.appendChild(card);
+  }
+
   function renderAddRecipe() {
     contentDiv.innerHTML = "";
 
@@ -804,7 +956,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const info = document.createElement("div");
     info.className = "small";
-    info.textContent = "Format simple : pense à ce que tu voudrais cuisiner un soir de semaine.";
+    info.textContent = "Format simple : pense à un repas de soir de semaine réaliste.";
     card.appendChild(info);
 
     const form = document.createElement("div");
@@ -952,7 +1104,8 @@ window.addEventListener("DOMContentLoaded", () => {
       customRecipes.push(newRecipe);
       saveCustomRecipes();
       currentWeekPlan = generateWeekPlan();
-      currentWeekIncluded = new Array(DAYS.length).fill(true);
+      currentWeekIncluded = new Array(DAYS.length).fill(false);
+      saveWeekState();
       renderRecipeDetail(newRecipe, { showAnotherButton: true });
     };
 
@@ -960,6 +1113,200 @@ window.addEventListener("DOMContentLoaded", () => {
     btnCancel.textContent = "Annuler";
     btnCancel.onclick = () => {
       renderWeek();
+    };
+
+    buttons.appendChild(btnSave);
+    buttons.appendChild(btnCancel);
+    form.appendChild(buttons);
+
+    card.appendChild(form);
+    contentDiv.appendChild(card);
+  }
+
+  function renderEditRecipe(recipe, options = {}) {
+    contentDiv.innerHTML = "";
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const title = document.createElement("h2");
+    title.textContent = "Modifier la recette";
+    card.appendChild(title);
+
+    const info = document.createElement("div");
+    info.className = "small";
+    info.textContent = "Tes changements seront gardés sur cet appareil.";
+    card.appendChild(info);
+
+    const form = document.createElement("div");
+
+    const groupName = document.createElement("div");
+    groupName.className = "form-group";
+    const labelName = document.createElement("label");
+    labelName.textContent = "Nom de la recette";
+    const inputName = document.createElement("input");
+    inputName.type = "text";
+    inputName.value = recipe.name || "";
+    groupName.appendChild(labelName);
+    groupName.appendChild(inputName);
+    form.appendChild(groupName);
+
+    const groupType = document.createElement("div");
+    groupType.className = "form-group";
+    const labelTypeEl = document.createElement("label");
+    labelTypeEl.textContent = "Type";
+    const selectType = document.createElement("select");
+    [
+      { value: RecipeType.VIANDE, label: "Viande" },
+      { value: RecipeType.POISSON, label: "Poisson" },
+      { value: RecipeType.VEGE, label: "Végétarien" }
+    ].forEach(opt => {
+      const o = document.createElement("option");
+      o.value = opt.value;
+      o.textContent = opt.label;
+      if (recipe.type === opt.value) o.selected = true;
+      selectType.appendChild(o);
+    });
+    groupType.appendChild(labelTypeEl);
+    groupType.appendChild(selectType);
+    form.appendChild(groupType);
+
+    const groupDuration = document.createElement("div");
+    groupDuration.className = "form-group";
+    const labelDur = document.createElement("label");
+    labelDur.textContent = "Durée (minutes)";
+    const inputDur = document.createElement("input");
+    inputDur.type = "number";
+    inputDur.min = "5";
+    inputDur.max = "180";
+    inputDur.value = String(recipe.durationMinutes || 30);
+    groupDuration.appendChild(labelDur);
+    groupDuration.appendChild(inputDur);
+    form.appendChild(groupDuration);
+
+    const groupDiff = document.createElement("div");
+    groupDiff.className = "form-group";
+    const labelDiff = document.createElement("label");
+    labelDiff.textContent = "Difficulté";
+    const selectDiff = document.createElement("select");
+    ["Très facile","Facile","Moyen"].forEach(l => {
+      const o = document.createElement("option");
+      o.value = l;
+      o.textContent = l;
+      if (recipe.difficulty === l) o.selected = true;
+      selectDiff.appendChild(o);
+    });
+    groupDiff.appendChild(labelDiff);
+    groupDiff.appendChild(selectDiff);
+    form.appendChild(groupDiff);
+
+    const groupIng = document.createElement("div");
+    groupIng.className = "form-group";
+    const labelIng = document.createElement("label");
+    labelIng.textContent = "Ingrédients (1 par ligne : quantité - nom - catégorie)";
+    const textareaIng = document.createElement("textarea");
+    const ingLines = (recipe.ingredients || []).map(ing => {
+      const qty = ing.quantity || "";
+      const name = ing.name || "";
+      const cat = ing.category || "";
+      return `${qty} - ${name} - ${cat}`.trim();
+    });
+    textareaIng.value = ingLines.join("\n");
+    groupIng.appendChild(labelIng);
+    groupIng.appendChild(textareaIng);
+    form.appendChild(groupIng);
+
+    const groupSteps = document.createElement("div");
+    groupSteps.className = "form-group";
+    const labelSteps = document.createElement("label");
+    labelSteps.textContent = "Étapes (1 par ligne)";
+    const textareaSteps = document.createElement("textarea");
+    textareaSteps.value = (recipe.steps || []).join("\n");
+    groupSteps.appendChild(labelSteps);
+    groupSteps.appendChild(textareaSteps);
+    form.appendChild(groupSteps);
+
+    const errorDiv = document.createElement("div");
+    errorDiv.className = "error";
+    form.appendChild(errorDiv);
+
+    const buttons = document.createElement("div");
+    buttons.className = "button-row";
+
+    const btnSave = document.createElement("button");
+    btnSave.className = "primary";
+    btnSave.textContent = "Enregistrer les modifications";
+    btnSave.onclick = () => {
+      errorDiv.textContent = "";
+      const name = inputName.value.trim();
+      const type = selectType.value;
+      const duration = parseInt(inputDur.value, 10) || 30;
+      const difficulty = selectDiff.value;
+      const ingredientsText = textareaIng.value.trim();
+      const stepsText = textareaSteps.value.trim();
+
+      if (!name) {
+        errorDiv.textContent = "Merci de donner un nom à la recette.";
+        return;
+      }
+      if (!stepsText) {
+        errorDiv.textContent = "Merci d’indiquer au moins une étape.";
+        return;
+      }
+
+      const ingredients = [];
+      if (ingredientsText) {
+        const lines = ingredientsText.split("\n").map(l => l.trim()).filter(Boolean);
+        lines.forEach(line => {
+          const parts = line.split("-").map(p => p.trim());
+          let quantity = "";
+          let ingName = "";
+          let category = "Autre";
+          if (parts.length >= 3) {
+            quantity = parts[0];
+            ingName = parts[1];
+            category = parts[2];
+          } else if (parts.length === 2) {
+            quantity = parts[0];
+            ingName = parts[1];
+          } else {
+            ingName = line;
+          }
+          ingredients.push({ name: ingName, quantity, category });
+        });
+      }
+
+      const steps = stepsText.split("\n").map(l => l.trim()).filter(Boolean);
+
+      const override = {
+        name,
+        type,
+        durationMinutes: duration,
+        difficulty,
+        ingredients,
+        steps
+      };
+
+      recipeOverrides[recipe.id] = override;
+      saveOverrides();
+
+      // Mettre à jour le planning courant si la recette y apparaît
+      for (let i = 0; i < currentWeekPlan.length; i++) {
+        const r = currentWeekPlan[i];
+        if (r && r.id === recipe.id) {
+          currentWeekPlan[i] = { ...r, ...override };
+        }
+      }
+      saveWeekState();
+
+      const updatedRecipe = { ...recipe, ...override };
+      renderRecipeDetail(updatedRecipe, options);
+    };
+
+    const btnCancel = document.createElement("button");
+    btnCancel.textContent = "Annuler";
+    btnCancel.onclick = () => {
+      renderRecipeDetail(recipe, options);
     };
 
     buttons.appendChild(btnSave);
