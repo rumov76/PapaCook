@@ -1,6 +1,4 @@
 window.addEventListener("DOMContentLoaded", () => {
-  // ---------- TYPES & DONNÉES ----------
-
   const RecipeType = {
     VIANDE: "viande",
     POISSON: "poisson",
@@ -10,360 +8,972 @@ window.addEventListener("DOMContentLoaded", () => {
   const DAYS = ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"];
 
   const baseRecipes = [
-    {
-      id: "poulet-carottes",
-      name: "Poulet rôti et carottes",
-      type: RecipeType.VIANDE,
-      durationMinutes: 40,
-      difficulty: "Très facile",
-      ingredients: [
-        { name: "Blanc de poulet", quantity: "600 g", category: "Viande" },
-        { name: "Carottes", quantity: "600 g", category: "Légumes" },
-        { name: "Pommes de terre", quantity: "600 g", category: "Légumes" },
-        { name: "Huile d’olive", quantity: "2 càs", category: "Épicerie" },
-        { name: "Sel", quantity: "à volonté", category: "Épicerie" },
-        { name: "Poivre", quantity: "à volonté", category: "Épicerie" }
-      ],
-      steps: [
-        "Préchauffe le four à 200°C.",
-        "Épluche et coupe les carottes et pommes de terre.",
-        "Mets poulet et légumes sur une plaque avec l’huile, le sel et le poivre.",
-        "Enfourne 30 à 40 minutes en mélangeant une fois."
-      ]
-    },
-    {
-      id: "poisson-brocolis",
-      name: "Poisson au four et brocolis",
-      type: RecipeType.POISSON,
-      durationMinutes: 30,
-      difficulty: "Facile",
-      ingredients: [
-        { name: "Filets de poisson blanc", quantity: "600 g", category: "Poisson" },
-        { name: "Brocolis", quantity: "1 tête", category: "Légumes" },
-        { name: "Citron", quantity: "1", category: "Frais" },
-        { name: "Huile d’olive", quantity: "1 càs", category: "Épicerie" },
-        { name: "Sel", quantity: "à volonté", category: "Épicerie" },
-        { name: "Poivre", quantity: "à volonté", category: "Épicerie" }
-      ],
-      steps: [
-        "Préchauffe le four à 180°C.",
-        "Place le poisson et le brocolis dans un plat.",
-        "Arrose d’huile, sale et poivre.",
-        "Cuis 20 minutes puis ajoute le jus de citron."
-      ]
-    },
-    {
-      id: "pates-bolo",
-      name: "Pâtes bolognaise simplifiées",
-      type: RecipeType.VIANDE,
-      durationMinutes: 30,
-      difficulty: "Très facile",
-      ingredients: [
-        { name: "Pâtes", quantity: "400 g", category: "Épicerie" },
-        { name: "Viande hachée", quantity: "400 g", category: "Viande" },
-        { name: "Sauce tomate", quantity: "500 ml", category: "Épicerie" },
-        { name: "Oignon", quantity: "1", category: "Légumes" }
-      ],
-      steps: [
-        "Fais cuire les pâtes dans une grande casserole d’eau salée.",
-        "Fais revenir l’oignon puis la viande.",
-        "Ajoute la sauce tomate, assaisonne et laisse mijoter 10 minutes.",
-        "Mélange avec les pâtes."
-      ]
-    },
-    {
-      id: "curry-legumes",
-      name: "Curry de légumes et riz",
-      type: RecipeType.VEGE,
-      durationMinutes: 35,
-      difficulty: "Facile",
-      ingredients: [
-        { name: "Riz", quantity: "300 g", category: "Épicerie" },
-        { name: "Carottes", quantity: "3", category: "Légumes" },
-        { name: "Courgettes", quantity: "2", category: "Légumes" },
-        { name: "Pois chiches (boîte)", quantity: "1", category: "Épicerie" },
-        { name: "Lait de coco", quantity: "400 ml", category: "Épicerie" },
-        { name: "Pâte de curry doux", quantity: "1 càs", category: "Épicerie" }
-      ],
-      steps: [
-        "Fais cuire le riz.",
-        "Coupe les légumes en dés.",
-        "Fais revenir les légumes, ajoute curry, lait de coco et pois chiches.",
-        "Laisse mijoter 15 minutes."
-      ]
-    },
-    {
-      id: "tacos-maison",
-      name: "Tacos maison rapide",
-      type: RecipeType.VIANDE,
-      durationMinutes: 25,
-      difficulty: "Facile",
-      ingredients: [
-        { name: "Tortillas", quantity: "8", category: "Épicerie" },
-        { name: "Blanc de poulet", quantity: "400 g", category: "Viande" },
-        { name: "Poivron", quantity: "1", category: "Légumes" },
-        { name: "Salade verte", quantity: "quelques feuilles", category: "Légumes" }
-      ],
-      steps: [
-        "Coupe le poulet et le poivron en lamelles, fais-les revenir.",
-        "Réchauffe les tortillas.",
-        "Garnis avec poulet, poivron, salade et sauce de ton choix."
-      ]
-    },
-    {
-      id: "omelette-fromage",
-      name: "Omelette au fromage",
-      type: RecipeType.VEGE,
-      durationMinutes: 10,
-      difficulty: "Très facile",
-      ingredients: [
-        { name: "Œufs", quantity: "4", category: "Frais" },
-        { name: "Fromage râpé", quantity: "60 g", category: "Frais" },
-        { name: "Beurre ou huile", quantity: "1 càs", category: "Épicerie" }
-      ],
-      steps: [
-        "Bats les œufs dans un bol.",
-        "Fais chauffer la poêle avec un peu de matière grasse.",
-        "Verse les œufs, ajoute le fromage, laisse cuire à feu doux.",
-        "Plie l’omelette et sers."
-      ]
-    },
-    {
-      id: "pates-pesto",
-      name: "Pâtes au pesto",
-      type: RecipeType.VEGE,
-      durationMinutes: 12,
-      difficulty: "Très facile",
-      ingredients: [
-        { name: "Pâtes", quantity: "400 g", category: "Épicerie" },
-        { name: "Pesto", quantity: "4 càs", category: "Épicerie" }
-      ],
-      steps: [
-        "Fais cuire les pâtes.",
-        "Mélange avec le pesto, ajoute un peu d’eau de cuisson si besoin.",
-        "Sers avec du parmesan si tu veux."
-      ]
-    },
-    {
-      id: "croque-monsieur",
-      name: "Croque-monsieur express",
-      type: RecipeType.VIANDE,
-      durationMinutes: 10,
-      difficulty: "Très facile",
-      ingredients: [
-        { name: "Pain de mie", quantity: "8 tranches", category: "Épicerie" },
-        { name: "Jambon", quantity: "4 tranches", category: "Charcuterie" },
-        { name: "Fromage", quantity: "4 tranches", category: "Frais" }
-      ],
-      steps: [
-        "Assemble pain, jambon, fromage.",
-        "Fais griller au four, à la poêle ou dans un appareil à croque.",
-        "Sers chaud."
-      ]
-    },
-    {
-      id: "wraps-jambon",
-      name: "Wraps jambon crudités",
-      type: RecipeType.VIANDE,
-      durationMinutes: 8,
-      difficulty: "Très facile",
-      ingredients: [
-        { name: "Tortillas de blé", quantity: "4", category: "Épicerie" },
-        { name: "Jambon", quantity: "4 tranches", category: "Charcuterie" },
-        { name: "Salade verte", quantity: "quelques feuilles", category: "Légumes" },
-        { name: "Tomate ou concombre", quantity: "1", category: "Légumes" }
-      ],
-      steps: [
-        "Étale un peu de sauce sur la tortilla.",
-        "Ajoute jambon et crudités.",
-        "Roule serré, coupe en deux et sers."
-      ]
-    },
-    {
-      id: "salade-thon-mais",
-      name: "Salade thon maïs",
-      type: RecipeType.POISSON,
-      durationMinutes: 7,
-      difficulty: "Très facile",
-      ingredients: [
-        { name: "Thon en boîte", quantity: "1 petite boîte", category: "Poisson" },
-        { name: "Maïs en boîte", quantity: "1 petite boîte", category: "Légumes" },
-        { name: "Salade verte", quantity: "1 poignée", category: "Légumes" }
-      ],
-      steps: [
-        "Égoutte le thon et le maïs.",
-        "Mélange avec la salade et la sauce.",
-        "Sers avec du pain."
-      ]
-    },
-    {
-      id: "riz-saute-legumes",
-      name: "Riz sauté aux légumes",
-      type: RecipeType.VEGE,
-      durationMinutes: 15,
-      difficulty: "Facile",
-      ingredients: [
-        { name: "Riz cuit", quantity: "400 g", category: "Épicerie" },
-        { name: "Légumes surgelés", quantity: "300 g", category: "Légumes" }
-      ],
-      steps: [
-        "Fais revenir les légumes dans une poêle.",
-        "Ajoute le riz cuit, assaisonne et mélange bien."
-      ]
-    },
-    {
-      id: "saucisses-puree",
-      name: "Saucisses et purée",
-      type: RecipeType.VIANDE,
-      durationMinutes: 20,
-      difficulty: "Très facile",
-      ingredients: [
-        { name: "Saucisses", quantity: "4", category: "Viande" },
-        { name: "Flocons de purée", quantity: "1 sachet", category: "Épicerie" }
-      ],
-      steps: [
-        "Fais cuire les saucisses.",
-        "Prépare la purée selon le paquet.",
-        "Sers ensemble."
-      ]
-    },
-    {
-      id: "poisson-pane-petits-pois",
-      name: "Poisson pané et petits pois",
-      type: RecipeType.POISSON,
-      durationMinutes: 18,
-      difficulty: "Très facile",
-      ingredients: [
-        { name: "Poisson pané", quantity: "4 pièces", category: "Poisson" },
-        { name: "Petits pois surgelés", quantity: "300 g", category: "Légumes" }
-      ],
-      steps: [
-        "Fais cuire le poisson pané.",
-        "Fais chauffer les petits pois.",
-        "Sers ensemble."
-      ]
-    },
-    {
-      id: "gnocchis-tomate",
-      name: "Gnocchis à la tomate",
-      type: RecipeType.VEGE,
-      durationMinutes: 12,
-      difficulty: "Très facile",
-      ingredients: [
-        { name: "Gnocchis", quantity: "500 g", category: "Épicerie" },
-        { name: "Sauce tomate", quantity: "300 ml", category: "Épicerie" }
-      ],
-      steps: [
-        "Fais cuire ou dorer les gnocchis.",
-        "Ajoute la sauce tomate, laisse réchauffer.",
-        "Sers avec un peu de fromage."
-      ]
-    },
-    {
-      id: "quiche-lorraine",
-      name: "Quiche lorraine rapide",
-      type: RecipeType.VIANDE,
-      durationMinutes: 35,
-      difficulty: "Facile",
-      ingredients: [
-        { name: "Pâte brisée", quantity: "1", category: "Épicerie" },
-        { name: "Lardons", quantity: "150 g", category: "Charcuterie" },
-        { name: "Œufs", quantity: "3", category: "Frais" },
-        { name: "Crème ou lait", quantity: "200 ml", category: "Frais" }
-      ],
-      steps: [
-        "Préchauffe le four à 180°C.",
-        "Dispose la pâte, ajoute lardons et appareil œufs + crème.",
-        "Enfourne environ 30 minutes."
-      ]
-    },
-    {
-      id: "gratin-pates",
-      name: "Gratin de pâtes express",
-      type: RecipeType.VEGE,
-      durationMinutes: 20,
-      difficulty: "Très facile",
-      ingredients: [
-        { name: "Pâtes cuites", quantity: "400 g", category: "Épicerie" },
-        { name: "Crème ou lait", quantity: "150 ml", category: "Frais" },
-        { name: "Fromage râpé", quantity: "80 g", category: "Frais" }
-      ],
-      steps: [
-        "Mélange les pâtes, la crème et une partie du fromage.",
-        "Verse dans un plat, ajoute le reste du fromage.",
-        "Gratine 10 minutes."
-      ]
-    },
-    {
-      id: "nouilles-poulet",
-      name: "Nouilles sautées au poulet",
-      type: RecipeType.VIANDE,
-      durationMinutes: 18,
-      difficulty: "Facile",
-      ingredients: [
-        { name: "Nouilles", quantity: "300 g", category: "Épicerie" },
-        { name: "Blanc de poulet", quantity: "300 g", category: "Viande" },
-        { name: "Légumes (carottes, poivron…)", quantity: "200 g", category: "Légumes" }
-      ],
-      steps: [
-        "Fais cuire les nouilles.",
-        "Fais revenir le poulet et les légumes.",
-        "Ajoute les nouilles, assaisonne et sers."
-      ]
-    },
-    {
-      id: "lentilles-corail",
-      name: "Lentilles corail au coco",
-      type: RecipeType.VEGE,
-      durationMinutes: 20,
-      difficulty: "Facile",
-      ingredients: [
-        { name: "Lentilles corail", quantity: "200 g", category: "Épicerie" },
-        { name: "Lait de coco", quantity: "200 ml", category: "Épicerie" }
-      ],
-      steps: [
-        "Rince les lentilles et couvre-les d’eau.",
-        "Fais cuire 10 à 15 minutes.",
-        "Ajoute le lait de coco et assaisonne."
-      ]
-    },
-    {
-      id: "steak-haricots",
-      name: "Steak haché et haricots verts",
-      type: RecipeType.VIANDE,
-      durationMinutes: 14,
-      difficulty: "Très facile",
-      ingredients: [
-        { name: "Steaks hachés", quantity: "2 à 4", category: "Viande" },
-        { name: "Haricots verts surgelés", quantity: "300 g", category: "Légumes" }
-      ],
-      steps: [
-        "Fais cuire les steaks à la poêle.",
-        "Fais cuire les haricots verts à la vapeur ou à l’eau.",
-        "Sers ensemble."
-      ]
-    },
-    {
-      id: "pizza-maison",
-      name: "Pizza maison simple",
-      type: RecipeType.VEGE,
-      durationMinutes: 20,
-      difficulty: "Facile",
-      ingredients: [
-        { name: "Pâte à pizza", quantity: "1", category: "Épicerie" },
-        { name: "Sauce tomate", quantity: "200 ml", category: "Épicerie" },
-        { name: "Fromage râpé", quantity: "100 g", category: "Frais" }
-      ],
-      steps: [
-        "Préchauffe le four à 220°C.",
-        "Garnis la pâte de sauce tomate et fromage.",
-        "Ajoute éventuellement jambon ou légumes.",
-        "Enfourne 10 à 12 minutes."
-      ]
-    }
+  {
+    id: "r0",
+    name: "Saumon au four soja-miel",
+    type: RecipeType.POISSON,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Poisson (saumon, cabillaud, thon\u2026)", quantity: "400 g", category: "Poisson" },
+        { name: "L\u00e9gumes (carottes, chou, etc.)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Sauce soja ou assaisonnement", quantity: "2 c\u00e0s", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r1",
+    name: "Cabillaud citron miso",
+    type: RecipeType.POISSON,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Poisson (saumon, cabillaud, thon\u2026)", quantity: "400 g", category: "Poisson" },
+        { name: "L\u00e9gumes (carottes, chou, etc.)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Sauce soja ou assaisonnement", quantity: "2 c\u00e0s", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r2",
+    name: "Sole beurre citron",
+    type: RecipeType.POISSON,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Poisson (saumon, cabillaud, thon\u2026)", quantity: "400 g", category: "Poisson" },
+        { name: "L\u00e9gumes (carottes, chou, etc.)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Sauce soja ou assaisonnement", quantity: "2 c\u00e0s", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r3",
+    name: "Udon saut\u00e9s au chou chinois",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r4",
+    name: "Yakisoba express",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r5",
+    name: "Somen froids sauce soja",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r6",
+    name: "Riz saut\u00e9 poulet et l\u00e9gumes",
+    type: RecipeType.VIANDE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Viande (poulet, porc ou b\u0153uf)", quantity: "400 g", category: "Viande" },
+        { name: "L\u00e9gumes (carottes, chou, poivron\u2026)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r7",
+    name: "Tonkatsu (porc pan\u00e9) rapide",
+    type: RecipeType.VIANDE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Viande (poulet, porc ou b\u0153uf)", quantity: "400 g", category: "Viande" },
+        { name: "L\u00e9gumes (carottes, chou, poivron\u2026)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r8",
+    name: "Gyudon simplifi\u00e9 (b\u0153uf sur riz)",
+    type: RecipeType.VIANDE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Viande (poulet, porc ou b\u0153uf)", quantity: "400 g", category: "Viande" },
+        { name: "L\u00e9gumes (carottes, chou, poivron\u2026)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r9",
+    name: "Thon frais po\u00eal\u00e9 s\u00e9same",
+    type: RecipeType.POISSON,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Poisson (saumon, cabillaud, thon\u2026)", quantity: "400 g", category: "Poisson" },
+        { name: "L\u00e9gumes (carottes, chou, etc.)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Sauce soja ou assaisonnement", quantity: "2 c\u00e0s", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r10",
+    name: "Onigiri au thon",
+    type: RecipeType.POISSON,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Poisson (saumon, cabillaud, thon\u2026)", quantity: "400 g", category: "Poisson" },
+        { name: "L\u00e9gumes (carottes, chou, etc.)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Sauce soja ou assaisonnement", quantity: "2 c\u00e0s", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r11",
+    name: "Chou pointu saut\u00e9 soja-beurre",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r12",
+    name: "Soupe miso tofu-l\u00e9gumes",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r13",
+    name: "P\u00e2tes beurre-soja-nori",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r14",
+    name: "Poulet r\u00f4ti carottes et pommes de terre",
+    type: RecipeType.VIANDE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Viande (poulet, porc ou b\u0153uf)", quantity: "400 g", category: "Viande" },
+        { name: "L\u00e9gumes (carottes, chou, poivron\u2026)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r15",
+    name: "Poisson pan\u00e9 maison + riz",
+    type: RecipeType.POISSON,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Poisson (saumon, cabillaud, thon\u2026)", quantity: "400 g", category: "Poisson" },
+        { name: "L\u00e9gumes (carottes, chou, etc.)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Sauce soja ou assaisonnement", quantity: "2 c\u00e0s", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r16",
+    name: "Sardines grill\u00e9es au four et riz",
+    type: RecipeType.POISSON,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Poisson (saumon, cabillaud, thon\u2026)", quantity: "400 g", category: "Poisson" },
+        { name: "L\u00e9gumes (carottes, chou, etc.)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Sauce soja ou assaisonnement", quantity: "2 c\u00e0s", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r17",
+    name: "Ratatouille et saumon au four",
+    type: RecipeType.POISSON,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Poisson (saumon, cabillaud, thon\u2026)", quantity: "400 g", category: "Poisson" },
+        { name: "L\u00e9gumes (carottes, chou, etc.)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Sauce soja ou assaisonnement", quantity: "2 c\u00e0s", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r18",
+    name: "Omelette fromage et nori",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r19",
+    name: "Gnocchis \u00e0 la tomate",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r20",
+    name: "Quiche poireau au miso l\u00e9ger",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r21",
+    name: "Riz saut\u00e9 \u0153uf et ma\u00efs",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r22",
+    name: "P\u00e2tes au pesto",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r23",
+    name: "Wraps jambon crudit\u00e9s",
+    type: RecipeType.VIANDE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Viande (poulet, porc ou b\u0153uf)", quantity: "400 g", category: "Viande" },
+        { name: "L\u00e9gumes (carottes, chou, poivron\u2026)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r24",
+    name: "Croque-monsieur express",
+    type: RecipeType.VIANDE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Viande (poulet, porc ou b\u0153uf)", quantity: "400 g", category: "Viande" },
+        { name: "L\u00e9gumes (carottes, chou, poivron\u2026)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r25",
+    name: "Pizza maison simple",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r26",
+    name: "Lentilles corail au lait de coco",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r27",
+    name: "Poisson blanc vapeur soja",
+    type: RecipeType.POISSON,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Poisson (saumon, cabillaud, thon\u2026)", quantity: "400 g", category: "Poisson" },
+        { name: "L\u00e9gumes (carottes, chou, etc.)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Sauce soja ou assaisonnement", quantity: "2 c\u00e0s", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r28",
+    name: "Donburi saumon chou chinois",
+    type: RecipeType.POISSON,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Poisson (saumon, cabillaud, thon\u2026)", quantity: "400 g", category: "Poisson" },
+        { name: "L\u00e9gumes (carottes, chou, etc.)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Sauce soja ou assaisonnement", quantity: "2 c\u00e0s", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r29",
+    name: "Udon miso-beurre et l\u00e9gumes",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r30",
+    name: "Poulet teriyaki au four",
+    type: RecipeType.VIANDE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Viande (poulet, porc ou b\u0153uf)", quantity: "400 g", category: "Viande" },
+        { name: "L\u00e9gumes (carottes, chou, poivron\u2026)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r31",
+    name: "Boulettes de viande sauce tomate",
+    type: RecipeType.VIANDE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Viande (poulet, porc ou b\u0153uf)", quantity: "400 g", category: "Viande" },
+        { name: "L\u00e9gumes (carottes, chou, poivron\u2026)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r32",
+    name: "Yaki udon aux l\u00e9gumes",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r33",
+    name: "Soba s\u00e9same et concombre",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r34",
+    name: "Thon grill\u00e9 et chou chinois",
+    type: RecipeType.POISSON,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Poisson (saumon, cabillaud, thon\u2026)", quantity: "400 g", category: "Poisson" },
+        { name: "L\u00e9gumes (carottes, chou, etc.)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Sauce soja ou assaisonnement", quantity: "2 c\u00e0s", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r35",
+    name: "Nouilles miso rapides",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r36",
+    name: "Riz japonais et poisson blanc",
+    type: RecipeType.POISSON,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Poisson (saumon, cabillaud, thon\u2026)", quantity: "400 g", category: "Poisson" },
+        { name: "L\u00e9gumes (carottes, chou, etc.)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Sauce soja ou assaisonnement", quantity: "2 c\u00e0s", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r37",
+    name: "Tofu grill\u00e9 sauce soja",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r38",
+    name: "Chou chinois brais\u00e9 au miso",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r39",
+    name: "Poulet saut\u00e9 au gingembre",
+    type: RecipeType.VIANDE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Viande (poulet, porc ou b\u0153uf)", quantity: "400 g", category: "Viande" },
+        { name: "L\u00e9gumes (carottes, chou, poivron\u2026)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r40",
+    name: "B\u0153uf saut\u00e9 aux poireaux",
+    type: RecipeType.VIANDE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Viande (poulet, porc ou b\u0153uf)", quantity: "400 g", category: "Viande" },
+        { name: "L\u00e9gumes (carottes, chou, poivron\u2026)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r41",
+    name: "Omelette l\u00e9gumes vari\u00e9s",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r42",
+    name: "Gratin de p\u00e2tes express",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r43",
+    name: "Curry doux de l\u00e9gumes",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r44",
+    name: "Riz cantonais maison",
+    type: RecipeType.VIANDE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Viande (poulet, porc ou b\u0153uf)", quantity: "400 g", category: "Viande" },
+        { name: "L\u00e9gumes (carottes, chou, poivron\u2026)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r45",
+    name: "Poisson pan\u00e9 et petits pois",
+    type: RecipeType.POISSON,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Poisson (saumon, cabillaud, thon\u2026)", quantity: "400 g", category: "Poisson" },
+        { name: "L\u00e9gumes (carottes, chou, etc.)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Sauce soja ou assaisonnement", quantity: "2 c\u00e0s", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r46",
+    name: "Salade thon ma\u00efs",
+    type: RecipeType.POISSON,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Poisson (saumon, cabillaud, thon\u2026)", quantity: "400 g", category: "Poisson" },
+        { name: "L\u00e9gumes (carottes, chou, etc.)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Sauce soja ou assaisonnement", quantity: "2 c\u00e0s", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r47",
+    name: "Bolognaise rapide",
+    type: RecipeType.VIANDE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Viande (poulet, porc ou b\u0153uf)", quantity: "400 g", category: "Viande" },
+        { name: "L\u00e9gumes (carottes, chou, poivron\u2026)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r48",
+    name: "P\u00e2tes jambon cr\u00e8me",
+    type: RecipeType.VIANDE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "Viande (poulet, porc ou b\u0153uf)", quantity: "400 g", category: "Viande" },
+        { name: "L\u00e9gumes (carottes, chou, poivron\u2026)", quantity: "300 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  },
+  {
+    id: "r49",
+    name: "Wok de l\u00e9gumes aux soba",
+    type: RecipeType.VEGE,
+    durationMinutes: 20,
+    difficulty: "Facile",
+    ingredients: [
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "400 g", category: "L\u00e9gumes" },
+        { name: "Riz, p\u00e2tes ou nouilles", quantity: "300 g", category: "\u00c9picerie" },
+        { name: "Tofu ou \u0153ufs (optionnel)", quantity: "200 g", category: "Frais" }
+    ],
+    steps: [
+        "Pr\u00e9pare les ingr\u00e9dients (lave et coupe les l\u00e9gumes, pr\u00e9pare la viande ou le poisson si besoin).",
+        "Fais cuire la base (riz, p\u00e2tes ou nouilles) selon les instructions du paquet.",
+        "Dans une po\u00eale, fais revenir la viande, le poisson ou les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajoute la sauce (soja, miso, tomates ou autre) et laisse mijoter quelques minutes.",
+        "M\u00e9lange avec la base (ou sers \u00e0 c\u00f4t\u00e9) et d\u00e9guste."
+    ]
+  }
   ];
 
-  // ---------- PERSISTANCE ----------
 
   function loadJSON(key, fallback) {
     try {
@@ -391,7 +1001,6 @@ window.addEventListener("DOMContentLoaded", () => {
     saveJSON("papacook_week_plan_ids", ids);
     saveJSON("papacook_week_included", currentWeekIncluded);
   }
-
 
   function getRating(id) {
     return ratings[id] || "none";
@@ -421,8 +1030,6 @@ window.addEventListener("DOMContentLoaded", () => {
     const custom = customRecipes.map(applyOverrides);
     return base.concat(custom);
   }
-
-  // ---------- LOGIQUE SEMAINE ----------
 
   function shuffle(array) {
     const a = array.slice();
@@ -463,9 +1070,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     const all = getAllRecipes();
     const byId = {};
-    all.forEach(r => {
-      byId[r.id] = r;
-    });
+    all.forEach(r => { byId[r.id] = r; });
     const plan = storedWeekPlanIds.map(id => (id && byId[id]) ? byId[id] : null);
     currentWeekPlan = plan;
     if (Array.isArray(storedWeekIncluded) && storedWeekIncluded.length === DAYS.length) {
@@ -481,8 +1086,6 @@ window.addEventListener("DOMContentLoaded", () => {
     currentWeekIncluded = new Array(DAYS.length).fill(false);
     saveWeekState();
   }
-
-  // ---------- AFFICHAGE ----------
 
   const contentDiv = document.getElementById("content");
 
@@ -511,11 +1114,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const title = document.createElement("h2");
     title.textContent = recipe.name;
-
     headerRow.appendChild(title);
     card.appendChild(headerRow);
 
-    // Bouton de retour contextuel
     if (options.fromWeek || options.fromForgotten) {
       const backRow = document.createElement("div");
       backRow.className = "button-row";
@@ -534,7 +1135,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const tagInfo = document.createElement("span");
     tagInfo.className = "tag";
-    tagInfo.textContent = recipe.durationMinutes + " min • " + recipe.difficulty;
+    tagInfo.textContent = (recipe.durationMinutes || 20) + " min • " + (recipe.difficulty || "Facile");
 
     const tagType = document.createElement("span");
     tagType.className = "tag type";
@@ -564,7 +1165,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     card.appendChild(tagRow);
 
-    // Notation + autre idée
     const ratingRow = document.createElement("div");
     ratingRow.className = "button-row";
 
@@ -605,14 +1205,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
     card.appendChild(ratingRow);
 
-    // Ingrédients
     const ingTitle = document.createElement("div");
     ingTitle.className = "section-title";
     ingTitle.textContent = "Ingrédients";
     card.appendChild(ingTitle);
 
     const ingList = document.createElement("ul");
-    recipe.ingredients.forEach(ing => {
+    (recipe.ingredients || []).forEach(ing => {
       const li = document.createElement("li");
       const qty = ing.quantity ? ing.quantity + " " : "";
       li.textContent = qty + ing.name;
@@ -620,14 +1219,13 @@ window.addEventListener("DOMContentLoaded", () => {
     });
     card.appendChild(ingList);
 
-    // Étapes
     const stepsTitle = document.createElement("div");
     stepsTitle.className = "section-title";
     stepsTitle.textContent = "Étapes";
     card.appendChild(stepsTitle);
 
     const stepsList = document.createElement("ol");
-    recipe.steps.forEach(step => {
+    (recipe.steps || []).forEach(step => {
       const li = document.createElement("li");
       li.textContent = step;
       li.style.marginBottom = "0.3rem";
@@ -635,16 +1233,13 @@ window.addEventListener("DOMContentLoaded", () => {
     });
     card.appendChild(stepsList);
 
-    // Bouton Modifier
     const editRow = document.createElement("div");
     editRow.className = "button-row";
-
     const btnEdit = document.createElement("button");
     btnEdit.textContent = "Modifier";
     btnEdit.onclick = () => {
       renderEditRecipe(recipe, options);
     };
-
     editRow.appendChild(btnEdit);
     card.appendChild(editRow);
 
@@ -674,7 +1269,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const title = document.createElement("h2");
     title.textContent = "Organisation de la semaine";
-
     headerRow.appendChild(title);
     card.appendChild(headerRow);
 
@@ -687,7 +1281,6 @@ window.addEventListener("DOMContentLoaded", () => {
     btnNewWeek.onclick = () => {
       const newPlan = generateWeekPlan();
       for (let i = 0; i < DAYS.length; i++) {
-        // v7 : on ne remplace QUE les jours décochés
         if (!currentWeekIncluded[i]) {
           currentWeekPlan[i] = newPlan[i];
         }
@@ -803,7 +1396,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const title = document.createElement("h2");
     title.textContent = "Liste de courses";
-
     headerRow.appendChild(title);
     card.appendChild(headerRow);
 
@@ -822,12 +1414,12 @@ window.addEventListener("DOMContentLoaded", () => {
     backRow.appendChild(btnBack);
     card.appendChild(backRow);
 
-    const map = {}; // { category: { name: qty } }
+    const map = {};
 
     currentWeekPlan.forEach((recipe, index) => {
       if (!recipe) return;
       if (!currentWeekIncluded[index]) return;
-      recipe.ingredients.forEach(ing => {
+      (recipe.ingredients || []).forEach(ing => {
         const cat = ing.category || "Autre";
         if (!map[cat]) map[cat] = {};
         if (!map[cat][ing.name]) {
@@ -882,7 +1474,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const subtitle = document.createElement("div");
     subtitle.className = "small";
-    subtitle.textContent = "Recettes marquées 'À oublier' (tu peux les récupérer si besoin).";
+    subtitle.textContent = "Recettes marquées 'À oublier' (tu peux les récupérer).";
     card.appendChild(subtitle);
 
     const backRow = document.createElement("div");
@@ -900,7 +1492,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (forgotten.length === 0) {
       const msg = document.createElement("p");
-      msg.textContent = "Aucune recette marquée 'À oublier' pour l’instant.";
+      msg.textContent = "Aucune recette marquée 'À oublier'.";
       card.appendChild(msg);
       contentDiv.appendChild(card);
       return;
@@ -956,7 +1548,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const info = document.createElement("div");
     info.className = "small";
-    info.textContent = "Format simple : pense à un repas de soir de semaine réaliste.";
+    info.textContent = "Format simple : pense à un repas réaliste de soir de semaine.";
     card.appendChild(info);
 
     const form = document.createElement("div");
@@ -1179,7 +1771,7 @@ window.addEventListener("DOMContentLoaded", () => {
     inputDur.type = "number";
     inputDur.min = "5";
     inputDur.max = "180";
-    inputDur.value = String(recipe.durationMinutes || 30);
+    inputDur.value = String(recipe.durationMinutes || 20);
     groupDuration.appendChild(labelDur);
     groupDuration.appendChild(inputDur);
     form.appendChild(groupDuration);
@@ -1209,7 +1801,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const qty = ing.quantity || "";
       const name = ing.name || "";
       const cat = ing.category || "";
-      return `${qty} - ${name} - ${cat}`.trim();
+      return (qty ? qty + " - " : "") + name + (cat ? " - " + cat : "");
     });
     textareaIng.value = ingLines.join("\n");
     groupIng.appendChild(labelIng);
@@ -1240,7 +1832,7 @@ window.addEventListener("DOMContentLoaded", () => {
       errorDiv.textContent = "";
       const name = inputName.value.trim();
       const type = selectType.value;
-      const duration = parseInt(inputDur.value, 10) || 30;
+      const duration = parseInt(inputDur.value, 10) || 20;
       const difficulty = selectDiff.value;
       const ingredientsText = textareaIng.value.trim();
       const stepsText = textareaSteps.value.trim();
@@ -1290,7 +1882,6 @@ window.addEventListener("DOMContentLoaded", () => {
       recipeOverrides[recipe.id] = override;
       saveOverrides();
 
-      // Mettre à jour le planning courant si la recette y apparaît
       for (let i = 0; i < currentWeekPlan.length; i++) {
         const r = currentWeekPlan[i];
         if (r && r.id === recipe.id) {
@@ -1317,11 +1908,8 @@ window.addEventListener("DOMContentLoaded", () => {
     contentDiv.appendChild(card);
   }
 
-  // ---------- BOUTONS GLOBAUX ----------
-
   document.getElementById("btn-random").onclick = renderRandomRecipe;
   document.getElementById("btn-planning").onclick = renderWeek;
 
-  // Vue par défaut : une recette aléatoire
   renderRandomRecipe();
 });
