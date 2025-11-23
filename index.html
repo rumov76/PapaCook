@@ -4,20 +4,45 @@
   <meta charset="UTF-8">
   <title>PapaCook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="theme-color" content="#e5e7eb">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>PapaCook</h1>
-  <div class="small">Des idées simples pour cuisiner avec les enfants 👨‍👧‍👦</div>
-</header>
-<main>
-  <div class="button-row">
-    <button class="primary" id="btn-random">Recette aléatoire</button>
-    <button class="primary" id="btn-planning">Organisation de la semaine</button>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="logo-row">
+        <div class="logo-circle">👨‍🍳</div>
+        <div>
+          <h1>PapaCook</h1>
+          <div class="subtitle">
+            Des idées simples pour les soirs de semaine avec les enfants
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="top-bar">
+        <div class="button-row">
+          <button class="primary" id="btn-random">Recette aléatoire</button>
+          <button class="primary" id="btn-planning">Organisation de la semaine</button>
+        </div>
+        <div class="hint">
+          Astuce : ajoute PapaCook à l’écran d’accueil pour l’utiliser comme une vraie app 📱
+        </div>
+      </div>
+
+      <div id="content"></div>
+    </main>
+
+    <footer class="app-footer">
+      <span class="footer-title">PapaCook</span>
+      <span class="footer-text">pensé pour un papa et ses deux enfants 💛</span>
+    </footer>
   </div>
-  <div id="content"></div>
-</main>
-<script src="app.js"></script>
+
+  <script src="app.js"></script>
 </body>
 </html>
