@@ -8,7 +8,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const DAYS = ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"];
 
-    const baseRecipes = [
+  const baseRecipes = [
     {
       id: "r1",
       name: "Saumon au four soja-miel",
@@ -16,17 +16,17 @@ window.addEventListener("DOMContentLoaded", () => {
       durationMinutes: 18,
       difficulty: "Facile",
       ingredients: [
-        { name: "Pavés de saumon", quantity: "2", category: "Poisson" },
-        { name: "Sauce soja", quantity: "2 càs", category: "Épicerie" },
-        { name: "Miel", quantity: "1 càs", category: "Épicerie" },
+        { name: "Pav\u00e9s de saumon", quantity: "2", category: "Poisson" },
+        { name: "Sauce soja", quantity: "2 c\u00e0s", category: "\u00c9picerie" },
+        { name: "Miel", quantity: "1 c\u00e0s", category: "\u00c9picerie" },
         { name: "Citron", quantity: "1", category: "Fruits" }
       ],
       steps: [
-        "Préchauffer le four à 200°C.",
-        "Mélanger sauce soja, miel et jus de citron.",
-        "Déposer le saumon sur une plaque recouverte de papier cuisson.",
-        "Badigeonner avec la sauce et cuire 12 à 15 minutes.",
-        "Servir avec du riz ou des légumes vapeur."
+        "Pr\u00e9chauffer le four \u00e0 200\u00b0C.",
+        "M\u00e9langer sauce soja, miel et jus de citron.",
+        "D\u00e9poser le saumon sur une plaque recouverte de papier cuisson.",
+        "Badigeonner avec la sauce et cuire 12 \u00e0 15 minutes.",
+        "Servir avec du riz ou des l\u00e9gumes vapeur."
       ]
     },
     {
@@ -37,38 +37,38 @@ window.addEventListener("DOMContentLoaded", () => {
       difficulty: "Facile",
       ingredients: [
         { name: "Filets de cabillaud", quantity: "2", category: "Poisson" },
-        { name: "Beurre", quantity: "20 g", category: "Épicerie" },
+        { name: "Beurre", quantity: "20 g", category: "\u00c9picerie" },
         { name: "Citron", quantity: "1", category: "Fruits" },
-        { name: "Épicerie", quantity: "- Sel", category: "" },
-        { name: "Épicerie", quantity: "- Poivre", category: "" }
+        { name: "Sel", quantity: "", category: "\u00c9picerie" },
+        { name: "Poivre", quantity: "", category: "\u00c9picerie" }
       ],
       steps: [
-        "Préchauffer le four à 190°C.",
+        "Pr\u00e9chauffer le four \u00e0 190\u00b0C.",
         "Faire fondre le beurre et y ajouter le jus de citron.",
-        "Saler et poivrer le cabillaud puis le déposer dans un plat.",
+        "Saler et poivrer le cabillaud puis le d\u00e9poser dans un plat.",
         "Napper avec le beurre citron et cuire 12 minutes.",
         "Servir avec des pommes de terre vapeur ou du riz."
       ]
     },
     {
       id: "r3",
-      name: "Riz sauté poulet-légumes",
+      name: "Riz saut\u00e9 poulet-l\u00e9gumes",
       type: RecipeType.VIANDE,
       durationMinutes: 22,
       difficulty: "Facile",
       ingredients: [
-        { name: "Riz cuit", quantity: "2 bols", category: "Épicerie" },
-        { name: "Poulet en dés", quantity: "150 g", category: "Viande" },
-        { name: "Carotte", quantity: "1", category: "Légumes" },
-        { name: "Petits pois", quantity: "50 g", category: "Légumes" },
-        { name: "Sauce soja", quantity: "1 à 2 càs", category: "Épicerie" }
+        { name: "Riz cuit", quantity: "2 bols", category: "\u00c9picerie" },
+        { name: "Poulet en d\u00e9s", quantity: "150 g", category: "Viande" },
+        { name: "Carotte", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Petits pois", quantity: "50 g", category: "L\u00e9gumes" },
+        { name: "Sauce soja", quantity: "1 \u00e0 2 c\u00e0s", category: "\u00c9picerie" }
       ],
       steps: [
-        "Couper le poulet en petits dés.",
-        "Éplucher et couper la carotte en petits morceaux.",
-        "Faire revenir le poulet dans un peu d'huile jusqu'à légère coloration.",
+        "Couper le poulet en petits d\u00e9s.",
+        "\u00c9plucher et couper la carotte.",
+        "Faire revenir le poulet dans un peu d'huile.",
         "Ajouter carotte, petits pois puis le riz.",
-        "Assaisonner avec la sauce soja, mélanger et servir."
+        "Assaisonner avec la sauce soja et servir."
       ]
     },
     {
@@ -78,81 +78,78 @@ window.addEventListener("DOMContentLoaded", () => {
       durationMinutes: 20,
       difficulty: "Facile",
       ingredients: [
-        { name: "Poulet en dés", quantity: "300 g", category: "Viande" },
-        { name: "Sauce soja", quantity: "2 càs", category: "Épicerie" },
-        { name: "Sucre ou miel", quantity: "1 càs", category: "Épicerie" },
-        { name: "Eau", quantity: "2 càs", category: "Épicerie" }
+        { name: "Poulet en d\u00e9s", quantity: "300 g", category: "Viande" },
+        { name: "Sauce soja", quantity: "2 c\u00e0s", category: "\u00c9picerie" },
+        { name: "Sucre ou miel", quantity: "1 c\u00e0s", category: "\u00c9picerie" },
+        { name: "Eau", quantity: "2 c\u00e0s", category: "\u00c9picerie" }
       ],
       steps: [
-        "Mélanger sauce soja, sucre (ou miel) et eau dans un bol.",
-        "Faire revenir le poulet dans une poêle jusqu'à légère coloration.",
-        "Verser la sauce sur le poulet.",
-        "Laisser réduire quelques minutes jusqu'à ce que la sauce nappe bien le poulet.",
+        "M\u00e9langer sauce soja, sucre (ou miel) et eau.",
+        "Faire revenir le poulet jusqu'\u00e0 l\u00e9g\u00e8re coloration.",
+        "Verser la sauce et laisser r\u00e9duire.",
+        "Cuire jusqu'\u00e0 ce que la sauce nappe le poulet.",
         "Servir avec du riz."
       ]
     },
     {
       id: "r5",
-      name: "Soupe miso tofu-légumes",
+      name: "Soupe miso tofu-l\u00e9gumes",
       type: RecipeType.VEGE,
       durationMinutes: 15,
       difficulty: "Facile",
       ingredients: [
-        { name: "Eau", quantity: "800 ml", category: "Épicerie" },
-        { name: "Pâte miso", quantity: "2 càs", category: "Asie" },
+        { name: "Eau", quantity: "800 ml", category: "\u00c9picerie" },
+        { name: "P\u00e2te miso", quantity: "2 c\u00e0s", category: "Asie" },
         { name: "Tofu", quantity: "100 g", category: "Frais" },
-        { name: "Carotte", quantity: "1", category: "Légumes" },
-        { name: "Poireau ou oignon nouveau", quantity: "1", category: "Légumes" }
+        { name: "Carotte", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Poireau ou oignon nouveau", quantity: "1", category: "L\u00e9gumes" }
       ],
       steps: [
-        "Couper le tofu en petits dés et les légumes en fines rondelles.",
-        "Porter l'eau à frémissement dans une casserole.",
-        "Ajouter les légumes et cuire 5 à 7 minutes jusqu'à ce qu'ils soient tendres.",
-        "Prélever un peu d'eau chaude dans un bol et y dissoudre la pâte miso.",
-        "Verser le miso dissous dans la casserole (sans faire bouillir fort).",
-        "Ajouter le tofu, chauffer encore 1 minute et servir."
+        "Couper le tofu et les l\u00e9gumes en petits morceaux.",
+        "Faire chauffer l'eau et y cuire les l\u00e9gumes 5 \u00e0 7 minutes.",
+        "Pr\u00e9lever un peu d'eau chaude et y dissoudre le miso.",
+        "Ajouter le miso sans faire bouillir fortement.",
+        "Ajouter le tofu, chauffer 1 minute et servir."
       ]
     },
     {
       id: "r6",
-      name: "Gratin de pâtes express",
+      name: "Gratin de p\u00e2tes express",
       type: RecipeType.VEGE,
       durationMinutes: 23,
       difficulty: "Facile",
       ingredients: [
-        { name: "Pâtes", quantity: "250 g", category: "Pâtes" },
-        { name: "Crème liquide", quantity: "15 cl", category: "Crèmerie" },
-        { name: "Fromage râpé", quantity: "60 g", category: "Crèmerie" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
+        { name: "P\u00e2tes", quantity: "250 g", category: "P\u00e2tes" },
+        { name: "Cr\u00e8me liquide", quantity: "15 cl", category: "Cr\u00e8merie" },
+        { name: "Fromage r\u00e2p\u00e9", quantity: "60 g", category: "Cr\u00e8merie" },
+        { name: "Sel, poivre", quantity: "", category: "\u00c9picerie" }
       ],
       steps: [
-        "Préchauffer le four à 200°C.",
-        "Cuire les pâtes dans une grande casserole d'eau salée selon les indications du paquet.",
-        "Égoutter les pâtes et les remettre dans la casserole.",
-        "Ajouter la crème et la moitié du fromage râpé, saler et poivrer, puis mélanger.",
-        "Verser dans un plat à gratin, parsemer du reste de fromage.",
-        "Gratiner 8 à 10 minutes au four jusqu'à ce que ce soit bien doré."
+        "Cuire les p\u00e2tes al dente.",
+        "M\u00e9langer avec la cr\u00e8me et la moiti\u00e9 du fromage.",
+        "Verser dans un plat \u00e0 gratin.",
+        "Parsemer du reste de fromage.",
+        "Gratiner 8 \u00e0 10 minutes au four."
       ]
     },
     {
       id: "r7",
-      name: "Udon sautés au chou chinois",
+      name: "Udon saut\u00e9s au chou chinois",
       type: RecipeType.VEGE,
       durationMinutes: 20,
       difficulty: "Facile",
       ingredients: [
-        { name: "Udon frais", quantity: "300 g", category: "Pâtes" },
-        { name: "Chou chinois", quantity: "1/2", category: "Légumes" },
-        { name: "Carotte", quantity: "1", category: "Légumes" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Épicerie" }
+        { name: "Udon frais", quantity: "300 g", category: "P\u00e2tes" },
+        { name: "Chou chinois", quantity: "1/2", category: "L\u00e9gumes" },
+        { name: "Carotte", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Sauce soja", quantity: "1 c\u00e0s", category: "\u00c9picerie" }
       ],
       steps: [
-        "Cuire les udon dans une casserole d'eau bouillante selon les indications du paquet.",
-        "Égoutter les udon et réserver.",
-        "Émincer finement le chou chinois et la carotte.",
-        "Faire chauffer un peu d'huile dans une poêle ou un wok.",
-        "Faire revenir les légumes 5 minutes à feu moyen en remuant.",
-        "Ajouter les udon et la sauce soja, mélanger encore 1 à 2 minutes et servir."
+        "Cuire les udon selon le paquet.",
+        "\u00c9mincer chou et carotte.",
+        "Faire revenir les l\u00e9gumes 5 minutes.",
+        "Ajouter udon et sauce soja.",
+        "M\u00e9langer et servir."
       ]
     },
     {
@@ -160,860 +157,841 @@ window.addEventListener("DOMContentLoaded", () => {
       name: "Omelette fromage-nori",
       type: RecipeType.VEGE,
       durationMinutes: 10,
-      difficulty: "Très facile",
+      difficulty: "Tr\u00e8s facile",
       ingredients: [
         { name: "Oeufs", quantity: "3", category: "Frais" },
-        { name: "Fromage râpé", quantity: "40 g", category: "Crèmerie" },
+        { name: "Fromage r\u00e2p\u00e9", quantity: "40 g", category: "Cr\u00e8merie" },
         { name: "Feuille de nori", quantity: "1", category: "Asie" }
       ],
       steps: [
-        "Casser les œufs dans un bol, saler légèrement et bien battre.",
-        "Ajouter le fromage râpé et mélanger.",
-        "Faire chauffer un peu d'huile ou de beurre dans une petite poêle.",
-        "Verser les œufs battus et cuire l’omelette à feu moyen.",
-        "Couper la feuille de nori en fines lamelles et les parsemer sur l’omelette au moment de servir."
+        "Battre les \u0153ufs avec une pinc\u00e9e de sel.",
+        "Ajouter le fromage r\u00e2p\u00e9.",
+        "Cuire l\u2019omelette dans une po\u00eale.",
+        "Parsemer de nori coup\u00e9 finement et servir."
       ]
     },
     {
       id: "r9",
-      name: "Riz sauté au thon et maïs",
+      name: "Riz saut\u00e9 au thon et ma\u00efs",
       type: RecipeType.POISSON,
       durationMinutes: 15,
-      difficulty: "Très facile",
+      difficulty: "Tr\u00e8s facile",
       ingredients: [
-        { name: "Riz cuit", quantity: "2 bols", category: "Épicerie" },
-        { name: "Thon en boîte", quantity: "1", category: "Conserve" },
-        { name: "Maïs", quantity: "100 g", category: "Conserve" },
-        { name: "Beurre", quantity: "1 càs", category: "Épicerie" }
+        { name: "Riz cuit", quantity: "2 bols", category: "\u00c9picerie" },
+        { name: "Thon en bo\u00eete", quantity: "1", category: "Conserve" },
+        { name: "Ma\u00efs", quantity: "100 g", category: "Conserve" },
+        { name: "Beurre", quantity: "1 c\u00e0s", category: "\u00c9picerie" }
       ],
       steps: [
-        "Égoutter le thon et le maïs.",
-        "Faire fondre le beurre dans une grande poêle.",
-        "Ajouter le riz cuit et le faire chauffer 1 à 2 minutes en remuant.",
-        "Ajouter le thon émietté et le maïs, bien mélanger.",
-        "Laisser chauffer encore quelques minutes et servir."
+        "\u00c9goutter le thon et le ma\u00efs.",
+        "Faire fondre le beurre dans une po\u00eale.",
+        "Ajouter riz, thon et ma\u00efs.",
+        "M\u00e9langer 3 minutes et servir."
       ]
     },
     {
       id: "r10",
-      name: "Chou chinois braisé au miso",
+      name: "Chou chinois brais\u00e9 au miso",
       type: RecipeType.VEGE,
       durationMinutes: 18,
       difficulty: "Facile",
       ingredients: [
-        { name: "Chou chinois", quantity: "1/2", category: "Légumes" },
-        { name: "Pâte miso", quantity: "1 càs", category: "Asie" },
-        { name: "Eau", quantity: "100 ml", category: "Épicerie" },
-        { name: "Huile", quantity: "1 càs", category: "Épicerie" }
+        { name: "Chou chinois", quantity: "1/2", category: "L\u00e9gumes" },
+        { name: "P\u00e2te miso", quantity: "1 c\u00e0s", category: "Asie" },
+        { name: "Eau", quantity: "100 ml", category: "\u00c9picerie" },
+        { name: "Huile", quantity: "1 c\u00e0s", category: "\u00c9picerie" }
       ],
       steps: [
-        "Couper le chou chinois en lanières.",
-        "Faire chauffer l’huile dans une grande poêle.",
-        "Ajouter le chou et le faire revenir 2 à 3 minutes.",
-        "Mélanger la pâte miso avec l'eau dans un bol jusqu'à dissolution.",
-        "Verser le mélange miso-eau sur le chou, couvrir et cuire 8 à 10 minutes à feu doux."
+        "Couper le chou chinois en lani\u00e8res.",
+        "Faire revenir le chou dans l\u2019huile 2 \u00e0 3 minutes.",
+        "M\u00e9langer miso et eau dans un bol.",
+        "Verser sur le chou, couvrir et cuire 8 \u00e0 10 minutes \u00e0 feu doux."
       ]
     },
     {
       id: "r11",
-      name: "Gratin de courgettes au parmesan",
+      name: "Yakisoba rapide au chou pointu",
       type: RecipeType.VEGE,
-      durationMinutes: 25,
+      durationMinutes: 20,
       difficulty: "Facile",
       ingredients: [
-        { name: "Courgettes", quantity: "2", category: "Légumes" },
-        { name: "Parmesan râpé", quantity: "40 g", category: "Crèmerie" },
-        { name: "Crème fraîche", quantity: "1 càs", category: "Crèmerie" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
+        { name: "Nouilles soba", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Chou pointu", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Carotte", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Sauce soja", quantity: "1 c\u00e0s", category: "\u00c9picerie" }
       ],
       steps: [
-        "Préchauffer le four à 200°C.",
-        "Laver et couper les courgettes en demi‑rondelles.",
-        "Les faire revenir 5 minutes dans une poêle avec un peu d’huile.",
-        "Mettre les courgettes dans un plat, ajouter la crème, sel et poivre.",
-        "Mélanger, parsemer de parmesan et gratiner 10 minutes."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire nouilles soba selon les indications.",
+        "Dans une po\u00eale, faire revenir les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajouter chou pointu et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r12",
-      name: "Saumon grillé et brocoli vapeur",
-      type: RecipeType.POISSON,
-      durationMinutes: 20,
+      name: "Somen froids sauce soja",
+      type: RecipeType.VEGE,
+      durationMinutes: 15,
       difficulty: "Facile",
       ingredients: [
-        { name: "Pavés de saumon", quantity: "2", category: "Poisson" },
-        { name: "Brocoli", quantity: "1", category: "Légumes" },
-        { name: "Huile d’olive", quantity: "1 càs", category: "Épicerie" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
+        { name: "Somen", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Concombre", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Sauce soja", quantity: "2 c\u00e0s", category: "\u00c9picerie" }
       ],
       steps: [
-        "Couper le brocoli en petits bouquets.",
-        "Le cuire 8 minutes à la vapeur ou dans l’eau bouillante.",
-        "Chauffer une poêle avec un peu d’huile.",
-        "Saisir le saumon 3 minutes côté peau, puis 2 minutes de l’autre côté.",
-        "Assaisonner et servir avec le brocoli."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire somen selon les indications.",
+        "Dans une po\u00eale, faire revenir les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajouter concombre et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r13",
-      name: "Poulet rôti minute aux herbes",
+      name: "Tonkatsu simplifi\u00e9 au four",
       type: RecipeType.VIANDE,
       durationMinutes: 25,
-      difficulty: "Facile",
+      difficulty: "Moyen",
       ingredients: [
-        { name: "Blanc de poulet", quantity: "300 g", category: "Viande" },
-        { name: "Herbes de Provence", quantity: "1 càs", category: "Épicerie" },
-        { name: "Tomate", quantity: "1", category: "Légumes" },
-        { name: "Oignon", quantity: "1", category: "Légumes" }
+        { name: "Escalope de porc", quantity: "200 g", category: "Viande" },
+        { name: "Chou blanc", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Chapelure", quantity: "3 c\u00e0s", category: "\u00c9picerie" },
+        { name: "Oeuf", quantity: "1", category: "Frais" }
       ],
       steps: [
-        "Préchauffer le four à 210°C.",
-        "Couper l’oignon et la tomate en morceaux.",
-        "Placer le poulet et les légumes dans un plat.",
-        "Arroser d’huile, assaisonner et mettre les herbes.",
-        "Cuire 18 à 20 minutes."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire la garniture principale selon les indications.",
+        "Dans une po\u00eale, faire revenir escalope de porc avec un peu d\u2019huile.",
+        "Ajouter chou blanc et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r14",
-      name: "Pâtes à la sauce tomate maison",
-      type: RecipeType.VEGE,
-      durationMinutes: 18,
-      difficulty: "Très facile",
-      ingredients: [
-        { name: "Pâtes", quantity: "250 g", category: "Pâtes" },
-        { name: "Sauce tomate", quantity: "200 ml", category: "Conserve" },
-        { name: "Oignon", quantity: "1", category: "Légumes" },
-        { name: "Ail", quantity: "1 gousse", category: "Épicerie" }
-      ],
-      steps: [
-        "Cuire les pâtes dans une grande casserole d’eau salée.",
-        "Émincer l’oignon et hacher l’ail.",
-        "Les faire revenir dans une poêle avec un filet d’huile.",
-        "Ajouter la sauce tomate et mijoter 5 minutes.",
-        "Mélanger avec les pâtes égouttées."
-      ]
-    },
-    {
-      id: "r15",
-      name: "Soba froids concombre‑sésame",
-      type: RecipeType.VEGE,
-      durationMinutes: 18,
-      difficulty: "Facile",
-      ingredients: [
-        { name: "Soba", quantity: "250 g", category: "Pâtes" },
-        { name: "Concombre", quantity: "1", category: "Légumes" },
-        { name: "Graines de sésame", quantity: "1 càs", category: "Épicerie" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
-      ],
-      steps: [
-        "Cuire les soba dans l’eau bouillante selon le paquet.",
-        "Rincer à l’eau froide et égoutter.",
-        "Couper le concombre en fins bâtonnets.",
-        "Mélanger soba, concombre, sésame et sauce soja.",
-        "Servir bien frais."
-      ]
-    },
-    {
-      id: "r16",
-      name: "Bœuf sauté aux oignons",
-      type: RecipeType.VIANDE,
-      durationMinutes: 20,
-      difficulty: "Facile",
-      ingredients: [
-        { name: "Bœuf en lamelles", quantity: "250 g", category: "Viande" },
-        { name: "Oignons", quantity: "2", category: "Légumes" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
-        { name: "Huile", quantity: "1 càs", category: "Épicerie" }
-      ],
-      steps: [
-        "Émincer finement les oignons.",
-        "Faire chauffer l’huile dans une poêle.",
-        "Saisir le bœuf à feu vif 2 minutes.",
-        "Ajouter les oignons et cuire encore 5 minutes.",
-        "Assaisonner avec la sauce soja et servir."
-      ]
-    },
-    {
-      id: "r17",
-      name: "Riz sauté légumes et œuf",
-      type: RecipeType.VEGE,
-      durationMinutes: 18,
-      difficulty: "Très facile",
-      ingredients: [
-        { name: "Riz cuit", quantity: "2 bols", category: "Épicerie" },
-        { name: "Carotte", quantity: "1", category: "Légumes" },
-        { name: "Oeuf", quantity: "1", category: "Frais" },
-        { name: "Petits pois", quantity: "50 g", category: "Légumes" }
-      ],
-      steps: [
-        "Éplucher et couper la carotte en petits cubes.",
-        "Faire revenir carotte et petits pois 3 minutes.",
-        "Ajouter le riz et mélanger.",
-        "Casser l'œuf au centre et remuer jusqu’à cuisson.",
-        "Servir aussitôt."
-      ]
-    },
-    {
-      id: "r18",
-      name: "Poisson pané maison rapide",
-      type: RecipeType.POISSON,
-      durationMinutes: 20,
-      difficulty: "Facile",
-      ingredients: [
-        { name: "Filets de poisson blanc", quantity: "2", category: "Poisson" },
-        { name: "Chapelure", quantity: "3 càs", category: "Épicerie" },
-        { name: "Oeuf", quantity: "1", category: "Frais" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
-      ],
-      steps: [
-        "Battre l’œuf dans une assiette.",
-        "Tremper les filets dans l’œuf puis dans la chapelure.",
-        "Faire chauffer un peu d’huile dans une poêle.",
-        "Cuire le poisson 3 à 4 minutes par côté.",
-        "Servir avec une salade ou du riz."
-      ]
-    },
-    {
-      id: "r19",
-      name: "Wok de légumes de saison",
-      type: RecipeType.VEGE,
-      durationMinutes: 15,
-      difficulty: "Très facile",
-      ingredients: [
-        { name: "Légumes variés", quantity: "300 g", category: "Légumes" },
-        { name: "Huile", quantity: "1 càs", category: "Épicerie" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
-      ],
-      steps: [
-        "Laver et couper les légumes en lamelles.",
-        "Faire chauffer l’huile dans un wok ou une grande poêle.",
-        "Sauter les légumes 5 à 7 minutes.",
-        "Ajouter la sauce soja et mélanger.",
-        "Servir chaud."
-      ]
-    },
-    {
-      id: "r20",
-      name: "Tartines au thon et tomate",
-      type: RecipeType.POISSON,
-      durationMinutes: 10,
-      difficulty: "Très facile",
-      ingredients: [
-        { name: "Tranches de pain", quantity: "4", category: "Boulangerie" },
-        { name: "Boîte de thon", quantity: "1", category: "Conserve" },
-        { name: "Tomate", quantity: "1", category: "Légumes" },
-        { name: "Mayonnaise", quantity: "1 càs", category: "Épicerie" }
-      ],
-      steps: [
-        "Émietter le thon dans un bol et mélanger avec la mayonnaise.",
-        "Couper la tomate en fines rondelles.",
-        "Tartiner le pain avec le thon.",
-        "Ajouter les rondelles de tomate.",
-        "Servir immédiatement."
-      ]
-    },
-    {
-      id: "r21",
-      name: "Quiche lorraine simplifiée",
-      type: RecipeType.VIANDE,
-      durationMinutes: 30,
-      difficulty: "Facile",
-      ingredients: [
-        { name: "Pâte brisée", quantity: "1 pâte", category: "Boulangerie" },
-        { name: "Lardons", quantity: "150 g", category: "Viande" },
-        { name: "Oeufs", quantity: "2", category: "Frais" },
-        { name: "Crème fraîche", quantity: "15 cl", category: "Crèmerie" },
-        { name: "Fromage râpé", quantity: "50 g", category: "Crèmerie" }
-      ],
-      steps: [
-        "Préchauffer le four à 200°C.",
-        "Faire revenir les lardons 3 minutes.",
-        "Battre les œufs avec la crème et le fromage.",
-        "Dérouler la pâte dans un moule et piquer le fond.",
-        "Ajouter les lardons, verser l’appareil et cuire 20 à 25 minutes."
-      ]
-    },
-    {
-      id: "r22",
-      name: "Curry doux au poulet",
+      name: "Poulet r\u00f4ti minute au four",
       type: RecipeType.VIANDE,
       durationMinutes: 25,
       difficulty: "Facile",
       ingredients: [
-        { name: "Poulet", quantity: "300 g", category: "Viande" },
-        { name: "Carotte", quantity: "1", category: "Légumes" },
-        { name: "Pomme de terre", quantity: "1", category: "Légumes" },
-        { name: "Lait de coco", quantity: "150 ml", category: "Conserve" },
-        { name: "Curry doux", quantity: "1 càs", category: "Épicerie" }
+        { name: "Blanc de poulet", quantity: "200 g", category: "Viande" },
+        { name: "Tomates cerises", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Herbes de Provence", quantity: "1 c\u00e0s", category: "\u00c9picerie" }
       ],
       steps: [
-        "Couper le poulet en morceaux.",
-        "Éplucher et couper carotte et pomme de terre.",
-        "Faire revenir le poulet 3 minutes.",
-        "Ajouter les légumes, le curry et le lait de coco.",
-        "Couvrir et cuire 15 minutes à feu doux."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire la garniture principale selon les indications.",
+        "Dans une po\u00eale, faire revenir blanc de poulet avec un peu d\u2019huile.",
+        "Ajouter tomates cerises et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
+      ]
+    },
+    {
+      id: "r15",
+      name: "Curry doux de l\u00e9gumes",
+      type: RecipeType.VEGE,
+      durationMinutes: 25,
+      difficulty: "Facile",
+      ingredients: [
+        { name: "Riz", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Carotte", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Pomme de terre", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Lait de coco", quantity: "150 ml", category: "Conserve" },
+        { name: "Curry doux", quantity: "1 c\u00e0s", category: "\u00c9picerie" }
+      ],
+      steps: [
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire riz selon les indications.",
+        "Dans une po\u00eale, faire revenir les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajouter carotte et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
+      ]
+    },
+    {
+      id: "r16",
+      name: "Po\u00eal\u00e9e de cabillaud aux l\u00e9gumes",
+      type: RecipeType.POISSON,
+      durationMinutes: 18,
+      difficulty: "Facile",
+      ingredients: [
+        { name: "Cabillaud", quantity: "200 g", category: "Poisson" },
+        { name: "Courgette", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Carotte", quantity: "1", category: "L\u00e9gumes" }
+      ],
+      steps: [
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire la garniture principale selon les indications.",
+        "Dans une po\u00eale, faire revenir cabillaud avec un peu d\u2019huile.",
+        "Ajouter courgette et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
+      ]
+    },
+    {
+      id: "r17",
+      name: "Saumon grill\u00e9 et brocoli",
+      type: RecipeType.POISSON,
+      durationMinutes: 18,
+      difficulty: "Facile",
+      ingredients: [
+        { name: "Saumon", quantity: "200 g", category: "Poisson" },
+        { name: "Brocoli", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Citron", quantity: "1/2", category: "Fruits" }
+      ],
+      steps: [
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire la garniture principale selon les indications.",
+        "Dans une po\u00eale, faire revenir saumon avec un peu d\u2019huile.",
+        "Ajouter brocoli et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
+      ]
+    },
+    {
+      id: "r18",
+      name: "B\u0153uf saut\u00e9 aux oignons",
+      type: RecipeType.VIANDE,
+      durationMinutes: 20,
+      difficulty: "Facile",
+      ingredients: [
+        { name: "B\u0153uf en lamelles", quantity: "200 g", category: "Viande" },
+        { name: "Riz", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Oignon", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Sauce soja", quantity: "1 c\u00e0s", category: "\u00c9picerie" }
+      ],
+      steps: [
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire riz selon les indications.",
+        "Dans une po\u00eale, faire revenir b\u0153uf en lamelles avec un peu d\u2019huile.",
+        "Ajouter oignon et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
+      ]
+    },
+    {
+      id: "r19",
+      name: "Bol riz \u0153uf et sauce soja",
+      type: RecipeType.VEGE,
+      durationMinutes: 10,
+      difficulty: "Tr\u00e8s facile",
+      ingredients: [
+        { name: "Riz", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Oeuf", quantity: "2", category: "Frais" },
+        { name: "Sauce soja", quantity: "1 c\u00e0s", category: "\u00c9picerie" }
+      ],
+      steps: [
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire riz selon les indications.",
+        "Dans une po\u00eale, faire revenir les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajouter les autres ingr\u00e9dients et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
+      ]
+    },
+    {
+      id: "r20",
+      name: "Tofu croustillant au four",
+      type: RecipeType.VEGE,
+      durationMinutes: 20,
+      difficulty: "Facile",
+      ingredients: [
+        { name: "Tofu ferme", quantity: "200 g", category: "Frais" },
+        { name: "Carotte", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Ma\u00efzena", quantity: "1 c\u00e0s", category: "\u00c9picerie" },
+        { name: "Sauce soja", quantity: "1 c\u00e0s", category: "\u00c9picerie" }
+      ],
+      steps: [
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire la garniture principale selon les indications.",
+        "Dans une po\u00eale, faire revenir tofu ferme avec un peu d\u2019huile.",
+        "Ajouter carotte et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
+      ]
+    },
+    {
+      id: "r21",
+      name: "P\u00e2tes \u00e0 la sauce tomate rapide",
+      type: RecipeType.VEGE,
+      durationMinutes: 18,
+      difficulty: "Tr\u00e8s facile",
+      ingredients: [
+        { name: "P\u00e2tes", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Oignon", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Sauce tomate", quantity: "200 ml", category: "Conserve" }
+      ],
+      steps: [
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire p\u00e2tes selon les indications.",
+        "Dans une po\u00eale, faire revenir les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajouter oignon et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
+      ]
+    },
+    {
+      id: "r22",
+      name: "P\u00e2tes au thon et courgette",
+      type: RecipeType.POISSON,
+      durationMinutes: 20,
+      difficulty: "Facile",
+      ingredients: [
+        { name: "Thon en bo\u00eete", quantity: "200 g", category: "Poisson" },
+        { name: "P\u00e2tes", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Courgette", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Cr\u00e8me liquide", quantity: "10 cl", category: "Cr\u00e8merie" }
+      ],
+      steps: [
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire p\u00e2tes selon les indications.",
+        "Dans une po\u00eale, faire revenir thon en bo\u00eete avec un peu d\u2019huile.",
+        "Ajouter courgette et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r23",
-      name: "Pâtes jambon-fromage",
+      name: "Poulet au four moutarde-miel",
       type: RecipeType.VIANDE,
-      durationMinutes: 15,
-      difficulty: "Très facile",
+      durationMinutes: 30,
+      difficulty: "Facile",
       ingredients: [
-        { name: "Pâtes", quantity: "250 g", category: "Pâtes" },
-        { name: "Jambon", quantity: "2 tranches", category: "Viande" },
-        { name: "Fromage râpé", quantity: "50 g", category: "Crèmerie" },
-        { name: "Crème liquide", quantity: "10 cl", category: "Crèmerie" }
+        { name: "Pilons de poulet", quantity: "200 g", category: "Viande" },
+        { name: "Carotte", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Moutarde", quantity: "1 c\u00e0s", category: "\u00c9picerie" },
+        { name: "Miel", quantity: "1 c\u00e0s", category: "\u00c9picerie" }
       ],
       steps: [
-        "Cuire les pâtes dans de l’eau bouillante salée.",
-        "Couper le jambon en petits carrés.",
-        "Mélanger crème, fromage et jambon dans une casserole.",
-        "Faire chauffer doucement.",
-        "Égoutter les pâtes et mélanger avec la sauce."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire la garniture principale selon les indications.",
+        "Dans une po\u00eale, faire revenir pilons de poulet avec un peu d\u2019huile.",
+        "Ajouter carotte et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r24",
-      name: "Saumon vapeur citron",
-      type: RecipeType.POISSON,
+      name: "Omelette aux l\u00e9gumes et fromage",
+      type: RecipeType.VEGE,
       durationMinutes: 15,
-      difficulty: "Très facile",
+      difficulty: "Tr\u00e8s facile",
       ingredients: [
-        { name: "Pavés de saumon", quantity: "2", category: "Poisson" },
-        { name: "Courgette", quantity: "1", category: "Légumes" },
-        { name: "Citron", quantity: "1", category: "Fruits" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
+        { name: "Poivron", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Oeufs", quantity: "3", category: "Frais" },
+        { name: "Fromage r\u00e2p\u00e9", quantity: "40 g", category: "Cr\u00e8merie" }
       ],
       steps: [
-        "Couper la courgette en rondelles.",
-        "Placer saumon et courgette dans un panier vapeur.",
-        "Assaisonner et ajouter quelques gouttes de citron.",
-        "Cuire 10 minutes.",
-        "Servir chaud."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire la garniture principale selon les indications.",
+        "Dans une po\u00eale, faire revenir les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajouter poivron et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r25",
+      name: "Riz saut\u00e9 au tofu et chou chinois",
+      type: RecipeType.VEGE,
+      durationMinutes: 20,
+      difficulty: "Facile",
+      ingredients: [
+        { name: "Tofu ferme", quantity: "200 g", category: "Frais" },
+        { name: "Riz", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Chou chinois", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Sauce soja", quantity: "1 c\u00e0s", category: "\u00c9picerie" }
+      ],
+      steps: [
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire riz selon les indications.",
+        "Dans une po\u00eale, faire revenir tofu ferme avec un peu d\u2019huile.",
+        "Ajouter chou chinois et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
+      ]
+    },
+    {
+      id: "r26",
+      name: "Po\u00eal\u00e9e sardines et tomates",
+      type: RecipeType.POISSON,
+      durationMinutes: 14,
+      difficulty: "Tr\u00e8s facile",
+      ingredients: [
+        { name: "Sardines en bo\u00eete", quantity: "200 g", category: "Poisson" },
+        { name: "Tomate", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Oignon", quantity: "1", category: "L\u00e9gumes" }
+      ],
+      steps: [
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire la garniture principale selon les indications.",
+        "Dans une po\u00eale, faire revenir sardines en bo\u00eete avec un peu d\u2019huile.",
+        "Ajouter tomate et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
+      ]
+    },
+    {
+      id: "r27",
+      name: "Nouilles udon au b\u0153uf",
+      type: RecipeType.VIANDE,
+      durationMinutes: 20,
+      difficulty: "Facile",
+      ingredients: [
+        { name: "B\u0153uf en lamelles", quantity: "200 g", category: "Viande" },
+        { name: "Udon", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Poivron", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Sauce soja", quantity: "1 c\u00e0s", category: "\u00c9picerie" }
+      ],
+      steps: [
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire udon selon les indications.",
+        "Dans une po\u00eale, faire revenir b\u0153uf en lamelles avec un peu d\u2019huile.",
+        "Ajouter poivron et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
+      ]
+    },
+    {
+      id: "r28",
       name: "Gratin de chou-fleur express",
       type: RecipeType.VEGE,
       durationMinutes: 25,
       difficulty: "Facile",
       ingredients: [
-        { name: "Chou-fleur", quantity: "1", category: "Légumes" },
-        { name: "Crème", quantity: "10 cl", category: "Crèmerie" },
-        { name: "Fromage râpé", quantity: "50 g", category: "Crèmerie" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
+        { name: "Chou-fleur", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Cr\u00e8me liquide", quantity: "10 cl", category: "Cr\u00e8merie" },
+        { name: "Fromage r\u00e2p\u00e9", quantity: "50 g", category: "Cr\u00e8merie" }
       ],
       steps: [
-        "Préchauffer le four à 200°C.",
-        "Cuire le chou-fleur 8 minutes dans l’eau bouillante.",
-        "Égoutter et mettre dans un plat.",
-        "Ajouter la crème, assaisonner, parsemer de fromage.",
-        "Gratiner 10 minutes."
-      ]
-    },
-    {
-      id: "r26",
-      name: "Bœuf et brocoli sautés",
-      type: RecipeType.VIANDE,
-      durationMinutes: 18,
-      difficulty: "Facile",
-      ingredients: [
-        { name: "Bœuf en lamelles", quantity: "250 g", category: "Viande" },
-        { name: "Brocoli", quantity: "1", category: "Légumes" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
-        { name: "Huile", quantity: "1 càs", category: "Épicerie" }
-      ],
-      steps: [
-        "Couper le brocoli en petits bouquets.",
-        "Saisir le bœuf 2 minutes à feu vif.",
-        "Ajouter le brocoli et un peu d’eau.",
-        "Cuire 5 minutes en remuant.",
-        "Assaisonner avec la sauce soja."
-      ]
-    },
-    {
-      id: "r27",
-      name: "Omelette aux légumes",
-      type: RecipeType.VEGE,
-      durationMinutes: 12,
-      difficulty: "Très facile",
-      ingredients: [
-        { name: "Oeufs", quantity: "3", category: "Frais" },
-        { name: "Poivron", quantity: "1", category: "Légumes" },
-        { name: "Oignon", quantity: "1", category: "Légumes" },
-        { name: "Fromage râpé", quantity: "40 g", category: "Crèmerie" }
-      ],
-      steps: [
-        "Émincer poivron et oignon.",
-        "Les faire revenir 3 minutes.",
-        "Battre les œufs dans un bol.",
-        "Verser sur les légumes et ajouter le fromage.",
-        "Cuire à feu moyen jusqu’à prise complète."
-      ]
-    },
-    {
-      id: "r28",
-      name: "Somen sautés aux légumes",
-      type: RecipeType.VEGE,
-      durationMinutes: 18,
-      difficulty: "Facile",
-      ingredients: [
-        { name: "Somen", quantity: "200 g", category: "Pâtes" },
-        { name: "Courgette", quantity: "1", category: "Légumes" },
-        { name: "Carotte", quantity: "1", category: "Légumes" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
-      ],
-      steps: [
-        "Cuire les somen selon le paquet.",
-        "Couper courgette et carotte en lamelles.",
-        "Sauter les légumes 4 minutes.",
-        "Ajouter les somen et la sauce soja.",
-        "Mélanger 1 minute et servir."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire la garniture principale selon les indications.",
+        "Dans une po\u00eale, faire revenir les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajouter chou-fleur et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r29",
-      name: "Salade de riz japonais au concombre",
+      name: "Bol de riz japonais nature + accompagnement",
       type: RecipeType.VEGE,
       durationMinutes: 15,
-      difficulty: "Très facile",
+      difficulty: "Tr\u00e8s facile",
       ingredients: [
-        { name: "Riz japonais cuit", quantity: "2 bols", category: "Épicerie" },
-        { name: "Concombre", quantity: "1", category: "Légumes" },
-        { name: "Nori", quantity: "1 feuille", category: "Asie" },
-        { name: "Vinaigre de riz", quantity: "1 càs", category: "Asie" }
+        { name: "Riz japonais", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Concombre", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Nori", quantity: "1 feuille", category: "Asie" }
       ],
       steps: [
-        "Couper le concombre en petits cubes.",
-        "Couper la feuille de nori en fines lamelles.",
-        "Mélanger riz, concombre et nori.",
-        "Ajouter le vinaigre de riz.",
-        "Servir frais."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire riz japonais selon les indications.",
+        "Dans une po\u00eale, faire revenir les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajouter concombre et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r30",
-      name: "Galettes de pommes de terre",
-      type: RecipeType.VEGE,
-      durationMinutes: 20,
-      difficulty: "Facile",
+      name: "Tonkatsu de poulet au four",
+      type: RecipeType.VIANDE,
+      durationMinutes: 25,
+      difficulty: "Moyen",
       ingredients: [
-        { name: "Pommes de terre", quantity: "2", category: "Légumes" },
-        { name: "Oeuf", quantity: "1", category: "Frais" },
-        { name: "Farine", quantity: "1 càs", category: "Épicerie" },
-        { name: "Huile", quantity: "1 càs", category: "Épicerie" }
+        { name: "Blanc de poulet", quantity: "200 g", category: "Viande" },
+        { name: "Chou pointu", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Chapelure", quantity: "3 c\u00e0s", category: "\u00c9picerie" },
+        { name: "Oeuf", quantity: "1", category: "Frais" }
       ],
       steps: [
-        "Râper les pommes de terre.",
-        "Mélanger avec l’œuf et la farine.",
-        "Former des petites galettes.",
-        "Faire chauffer l’huile dans une poêle.",
-        "Cuire 3 minutes de chaque côté."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire la garniture principale selon les indications.",
+        "Dans une po\u00eale, faire revenir blanc de poulet avec un peu d\u2019huile.",
+        "Ajouter chou pointu et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r31",
-      name: "One‑pot pâtes aux légumes",
-      type: RecipeType.VEGE,
-      durationMinutes: 18,
-      difficulty: "Très facile",
+      name: "Curry doux poulet et l\u00e9gumes",
+      type: RecipeType.VIANDE,
+      durationMinutes: 25,
+      difficulty: "Facile",
       ingredients: [
-        { name: "Pâtes", quantity: "200 g", category: "Pâtes" },
-        { name: "Courgette", quantity: "1", category: "Légumes" },
-        { name: "Tomate", quantity: "1", category: "Légumes" },
-        { name: "Huile d’olive", quantity: "1 càs", category: "Épicerie" }
+        { name: "Poulet en d\u00e9s", quantity: "200 g", category: "Viande" },
+        { name: "Riz", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Carotte", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Pomme de terre", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Lait de coco", quantity: "150 ml", category: "Conserve" }
       ],
       steps: [
-        "Couper courgette et tomate en petits dés.",
-        "Mettre pâtes, légumes et huile dans une casserole.",
-        "Recouvrir d’eau et saler légèrement.",
-        "Cuire 10 à 12 minutes en remuant de temps en temps.",
-        "Servir chaud."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire riz selon les indications.",
+        "Dans une po\u00eale, faire revenir poulet en d\u00e9s avec un peu d\u2019huile.",
+        "Ajouter carotte et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r32",
-      name: "Poulet au citron express",
-      type: RecipeType.VIANDE,
-      durationMinutes: 20,
+      name: "Po\u00eal\u00e9e de l\u00e9gumes au tofu",
+      type: RecipeType.VEGE,
+      durationMinutes: 18,
       difficulty: "Facile",
       ingredients: [
-        { name: "Poulet en morceaux", quantity: "300 g", category: "Viande" },
-        { name: "Citron", quantity: "1", category: "Fruits" },
-        { name: "Miel", quantity: "1 càs", category: "Épicerie" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
+        { name: "Tofu ferme", quantity: "200 g", category: "Frais" },
+        { name: "Brocoli", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Carotte", quantity: "1", category: "L\u00e9gumes" }
       ],
       steps: [
-        "Presser le citron et mélanger avec miel et sauce soja.",
-        "Faire revenir le poulet dans une poêle.",
-        "Verser la sauce sur le poulet.",
-        "Cuire 6 à 8 minutes en remuant.",
-        "Servir avec du riz."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire la garniture principale selon les indications.",
+        "Dans une po\u00eale, faire revenir tofu ferme avec un peu d\u2019huile.",
+        "Ajouter brocoli et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r33",
-      name: "Saumon teriyaki maison",
+      name: "Saumon vapeur au citron",
       type: RecipeType.POISSON,
-      durationMinutes: 18,
+      durationMinutes: 15,
       difficulty: "Facile",
       ingredients: [
-        { name: "Pavés de saumon", quantity: "2", category: "Poisson" },
-        { name: "Sauce soja", quantity: "2 càs", category: "Asie" },
-        { name: "Sucre", quantity: "1 càs", category: "Épicerie" },
-        { name: "Mirin ou eau", quantity: "1 càs", category: "Asie" }
+        { name: "Saumon", quantity: "200 g", category: "Poisson" },
+        { name: "Courgette", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Citron", quantity: "1", category: "Fruits" }
       ],
       steps: [
-        "Mélanger sauce soja, sucre et mirin.",
-        "Faire chauffer une poêle.",
-        "Saisir le saumon 2 minutes côté peau.",
-        "Verser la sauce et laisser réduire 3 à 4 minutes.",
-        "Retourner le saumon et napper de sauce."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire la garniture principale selon les indications.",
+        "Dans une po\u00eale, faire revenir saumon avec un peu d\u2019huile.",
+        "Ajouter courgette et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r34",
-      name: "Purée maison rapide",
-      type: RecipeType.VEGE,
-      durationMinutes: 20,
-      difficulty: "Très facile",
+      name: "P\u00e2tes jambon-fromage",
+      type: RecipeType.VIANDE,
+      durationMinutes: 18,
+      difficulty: "Tr\u00e8s facile",
       ingredients: [
-        { name: "Pommes de terre", quantity: "3", category: "Légumes" },
-        { name: "Beurre", quantity: "20 g", category: "Crèmerie" },
-        { name: "Lait", quantity: "10 cl", category: "Crèmerie" }
+        { name: "Jambon", quantity: "200 g", category: "Viande" },
+        { name: "P\u00e2tes", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Fromage r\u00e2p\u00e9", quantity: "50 g", category: "Cr\u00e8merie" },
+        { name: "Cr\u00e8me", quantity: "10 cl", category: "Cr\u00e8merie" }
       ],
       steps: [
-        "Éplucher et couper les pommes de terre en morceaux.",
-        "Cuire dans l’eau bouillante 12 minutes.",
-        "Égoutter puis écraser en purée.",
-        "Ajouter lait et beurre.",
-        "Mélanger et servir."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire p\u00e2tes selon les indications.",
+        "Dans une po\u00eale, faire revenir jambon avec un peu d\u2019huile.",
+        "Ajouter les autres ingr\u00e9dients et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r35",
-      name: "Riz sauté au tofu",
+      name: "Tortilla de pommes de terre",
       type: RecipeType.VEGE,
-      durationMinutes: 15,
-      difficulty: "Très facile",
+      durationMinutes: 25,
+      difficulty: "Moyen",
       ingredients: [
-        { name: "Riz cuit", quantity: "2 bols", category: "Épicerie" },
-        { name: "Tofu ferme", quantity: "100 g", category: "Frais" },
-        { name: "Carotte", quantity: "1", category: "Légumes" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
+        { name: "Pomme de terre", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Oeufs", quantity: "3", category: "Frais" },
+        { name: "Oignon", quantity: "1", category: "L\u00e9gumes" }
       ],
       steps: [
-        "Couper le tofu en petits cubes.",
-        "Râper ou couper la carotte.",
-        "Faire revenir carotte et tofu 3 minutes.",
-        "Ajouter le riz et la sauce soja.",
-        "Mélanger et servir."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire la garniture principale selon les indications.",
+        "Dans une po\u00eale, faire revenir les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajouter pomme de terre et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r36",
-      name: "Sardines grillées et pommes de terre vapeur",
-      type: RecipeType.POISSON,
-      durationMinutes: 20,
+      name: "Chili doux haricots rouges",
+      type: RecipeType.VEGE,
+      durationMinutes: 25,
       difficulty: "Facile",
       ingredients: [
-        { name: "Sardines fraîches", quantity: "4", category: "Poisson" },
-        { name: "Pommes de terre", quantity: "2", category: "Légumes" },
-        { name: "Citron", quantity: "1", category: "Fruits" }
+        { name: "Riz", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Poivron", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Haricots rouges en bo\u00eete", quantity: "1", category: "Conserve" },
+        { name: "Sauce tomate", quantity: "200 ml", category: "Conserve" }
       ],
       steps: [
-        "Cuire les pommes de terre 12 minutes dans l’eau bouillante.",
-        "Chauffer une poêle grill.",
-        "Griller les sardines 2 à 3 minutes par côté.",
-        "Arroser de citron.",
-        "Servir avec les pommes de terre."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire riz selon les indications.",
+        "Dans une po\u00eale, faire revenir les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajouter poivron et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r37",
-      name: "Pâtes crème-champignons",
-      type: RecipeType.VEGE,
-      durationMinutes: 17,
+      name: "B\u0153uf et brocoli saut\u00e9s",
+      type: RecipeType.VIANDE,
+      durationMinutes: 20,
       difficulty: "Facile",
       ingredients: [
-        { name: "Pâtes", quantity: "250 g", category: "Pâtes" },
-        { name: "Champignons", quantity: "150 g", category: "Légumes" },
-        { name: "Crème liquide", quantity: "10 cl", category: "Crèmerie" }
+        { name: "B\u0153uf en lamelles", quantity: "200 g", category: "Viande" },
+        { name: "Riz", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Brocoli", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Sauce soja", quantity: "1 c\u00e0s", category: "\u00c9picerie" }
       ],
       steps: [
-        "Cuire les pâtes.",
-        "Couper les champignons en lamelles.",
-        "Les faire revenir 3 à 4 minutes.",
-        "Ajouter la crème.",
-        "Mélanger avec les pâtes."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire riz selon les indications.",
+        "Dans une po\u00eale, faire revenir b\u0153uf en lamelles avec un peu d\u2019huile.",
+        "Ajouter brocoli et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r38",
-      name: "Nouilles sautées au bœuf",
-      type: RecipeType.VIANDE,
-      durationMinutes: 20,
+      name: "Cabillaud au four et tomates",
+      type: RecipeType.POISSON,
+      durationMinutes: 18,
       difficulty: "Facile",
       ingredients: [
-        { name: "Nouilles", quantity: "200 g", category: "Pâtes" },
-        { name: "Bœuf en lamelles", quantity: "150 g", category: "Viande" },
-        { name: "Carotte", quantity: "1", category: "Légumes" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
+        { name: "Cabillaud", quantity: "200 g", category: "Poisson" },
+        { name: "Tomate", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Huile d'olive", quantity: "1 c\u00e0s", category: "\u00c9picerie" }
       ],
       steps: [
-        "Cuire les nouilles.",
-        "Émincer la carotte.",
-        "Saisir le bœuf 2 minutes.",
-        "Ajouter la carotte, puis les nouilles.",
-        "Assaisonner avec la sauce soja."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire la garniture principale selon les indications.",
+        "Dans une po\u00eale, faire revenir cabillaud avec un peu d\u2019huile.",
+        "Ajouter tomate et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r39",
-      name: "Poisson au four tomate-oignon",
+      name: "Poisson pan\u00e9 maison rapide",
       type: RecipeType.POISSON,
-      durationMinutes: 22,
+      durationMinutes: 20,
       difficulty: "Facile",
       ingredients: [
-        { name: "Filets de poisson blanc", quantity: "2", category: "Poisson" },
-        { name: "Tomate", quantity: "1", category: "Légumes" },
-        { name: "Oignon", quantity: "1", category: "Légumes" }
+        { name: "Filets de poisson blanc", quantity: "200 g", category: "Poisson" },
+        { name: "Chapelure", quantity: "3 c\u00e0s", category: "\u00c9picerie" },
+        { name: "Oeuf", quantity: "1", category: "Frais" }
       ],
       steps: [
-        "Préchauffer le four à 200°C.",
-        "Couper tomate et oignon en lamelles.",
-        "Déposer le poisson dans un plat.",
-        "Ajouter tomate et oignon par-dessus.",
-        "Cuire 15 minutes."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire la garniture principale selon les indications.",
+        "Dans une po\u00eale, faire revenir filets de poisson blanc avec un peu d\u2019huile.",
+        "Ajouter les autres ingr\u00e9dients et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r40",
-      name: "Riz sauté œufs-chou chinois",
+      name: "Somen saut\u00e9s l\u00e9gumes",
       type: RecipeType.VEGE,
-      durationMinutes: 16,
-      difficulty: "Très facile",
+      durationMinutes: 18,
+      difficulty: "Facile",
       ingredients: [
-        { name: "Riz cuit", quantity: "2 bols", category: "Épicerie" },
-        { name: "Chou chinois", quantity: "2 feuilles", category: "Légumes" },
-        { name: "Oeuf", quantity: "1", category: "Frais" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
+        { name: "Somen", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Courgette", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Carotte", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Sauce soja", quantity: "1 c\u00e0s", category: "\u00c9picerie" }
       ],
       steps: [
-        "Émincer le chou chinois.",
-        "Le faire revenir 2 minutes.",
-        "Ajouter le riz et mélanger.",
-        "Casser un œuf et remuer jusqu’à cuisson.",
-        "Ajouter la sauce soja et servir."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire somen selon les indications.",
+        "Dans une po\u00eale, faire revenir les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajouter courgette et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r41",
-      name: "Pâtes au thon crémeuses",
-      type: RecipeType.POISSON,
-      durationMinutes: 15,
-      difficulty: "Très facile",
+      name: "Riz saut\u00e9 b\u0153uf et chou",
+      type: RecipeType.VIANDE,
+      durationMinutes: 20,
+      difficulty: "Facile",
       ingredients: [
-        { name: "Pâtes", quantity: "250 g", category: "Pâtes" },
-        { name: "Thon", quantity: "1 boîte", category: "Conserve" },
-        { name: "Crème liquide", quantity: "10 cl", category: "Crèmerie" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
+        { name: "B\u0153uf hach\u00e9", quantity: "200 g", category: "Viande" },
+        { name: "Riz", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Chou blanc", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Sauce soja", quantity: "1 c\u00e0s", category: "\u00c9picerie" }
       ],
       steps: [
-        "Cuire les pâtes dans une casserole d’eau salée.",
-        "Égoutter le thon et l’émietter.",
-        "Chauffer la crème dans une petite casserole.",
-        "Ajouter le thon et assaisonner.",
-        "Mélanger la sauce avec les pâtes."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire riz selon les indications.",
+        "Dans une po\u00eale, faire revenir b\u0153uf hach\u00e9 avec un peu d\u2019huile.",
+        "Ajouter chou blanc et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r42",
-      name: "Tofu poêlé au sésame",
-      type: RecipeType.VEGE,
-      durationMinutes: 12,
-      difficulty: "Très facile",
+      name: "Soupe de nouilles au poulet",
+      type: RecipeType.VIANDE,
+      durationMinutes: 22,
+      difficulty: "Facile",
       ingredients: [
-        { name: "Tofu ferme", quantity: "150 g", category: "Frais" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
-        { name: "Graines de sésame", quantity: "1 càs", category: "Épicerie" },
-        { name: "Huile", quantity: "1 càs", category: "Épicerie" }
+        { name: "Poulet en d\u00e9s", quantity: "200 g", category: "Viande" },
+        { name: "Nouilles", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Carotte", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Bouillon", quantity: "500 ml", category: "\u00c9picerie" }
       ],
       steps: [
-        "Couper le tofu en petits carrés.",
-        "Chauffer l’huile dans une poêle.",
-        "Faire dorer le tofu 3 minutes.",
-        "Ajouter sauce soja et graines de sésame.",
-        "Mélanger et servir."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire nouilles selon les indications.",
+        "Dans une po\u00eale, faire revenir poulet en d\u00e9s avec un peu d\u2019huile.",
+        "Ajouter carotte et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r43",
-      name: "Poulet sauté au chou chinois",
-      type: RecipeType.VIANDE,
-      durationMinutes: 18,
+      name: "Soupe de nouilles au tofu",
+      type: RecipeType.VEGE,
+      durationMinutes: 20,
       difficulty: "Facile",
       ingredients: [
-        { name: "Poulet en lamelles", quantity: "300 g", category: "Viande" },
-        { name: "Chou chinois", quantity: "2 feuilles", category: "Légumes" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
-        { name: "Huile", quantity: "1 càs", category: "Épicerie" }
+        { name: "Tofu ferme", quantity: "200 g", category: "Frais" },
+        { name: "Nouilles", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Pak cho\u00ef", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Bouillon", quantity: "500 ml", category: "\u00c9picerie" }
       ],
       steps: [
-        "Émincer le chou chinois.",
-        "Faire chauffer l’huile dans une poêle.",
-        "Faire revenir le poulet 3 minutes.",
-        "Ajouter le chou et la sauce soja.",
-        "Cuire encore 3 minutes en remuant."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire nouilles selon les indications.",
+        "Dans une po\u00eale, faire revenir tofu ferme avec un peu d\u2019huile.",
+        "Ajouter pak cho\u00ef et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r44",
-      name: "Nouilles udon au poulet et carotte",
-      type: RecipeType.VIANDE,
-      durationMinutes: 20,
-      difficulty: "Facile",
+      name: "Riz saut\u00e9 l\u00e9gumes et \u0153uf",
+      type: RecipeType.VEGE,
+      durationMinutes: 18,
+      difficulty: "Tr\u00e8s facile",
       ingredients: [
-        { name: "Udon frais", quantity: "300 g", category: "Pâtes" },
-        { name: "Poulet en dés", quantity: "150 g", category: "Viande" },
-        { name: "Carotte", quantity: "1", category: "Légumes" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
+        { name: "Riz", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Petits pois", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Oeuf", quantity: "1", category: "Frais" },
+        { name: "Carotte", quantity: "1", category: "L\u00e9gumes" }
       ],
       steps: [
-        "Cuire les udon selon le paquet.",
-        "Couper la carotte en fins bâtonnets.",
-        "Faire revenir le poulet dans une poêle.",
-        "Ajouter la carotte puis les udon.",
-        "Assaisonner avec la sauce soja."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire riz selon les indications.",
+        "Dans une po\u00eale, faire revenir les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajouter petits pois et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r45",
-      name: "Riz sauté au saumon",
+      name: "Salade de p\u00e2tes thon-ma\u00efs",
       type: RecipeType.POISSON,
-      durationMinutes: 15,
-      difficulty: "Facile",
+      durationMinutes: 18,
+      difficulty: "Tr\u00e8s facile",
       ingredients: [
-        { name: "Saumon cuit ou restant", quantity: "1 pavé", category: "Poisson" },
-        { name: "Riz cuit", quantity: "2 bols", category: "Épicerie" },
-        { name: "Oeuf", quantity: "1", category: "Frais" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
+        { name: "Thon en bo\u00eete", quantity: "200 g", category: "Poisson" },
+        { name: "P\u00e2tes", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Tomate", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Ma\u00efs", quantity: "50 g", category: "Conserve" }
       ],
       steps: [
-        "Émietter grossièrement le saumon.",
-        "Faire chauffer une poêle et ajouter le riz.",
-        "Casser un œuf et mélanger rapidement.",
-        "Ajouter le saumon puis la sauce soja.",
-        "Mélanger et servir."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire p\u00e2tes selon les indications.",
+        "Dans une po\u00eale, faire revenir thon en bo\u00eete avec un peu d\u2019huile.",
+        "Ajouter tomate et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r46",
-      name: "Poisson en papillote au citron",
+      name: "Salade de riz japonais et saumon",
       type: RecipeType.POISSON,
-      durationMinutes: 20,
+      durationMinutes: 18,
       difficulty: "Facile",
       ingredients: [
-        { name: "Filets de poisson blanc", quantity: "2", category: "Poisson" },
-        { name: "Citron", quantity: "1", category: "Fruits" },
-        { name: "Tomate", quantity: "1", category: "Légumes" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
+        { name: "Saumon cuit", quantity: "200 g", category: "Poisson" },
+        { name: "Riz japonais", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Concombre", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Nori", quantity: "1 feuille", category: "Asie" }
       ],
       steps: [
-        "Préchauffer le four à 200°C.",
-        "Couper la tomate en rondelles.",
-        "Poser chaque filet sur du papier cuisson.",
-        "Ajouter tomate et citron par-dessus.",
-        "Fermer la papillote et cuire 12 à 15 minutes."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire riz japonais selon les indications.",
+        "Dans une po\u00eale, faire revenir saumon cuit avec un peu d\u2019huile.",
+        "Ajouter concombre et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r47",
-      name: "Pâtes au pesto maison rapide",
+      name: "Po\u00eal\u00e9e de l\u00e9gumes de saison",
       type: RecipeType.VEGE,
       durationMinutes: 15,
-      difficulty: "Facile",
+      difficulty: "Tr\u00e8s facile",
       ingredients: [
-        { name: "Pâtes", quantity: "250 g", category: "Pâtes" },
-        { name: "Basilic", quantity: "1 poignée", category: "Légumes" },
-        { name: "Parmesan", quantity: "1 càs", category: "Crèmerie" },
-        { name: "Huile d’olive", quantity: "1 càs", category: "Épicerie" }
+        { name: "L\u00e9gumes vari\u00e9s", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Huile d'olive", quantity: "1 c\u00e0s", category: "\u00c9picerie" }
       ],
       steps: [
-        "Cuire les pâtes.",
-        "Mixer basilic, parmesan et huile.",
-        "Égoutter les pâtes.",
-        "Mélanger avec le pesto.",
-        "Servir aussitôt."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire la garniture principale selon les indications.",
+        "Dans une po\u00eale, faire revenir les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajouter l\u00e9gumes vari\u00e9s et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
     },
     {
       id: "r48",
-      name: "Nouilles sautées au tofu et brocoli",
-      type: RecipeType.VEGE,
-      durationMinutes: 18,
-      difficulty: "Facile",
-      ingredients: [
-        { name: "Nouilles", quantity: "200 g", category: "Pâtes" },
-        { name: "Tofu ferme", quantity: "100 g", category: "Frais" },
-        { name: "Brocoli", quantity: "1", category: "Légumes" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
-      ],
-      steps: [
-        "Cuire les nouilles.",
-        "Couper tofu et brocoli en petits morceaux.",
-        "Faire revenir le tofu 2 minutes.",
-        "Ajouter le brocoli et cuire 5 minutes.",
-        "Ajouter les nouilles et la sauce soja."
-      ]
-    },
-    {
-      id: "r49",
-      name: "Omelette pommes de terre-oignon",
-      type: RecipeType.VEGE,
-      durationMinutes: 20,
-      difficulty: "Facile",
-      ingredients: [
-        { name: "Pommes de terre", quantity: "2", category: "Légumes" },
-        { name: "Oignon", quantity: "1", category: "Légumes" },
-        { name: "Oeufs", quantity: "3", category: "Frais" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
-      ],
-      steps: [
-        "Couper pommes de terre et oignon en fines lamelles.",
-        "Les faire revenir 8 minutes.",
-        "Battre les œufs dans un bol.",
-        "Verser sur les légumes.",
-        "Cuire jusqu’à prise complète."
-      ]
-    },
-    {
-      id: "r50",
-      name: "Riz sauté au porc et chou chinois",
+      name: "Poulet yakitori simplifi\u00e9",
       type: RecipeType.VIANDE,
       durationMinutes: 18,
       difficulty: "Facile",
       ingredients: [
-        { name: "Porc émincé", quantity: "200 g", category: "Viande" },
-        { name: "Chou chinois", quantity: "2 feuilles", category: "Légumes" },
-        { name: "Riz cuit", quantity: "2 bols", category: "Épicerie" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
+        { name: "Poulet en d\u00e9s", quantity: "200 g", category: "Viande" },
+        { name: "Sauce soja", quantity: "2 c\u00e0s", category: "\u00c9picerie" },
+        { name: "Sucre", quantity: "1 c\u00e0s", category: "\u00c9picerie" }
       ],
       steps: [
-        "Émincer le chou chinois.",
-        "Faire revenir le porc dans une poêle.",
-        "Ajouter le chou et cuire 2 minutes.",
-        "Ajouter le riz puis la sauce soja.",
-        "Mélanger et servir."
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire la garniture principale selon les indications.",
+        "Dans une po\u00eale, faire revenir poulet en d\u00e9s avec un peu d\u2019huile.",
+        "Ajouter les autres ingr\u00e9dients et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
       ]
-    }
+    },
+    {
+      id: "r49",
+      name: "Bol de riz \u0153uf brouill\u00e9 et l\u00e9gumes",
+      type: RecipeType.VEGE,
+      durationMinutes: 15,
+      difficulty: "Tr\u00e8s facile",
+      ingredients: [
+        { name: "Riz", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Carotte", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Oeufs", quantity: "2", category: "Frais" }
+      ],
+      steps: [
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire riz selon les indications.",
+        "Dans une po\u00eale, faire revenir les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajouter carotte et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
+      ]
+    },
+    {
+      id: "r50",
+      name: "Couscous simplifi\u00e9 l\u00e9gumes-pois chiches",
+      type: RecipeType.VEGE,
+      durationMinutes: 25,
+      difficulty: "Facile",
+      ingredients: [
+        { name: "Semoule", quantity: "200 g", category: "P\u00e2tes" },
+        { name: "Carotte", quantity: "1", category: "L\u00e9gumes" },
+        { name: "Pois chiches en bo\u00eete", quantity: "1", category: "Conserve" },
+        { name: "Courgette", quantity: "1", category: "L\u00e9gumes" }
+      ],
+      steps: [
+        "Pr\u00e9parer les ingr\u00e9dients (les couper si n\u00e9cessaire).",
+        "Cuire semoule selon les indications.",
+        "Dans une po\u00eale, faire revenir les l\u00e9gumes avec un peu d\u2019huile.",
+        "Ajouter carotte et les assaisonnements.",
+        "M\u00e9langer quelques minutes et servir chaud."
+      ]
+    },
   ];
-
 
   function loadJSON(key, fallback) {
     try {

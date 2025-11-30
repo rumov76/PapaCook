@@ -260,6 +260,74 @@ textarea {
   color: var(--accent-strong);
 }
 
+
+
+/* LAYOUT EN-TÊTE & TOP BAR */
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.top-bar {
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.hero-text {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.top-actions button {
+  flex: 1;
+}
+
+button.secondary-action {
+  opacity: 0.92;
+}
+
+/* Ajustements cartes et listes */
+
+.card h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.day-row {
+  align-items: center;
+}
+
+.app-shell {
+  background: radial-gradient(circle at top, #fef3c7 0, #e5e7eb 42%, #e5e7eb 100%);
+}
+
+/* Responsive avancé */
+
+@media (max-width: 640px) {
+  .day-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .day-name {
+    margin-bottom: 0.15rem;
+  }
+
+  .day-recipe {
+    margin-bottom: 0.3rem;
+  }
+}
+
+
 /* RESPONSIVE */
 
 @media (max-width: 640px) {
