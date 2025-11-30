@@ -19,14 +19,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Pavés de saumon", quantity: "2", category: "Poisson" },
         { name: "Sauce soja", quantity: "2 càs", category: "Épicerie" },
         { name: "Miel", quantity: "1 càs", category: "Épicerie" },
-        { name: "Citron", quantity: "1", category: "Fruits" }
+        { name: "Citron", quantity: "1", category: "Fruits" },
       ],
       steps: [
         "Préchauffer le four à 200°C.",
         "Mélanger sauce soja, miel et jus de citron.",
         "Déposer le saumon sur une plaque recouverte de papier cuisson.",
         "Badigeonner avec la sauce et cuire 12 à 15 minutes.",
-        "Servir avec du riz ou des légumes vapeur."
+        "Servir avec du riz ou des légumes vapeur.",
       ]
     },
     {
@@ -40,14 +40,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Beurre", quantity: "20 g", category: "Épicerie" },
         { name: "Citron", quantity: "1", category: "Fruits" },
         { name: "Épicerie", quantity: "- Sel", category: "" },
-        { name: "Épicerie", quantity: "- Poivre", category: "" }
+        { name: "Épicerie", quantity: "- Poivre", category: "" },
       ],
       steps: [
         "Préchauffer le four à 190°C.",
         "Faire fondre le beurre et y ajouter le jus de citron.",
         "Saler et poivrer le cabillaud puis le déposer dans un plat.",
         "Napper avec le beurre citron et cuire 12 minutes.",
-        "Servir avec des pommes de terre vapeur ou du riz."
+        "Servir avec des pommes de terre vapeur ou du riz.",
       ]
     },
     {
@@ -61,14 +61,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Poulet en dés", quantity: "150 g", category: "Viande" },
         { name: "Carotte", quantity: "1", category: "Légumes" },
         { name: "Petits pois", quantity: "50 g", category: "Légumes" },
-        { name: "Sauce soja", quantity: "1 à 2 càs", category: "Épicerie" }
+        { name: "Sauce soja", quantity: "1 à 2 càs", category: "Épicerie" },
       ],
       steps: [
         "Couper le poulet en petits dés.",
         "Éplucher et couper la carotte en petits morceaux.",
         "Faire revenir le poulet dans un peu d'huile jusqu'à légère coloration.",
         "Ajouter carotte, petits pois puis le riz.",
-        "Assaisonner avec la sauce soja, mélanger et servir."
+        "Assaisonner avec la sauce soja, mélanger et servir.",
       ]
     },
     {
@@ -81,14 +81,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Poulet en dés", quantity: "300 g", category: "Viande" },
         { name: "Sauce soja", quantity: "2 càs", category: "Épicerie" },
         { name: "Sucre ou miel", quantity: "1 càs", category: "Épicerie" },
-        { name: "Eau", quantity: "2 càs", category: "Épicerie" }
+        { name: "Eau", quantity: "2 càs", category: "Épicerie" },
       ],
       steps: [
         "Mélanger sauce soja, sucre (ou miel) et eau dans un bol.",
         "Faire revenir le poulet dans une poêle jusqu'à légère coloration.",
         "Verser la sauce sur le poulet.",
         "Laisser réduire quelques minutes jusqu'à ce que la sauce nappe bien le poulet.",
-        "Servir avec du riz."
+        "Servir avec du riz.",
       ]
     },
     {
@@ -102,7 +102,7 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Pâte miso", quantity: "2 càs", category: "Asie" },
         { name: "Tofu", quantity: "100 g", category: "Frais" },
         { name: "Carotte", quantity: "1", category: "Légumes" },
-        { name: "Poireau ou oignon nouveau", quantity: "1", category: "Légumes" }
+        { name: "Poireau ou oignon nouveau", quantity: "1", category: "Légumes" },
       ],
       steps: [
         "Couper le tofu en petits dés et les légumes en fines rondelles.",
@@ -110,7 +110,7 @@ window.addEventListener("DOMContentLoaded", () => {
         "Ajouter les légumes et cuire 5 à 7 minutes jusqu'à ce qu'ils soient tendres.",
         "Prélever un peu d'eau chaude dans un bol et y dissoudre la pâte miso.",
         "Verser le miso dissous dans la casserole (sans faire bouillir fort).",
-        "Ajouter le tofu, chauffer encore 1 minute et servir."
+        "Ajouter le tofu, chauffer encore 1 minute et servir.",
       ]
     },
     {
@@ -123,7 +123,7 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Pâtes", quantity: "250 g", category: "Pâtes" },
         { name: "Crème liquide", quantity: "15 cl", category: "Crèmerie" },
         { name: "Fromage râpé", quantity: "60 g", category: "Crèmerie" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
+        { name: "Épicerie", quantity: "- Sel, poivre", category: "" },
       ],
       steps: [
         "Préchauffer le four à 200°C.",
@@ -131,7 +131,7 @@ window.addEventListener("DOMContentLoaded", () => {
         "Égoutter les pâtes et les remettre dans la casserole.",
         "Ajouter la crème et la moitié du fromage râpé, saler et poivrer, puis mélanger.",
         "Verser dans un plat à gratin, parsemer du reste de fromage.",
-        "Gratiner 8 à 10 minutes au four jusqu'à ce que ce soit bien doré."
+        "Gratiner 8 à 10 minutes au four jusqu'à ce que ce soit bien doré.",
       ]
     },
     {
@@ -144,7 +144,7 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Udon frais", quantity: "300 g", category: "Pâtes" },
         { name: "Chou chinois", quantity: "1/2", category: "Légumes" },
         { name: "Carotte", quantity: "1", category: "Légumes" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Épicerie" }
+        { name: "Sauce soja", quantity: "1 càs", category: "Épicerie" },
       ],
       steps: [
         "Cuire les udon dans une casserole d'eau bouillante selon les indications du paquet.",
@@ -152,7 +152,7 @@ window.addEventListener("DOMContentLoaded", () => {
         "Émincer finement le chou chinois et la carotte.",
         "Faire chauffer un peu d'huile dans une poêle ou un wok.",
         "Faire revenir les légumes 5 minutes à feu moyen en remuant.",
-        "Ajouter les udon et la sauce soja, mélanger encore 1 à 2 minutes et servir."
+        "Ajouter les udon et la sauce soja, mélanger encore 1 à 2 minutes et servir.",
       ]
     },
     {
@@ -164,14 +164,14 @@ window.addEventListener("DOMContentLoaded", () => {
       ingredients: [
         { name: "Oeufs", quantity: "3", category: "Frais" },
         { name: "Fromage râpé", quantity: "40 g", category: "Crèmerie" },
-        { name: "Feuille de nori", quantity: "1", category: "Asie" }
+        { name: "Feuille de nori", quantity: "1", category: "Asie" },
       ],
       steps: [
         "Casser les œufs dans un bol, saler légèrement et bien battre.",
         "Ajouter le fromage râpé et mélanger.",
         "Faire chauffer un peu d'huile ou de beurre dans une petite poêle.",
         "Verser les œufs battus et cuire l’omelette à feu moyen.",
-        "Couper la feuille de nori en fines lamelles et les parsemer sur l’omelette au moment de servir."
+        "Couper la feuille de nori en fines lamelles et les parsemer sur l’omelette au moment de servir.",
       ]
     },
     {
@@ -184,14 +184,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Riz cuit", quantity: "2 bols", category: "Épicerie" },
         { name: "Thon en boîte", quantity: "1", category: "Conserve" },
         { name: "Maïs", quantity: "100 g", category: "Conserve" },
-        { name: "Beurre", quantity: "1 càs", category: "Épicerie" }
+        { name: "Beurre", quantity: "1 càs", category: "Épicerie" },
       ],
       steps: [
         "Égoutter le thon et le maïs.",
         "Faire fondre le beurre dans une grande poêle.",
         "Ajouter le riz cuit et le faire chauffer 1 à 2 minutes en remuant.",
         "Ajouter le thon émietté et le maïs, bien mélanger.",
-        "Laisser chauffer encore quelques minutes et servir."
+        "Laisser chauffer encore quelques minutes et servir.",
       ]
     },
     {
@@ -204,14 +204,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Chou chinois", quantity: "1/2", category: "Légumes" },
         { name: "Pâte miso", quantity: "1 càs", category: "Asie" },
         { name: "Eau", quantity: "100 ml", category: "Épicerie" },
-        { name: "Huile", quantity: "1 càs", category: "Épicerie" }
+        { name: "Huile", quantity: "1 càs", category: "Épicerie" },
       ],
       steps: [
         "Couper le chou chinois en lanières.",
         "Faire chauffer l’huile dans une grande poêle.",
         "Ajouter le chou et le faire revenir 2 à 3 minutes.",
         "Mélanger la pâte miso avec l'eau dans un bol jusqu'à dissolution.",
-        "Verser le mélange miso-eau sur le chou, couvrir et cuire 8 à 10 minutes à feu doux."
+        "Verser le mélange miso-eau sur le chou, couvrir et cuire 8 à 10 minutes à feu doux.",
       ]
     },
     {
@@ -224,14 +224,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Courgettes", quantity: "2", category: "Légumes" },
         { name: "Parmesan râpé", quantity: "40 g", category: "Crèmerie" },
         { name: "Crème fraîche", quantity: "1 càs", category: "Crèmerie" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
+        { name: "Épicerie", quantity: "- Sel, poivre", category: "" },
       ],
       steps: [
         "Préchauffer le four à 200°C.",
         "Laver et couper les courgettes en demi‑rondelles.",
         "Les faire revenir 5 minutes dans une poêle avec un peu d’huile.",
         "Mettre les courgettes dans un plat, ajouter la crème, sel et poivre.",
-        "Mélanger, parsemer de parmesan et gratiner 10 minutes."
+        "Mélanger, parsemer de parmesan et gratiner 10 minutes.",
       ]
     },
     {
@@ -244,14 +244,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Pavés de saumon", quantity: "2", category: "Poisson" },
         { name: "Brocoli", quantity: "1", category: "Légumes" },
         { name: "Huile d’olive", quantity: "1 càs", category: "Épicerie" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
+        { name: "Épicerie", quantity: "- Sel, poivre", category: "" },
       ],
       steps: [
         "Couper le brocoli en petits bouquets.",
         "Le cuire 8 minutes à la vapeur ou dans l’eau bouillante.",
         "Chauffer une poêle avec un peu d’huile.",
         "Saisir le saumon 3 minutes côté peau, puis 2 minutes de l’autre côté.",
-        "Assaisonner et servir avec le brocoli."
+        "Assaisonner et servir avec le brocoli.",
       ]
     },
     {
@@ -264,14 +264,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Blanc de poulet", quantity: "300 g", category: "Viande" },
         { name: "Herbes de Provence", quantity: "1 càs", category: "Épicerie" },
         { name: "Tomate", quantity: "1", category: "Légumes" },
-        { name: "Oignon", quantity: "1", category: "Légumes" }
+        { name: "Oignon", quantity: "1", category: "Légumes" },
       ],
       steps: [
         "Préchauffer le four à 210°C.",
         "Couper l’oignon et la tomate en morceaux.",
         "Placer le poulet et les légumes dans un plat.",
         "Arroser d’huile, assaisonner et mettre les herbes.",
-        "Cuire 18 à 20 minutes."
+        "Cuire 18 à 20 minutes.",
       ]
     },
     {
@@ -284,14 +284,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Pâtes", quantity: "250 g", category: "Pâtes" },
         { name: "Sauce tomate", quantity: "200 ml", category: "Conserve" },
         { name: "Oignon", quantity: "1", category: "Légumes" },
-        { name: "Ail", quantity: "1 gousse", category: "Épicerie" }
+        { name: "Ail", quantity: "1 gousse", category: "Épicerie" },
       ],
       steps: [
         "Cuire les pâtes dans une grande casserole d’eau salée.",
         "Émincer l’oignon et hacher l’ail.",
         "Les faire revenir dans une poêle avec un filet d’huile.",
         "Ajouter la sauce tomate et mijoter 5 minutes.",
-        "Mélanger avec les pâtes égouttées."
+        "Mélanger avec les pâtes égouttées.",
       ]
     },
     {
@@ -304,14 +304,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Soba", quantity: "250 g", category: "Pâtes" },
         { name: "Concombre", quantity: "1", category: "Légumes" },
         { name: "Graines de sésame", quantity: "1 càs", category: "Épicerie" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
+        { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
       ],
       steps: [
         "Cuire les soba dans l’eau bouillante selon le paquet.",
         "Rincer à l’eau froide et égoutter.",
         "Couper le concombre en fins bâtonnets.",
         "Mélanger soba, concombre, sésame et sauce soja.",
-        "Servir bien frais."
+        "Servir bien frais.",
       ]
     },
     {
@@ -324,14 +324,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Bœuf en lamelles", quantity: "250 g", category: "Viande" },
         { name: "Oignons", quantity: "2", category: "Légumes" },
         { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
-        { name: "Huile", quantity: "1 càs", category: "Épicerie" }
+        { name: "Huile", quantity: "1 càs", category: "Épicerie" },
       ],
       steps: [
         "Émincer finement les oignons.",
         "Faire chauffer l’huile dans une poêle.",
         "Saisir le bœuf à feu vif 2 minutes.",
         "Ajouter les oignons et cuire encore 5 minutes.",
-        "Assaisonner avec la sauce soja et servir."
+        "Assaisonner avec la sauce soja et servir.",
       ]
     },
     {
@@ -344,14 +344,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Riz cuit", quantity: "2 bols", category: "Épicerie" },
         { name: "Carotte", quantity: "1", category: "Légumes" },
         { name: "Oeuf", quantity: "1", category: "Frais" },
-        { name: "Petits pois", quantity: "50 g", category: "Légumes" }
+        { name: "Petits pois", quantity: "50 g", category: "Légumes" },
       ],
       steps: [
         "Éplucher et couper la carotte en petits cubes.",
         "Faire revenir carotte et petits pois 3 minutes.",
         "Ajouter le riz et mélanger.",
         "Casser l'œuf au centre et remuer jusqu’à cuisson.",
-        "Servir aussitôt."
+        "Servir aussitôt.",
       ]
     },
     {
@@ -364,14 +364,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Filets de poisson blanc", quantity: "2", category: "Poisson" },
         { name: "Chapelure", quantity: "3 càs", category: "Épicerie" },
         { name: "Oeuf", quantity: "1", category: "Frais" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
+        { name: "Épicerie", quantity: "- Sel, poivre", category: "" },
       ],
       steps: [
         "Battre l’œuf dans une assiette.",
         "Tremper les filets dans l’œuf puis dans la chapelure.",
         "Faire chauffer un peu d’huile dans une poêle.",
         "Cuire le poisson 3 à 4 minutes par côté.",
-        "Servir avec une salade ou du riz."
+        "Servir avec une salade ou du riz.",
       ]
     },
     {
@@ -384,14 +384,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Légumes variés", quantity: "300 g", category: "Légumes" },
         { name: "Huile", quantity: "1 càs", category: "Épicerie" },
         { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
+        { name: "Épicerie", quantity: "- Sel, poivre", category: "" },
       ],
       steps: [
         "Laver et couper les légumes en lamelles.",
         "Faire chauffer l’huile dans un wok ou une grande poêle.",
         "Sauter les légumes 5 à 7 minutes.",
         "Ajouter la sauce soja et mélanger.",
-        "Servir chaud."
+        "Servir chaud.",
       ]
     },
     {
@@ -404,14 +404,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Tranches de pain", quantity: "4", category: "Boulangerie" },
         { name: "Boîte de thon", quantity: "1", category: "Conserve" },
         { name: "Tomate", quantity: "1", category: "Légumes" },
-        { name: "Mayonnaise", quantity: "1 càs", category: "Épicerie" }
+        { name: "Mayonnaise", quantity: "1 càs", category: "Épicerie" },
       ],
       steps: [
         "Émietter le thon dans un bol et mélanger avec la mayonnaise.",
         "Couper la tomate en fines rondelles.",
         "Tartiner le pain avec le thon.",
         "Ajouter les rondelles de tomate.",
-        "Servir immédiatement."
+        "Servir immédiatement.",
       ]
     },
     {
@@ -425,14 +425,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Lardons", quantity: "150 g", category: "Viande" },
         { name: "Oeufs", quantity: "2", category: "Frais" },
         { name: "Crème fraîche", quantity: "15 cl", category: "Crèmerie" },
-        { name: "Fromage râpé", quantity: "50 g", category: "Crèmerie" }
+        { name: "Fromage râpé", quantity: "50 g", category: "Crèmerie" },
       ],
       steps: [
         "Préchauffer le four à 200°C.",
         "Faire revenir les lardons 3 minutes.",
         "Battre les œufs avec la crème et le fromage.",
         "Dérouler la pâte dans un moule et piquer le fond.",
-        "Ajouter les lardons, verser l’appareil et cuire 20 à 25 minutes."
+        "Ajouter les lardons, verser l’appareil et cuire 20 à 25 minutes.",
       ]
     },
     {
@@ -446,14 +446,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Carotte", quantity: "1", category: "Légumes" },
         { name: "Pomme de terre", quantity: "1", category: "Légumes" },
         { name: "Lait de coco", quantity: "150 ml", category: "Conserve" },
-        { name: "Curry doux", quantity: "1 càs", category: "Épicerie" }
+        { name: "Curry doux", quantity: "1 càs", category: "Épicerie" },
       ],
       steps: [
         "Couper le poulet en morceaux.",
         "Éplucher et couper carotte et pomme de terre.",
         "Faire revenir le poulet 3 minutes.",
         "Ajouter les légumes, le curry et le lait de coco.",
-        "Couvrir et cuire 15 minutes à feu doux."
+        "Couvrir et cuire 15 minutes à feu doux.",
       ]
     },
     {
@@ -466,14 +466,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Pâtes", quantity: "250 g", category: "Pâtes" },
         { name: "Jambon", quantity: "2 tranches", category: "Viande" },
         { name: "Fromage râpé", quantity: "50 g", category: "Crèmerie" },
-        { name: "Crème liquide", quantity: "10 cl", category: "Crèmerie" }
+        { name: "Crème liquide", quantity: "10 cl", category: "Crèmerie" },
       ],
       steps: [
         "Cuire les pâtes dans de l’eau bouillante salée.",
         "Couper le jambon en petits carrés.",
         "Mélanger crème, fromage et jambon dans une casserole.",
         "Faire chauffer doucement.",
-        "Égoutter les pâtes et mélanger avec la sauce."
+        "Égoutter les pâtes et mélanger avec la sauce.",
       ]
     },
     {
@@ -486,14 +486,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Pavés de saumon", quantity: "2", category: "Poisson" },
         { name: "Courgette", quantity: "1", category: "Légumes" },
         { name: "Citron", quantity: "1", category: "Fruits" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
+        { name: "Épicerie", quantity: "- Sel, poivre", category: "" },
       ],
       steps: [
         "Couper la courgette en rondelles.",
         "Placer saumon et courgette dans un panier vapeur.",
         "Assaisonner et ajouter quelques gouttes de citron.",
         "Cuire 10 minutes.",
-        "Servir chaud."
+        "Servir chaud.",
       ]
     },
     {
@@ -506,14 +506,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Chou-fleur", quantity: "1", category: "Légumes" },
         { name: "Crème", quantity: "10 cl", category: "Crèmerie" },
         { name: "Fromage râpé", quantity: "50 g", category: "Crèmerie" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
+        { name: "Épicerie", quantity: "- Sel, poivre", category: "" },
       ],
       steps: [
         "Préchauffer le four à 200°C.",
         "Cuire le chou-fleur 8 minutes dans l’eau bouillante.",
         "Égoutter et mettre dans un plat.",
         "Ajouter la crème, assaisonner, parsemer de fromage.",
-        "Gratiner 10 minutes."
+        "Gratiner 10 minutes.",
       ]
     },
     {
@@ -526,14 +526,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Bœuf en lamelles", quantity: "250 g", category: "Viande" },
         { name: "Brocoli", quantity: "1", category: "Légumes" },
         { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
-        { name: "Huile", quantity: "1 càs", category: "Épicerie" }
+        { name: "Huile", quantity: "1 càs", category: "Épicerie" },
       ],
       steps: [
         "Couper le brocoli en petits bouquets.",
         "Saisir le bœuf 2 minutes à feu vif.",
         "Ajouter le brocoli et un peu d’eau.",
         "Cuire 5 minutes en remuant.",
-        "Assaisonner avec la sauce soja."
+        "Assaisonner avec la sauce soja.",
       ]
     },
     {
@@ -546,14 +546,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Oeufs", quantity: "3", category: "Frais" },
         { name: "Poivron", quantity: "1", category: "Légumes" },
         { name: "Oignon", quantity: "1", category: "Légumes" },
-        { name: "Fromage râpé", quantity: "40 g", category: "Crèmerie" }
+        { name: "Fromage râpé", quantity: "40 g", category: "Crèmerie" },
       ],
       steps: [
         "Émincer poivron et oignon.",
         "Les faire revenir 3 minutes.",
         "Battre les œufs dans un bol.",
         "Verser sur les légumes et ajouter le fromage.",
-        "Cuire à feu moyen jusqu’à prise complète."
+        "Cuire à feu moyen jusqu’à prise complète.",
       ]
     },
     {
@@ -566,14 +566,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Somen", quantity: "200 g", category: "Pâtes" },
         { name: "Courgette", quantity: "1", category: "Légumes" },
         { name: "Carotte", quantity: "1", category: "Légumes" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
+        { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
       ],
       steps: [
         "Cuire les somen selon le paquet.",
         "Couper courgette et carotte en lamelles.",
         "Sauter les légumes 4 minutes.",
         "Ajouter les somen et la sauce soja.",
-        "Mélanger 1 minute et servir."
+        "Mélanger 1 minute et servir.",
       ]
     },
     {
@@ -586,14 +586,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Riz japonais cuit", quantity: "2 bols", category: "Épicerie" },
         { name: "Concombre", quantity: "1", category: "Légumes" },
         { name: "Nori", quantity: "1 feuille", category: "Asie" },
-        { name: "Vinaigre de riz", quantity: "1 càs", category: "Asie" }
+        { name: "Vinaigre de riz", quantity: "1 càs", category: "Asie" },
       ],
       steps: [
         "Couper le concombre en petits cubes.",
         "Couper la feuille de nori en fines lamelles.",
         "Mélanger riz, concombre et nori.",
         "Ajouter le vinaigre de riz.",
-        "Servir frais."
+        "Servir frais.",
       ]
     },
     {
@@ -606,14 +606,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Pommes de terre", quantity: "2", category: "Légumes" },
         { name: "Oeuf", quantity: "1", category: "Frais" },
         { name: "Farine", quantity: "1 càs", category: "Épicerie" },
-        { name: "Huile", quantity: "1 càs", category: "Épicerie" }
+        { name: "Huile", quantity: "1 càs", category: "Épicerie" },
       ],
       steps: [
         "Râper les pommes de terre.",
         "Mélanger avec l’œuf et la farine.",
         "Former des petites galettes.",
         "Faire chauffer l’huile dans une poêle.",
-        "Cuire 3 minutes de chaque côté."
+        "Cuire 3 minutes de chaque côté.",
       ]
     },
     {
@@ -626,14 +626,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Pâtes", quantity: "200 g", category: "Pâtes" },
         { name: "Courgette", quantity: "1", category: "Légumes" },
         { name: "Tomate", quantity: "1", category: "Légumes" },
-        { name: "Huile d’olive", quantity: "1 càs", category: "Épicerie" }
+        { name: "Huile d’olive", quantity: "1 càs", category: "Épicerie" },
       ],
       steps: [
         "Couper courgette et tomate en petits dés.",
         "Mettre pâtes, légumes et huile dans une casserole.",
         "Recouvrir d’eau et saler légèrement.",
         "Cuire 10 à 12 minutes en remuant de temps en temps.",
-        "Servir chaud."
+        "Servir chaud.",
       ]
     },
     {
@@ -646,14 +646,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Poulet en morceaux", quantity: "300 g", category: "Viande" },
         { name: "Citron", quantity: "1", category: "Fruits" },
         { name: "Miel", quantity: "1 càs", category: "Épicerie" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
+        { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
       ],
       steps: [
         "Presser le citron et mélanger avec miel et sauce soja.",
         "Faire revenir le poulet dans une poêle.",
         "Verser la sauce sur le poulet.",
         "Cuire 6 à 8 minutes en remuant.",
-        "Servir avec du riz."
+        "Servir avec du riz.",
       ]
     },
     {
@@ -666,14 +666,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Pavés de saumon", quantity: "2", category: "Poisson" },
         { name: "Sauce soja", quantity: "2 càs", category: "Asie" },
         { name: "Sucre", quantity: "1 càs", category: "Épicerie" },
-        { name: "Mirin ou eau", quantity: "1 càs", category: "Asie" }
+        { name: "Mirin ou eau", quantity: "1 càs", category: "Asie" },
       ],
       steps: [
         "Mélanger sauce soja, sucre et mirin.",
         "Faire chauffer une poêle.",
         "Saisir le saumon 2 minutes côté peau.",
         "Verser la sauce et laisser réduire 3 à 4 minutes.",
-        "Retourner le saumon et napper de sauce."
+        "Retourner le saumon et napper de sauce.",
       ]
     },
     {
@@ -685,14 +685,14 @@ window.addEventListener("DOMContentLoaded", () => {
       ingredients: [
         { name: "Pommes de terre", quantity: "3", category: "Légumes" },
         { name: "Beurre", quantity: "20 g", category: "Crèmerie" },
-        { name: "Lait", quantity: "10 cl", category: "Crèmerie" }
+        { name: "Lait", quantity: "10 cl", category: "Crèmerie" },
       ],
       steps: [
         "Éplucher et couper les pommes de terre en morceaux.",
         "Cuire dans l’eau bouillante 12 minutes.",
         "Égoutter puis écraser en purée.",
         "Ajouter lait et beurre.",
-        "Mélanger et servir."
+        "Mélanger et servir.",
       ]
     },
     {
@@ -705,14 +705,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Riz cuit", quantity: "2 bols", category: "Épicerie" },
         { name: "Tofu ferme", quantity: "100 g", category: "Frais" },
         { name: "Carotte", quantity: "1", category: "Légumes" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
+        { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
       ],
       steps: [
         "Couper le tofu en petits cubes.",
         "Râper ou couper la carotte.",
         "Faire revenir carotte et tofu 3 minutes.",
         "Ajouter le riz et la sauce soja.",
-        "Mélanger et servir."
+        "Mélanger et servir.",
       ]
     },
     {
@@ -724,14 +724,14 @@ window.addEventListener("DOMContentLoaded", () => {
       ingredients: [
         { name: "Sardines fraîches", quantity: "4", category: "Poisson" },
         { name: "Pommes de terre", quantity: "2", category: "Légumes" },
-        { name: "Citron", quantity: "1", category: "Fruits" }
+        { name: "Citron", quantity: "1", category: "Fruits" },
       ],
       steps: [
         "Cuire les pommes de terre 12 minutes dans l’eau bouillante.",
         "Chauffer une poêle grill.",
         "Griller les sardines 2 à 3 minutes par côté.",
         "Arroser de citron.",
-        "Servir avec les pommes de terre."
+        "Servir avec les pommes de terre.",
       ]
     },
     {
@@ -743,14 +743,14 @@ window.addEventListener("DOMContentLoaded", () => {
       ingredients: [
         { name: "Pâtes", quantity: "250 g", category: "Pâtes" },
         { name: "Champignons", quantity: "150 g", category: "Légumes" },
-        { name: "Crème liquide", quantity: "10 cl", category: "Crèmerie" }
+        { name: "Crème liquide", quantity: "10 cl", category: "Crèmerie" },
       ],
       steps: [
         "Cuire les pâtes.",
         "Couper les champignons en lamelles.",
         "Les faire revenir 3 à 4 minutes.",
         "Ajouter la crème.",
-        "Mélanger avec les pâtes."
+        "Mélanger avec les pâtes.",
       ]
     },
     {
@@ -763,14 +763,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Nouilles", quantity: "200 g", category: "Pâtes" },
         { name: "Bœuf en lamelles", quantity: "150 g", category: "Viande" },
         { name: "Carotte", quantity: "1", category: "Légumes" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
+        { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
       ],
       steps: [
         "Cuire les nouilles.",
         "Émincer la carotte.",
         "Saisir le bœuf 2 minutes.",
         "Ajouter la carotte, puis les nouilles.",
-        "Assaisonner avec la sauce soja."
+        "Assaisonner avec la sauce soja.",
       ]
     },
     {
@@ -782,14 +782,14 @@ window.addEventListener("DOMContentLoaded", () => {
       ingredients: [
         { name: "Filets de poisson blanc", quantity: "2", category: "Poisson" },
         { name: "Tomate", quantity: "1", category: "Légumes" },
-        { name: "Oignon", quantity: "1", category: "Légumes" }
+        { name: "Oignon", quantity: "1", category: "Légumes" },
       ],
       steps: [
         "Préchauffer le four à 200°C.",
         "Couper tomate et oignon en lamelles.",
         "Déposer le poisson dans un plat.",
         "Ajouter tomate et oignon par-dessus.",
-        "Cuire 15 minutes."
+        "Cuire 15 minutes.",
       ]
     },
     {
@@ -802,14 +802,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Riz cuit", quantity: "2 bols", category: "Épicerie" },
         { name: "Chou chinois", quantity: "2 feuilles", category: "Légumes" },
         { name: "Oeuf", quantity: "1", category: "Frais" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
+        { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
       ],
       steps: [
         "Émincer le chou chinois.",
         "Le faire revenir 2 minutes.",
         "Ajouter le riz et mélanger.",
         "Casser un œuf et remuer jusqu’à cuisson.",
-        "Ajouter la sauce soja et servir."
+        "Ajouter la sauce soja et servir.",
       ]
     },
     {
@@ -822,14 +822,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Pâtes", quantity: "250 g", category: "Pâtes" },
         { name: "Thon", quantity: "1 boîte", category: "Conserve" },
         { name: "Crème liquide", quantity: "10 cl", category: "Crèmerie" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
+        { name: "Épicerie", quantity: "- Sel, poivre", category: "" },
       ],
       steps: [
         "Cuire les pâtes dans une casserole d’eau salée.",
         "Égoutter le thon et l’émietter.",
         "Chauffer la crème dans une petite casserole.",
         "Ajouter le thon et assaisonner.",
-        "Mélanger la sauce avec les pâtes."
+        "Mélanger la sauce avec les pâtes.",
       ]
     },
     {
@@ -842,14 +842,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Tofu ferme", quantity: "150 g", category: "Frais" },
         { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
         { name: "Graines de sésame", quantity: "1 càs", category: "Épicerie" },
-        { name: "Huile", quantity: "1 càs", category: "Épicerie" }
+        { name: "Huile", quantity: "1 càs", category: "Épicerie" },
       ],
       steps: [
         "Couper le tofu en petits carrés.",
         "Chauffer l’huile dans une poêle.",
         "Faire dorer le tofu 3 minutes.",
         "Ajouter sauce soja et graines de sésame.",
-        "Mélanger et servir."
+        "Mélanger et servir.",
       ]
     },
     {
@@ -862,14 +862,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Poulet en lamelles", quantity: "300 g", category: "Viande" },
         { name: "Chou chinois", quantity: "2 feuilles", category: "Légumes" },
         { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
-        { name: "Huile", quantity: "1 càs", category: "Épicerie" }
+        { name: "Huile", quantity: "1 càs", category: "Épicerie" },
       ],
       steps: [
         "Émincer le chou chinois.",
         "Faire chauffer l’huile dans une poêle.",
         "Faire revenir le poulet 3 minutes.",
         "Ajouter le chou et la sauce soja.",
-        "Cuire encore 3 minutes en remuant."
+        "Cuire encore 3 minutes en remuant.",
       ]
     },
     {
@@ -882,14 +882,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Udon frais", quantity: "300 g", category: "Pâtes" },
         { name: "Poulet en dés", quantity: "150 g", category: "Viande" },
         { name: "Carotte", quantity: "1", category: "Légumes" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
+        { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
       ],
       steps: [
         "Cuire les udon selon le paquet.",
         "Couper la carotte en fins bâtonnets.",
         "Faire revenir le poulet dans une poêle.",
         "Ajouter la carotte puis les udon.",
-        "Assaisonner avec la sauce soja."
+        "Assaisonner avec la sauce soja.",
       ]
     },
     {
@@ -902,14 +902,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Saumon cuit ou restant", quantity: "1 pavé", category: "Poisson" },
         { name: "Riz cuit", quantity: "2 bols", category: "Épicerie" },
         { name: "Oeuf", quantity: "1", category: "Frais" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
+        { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
       ],
       steps: [
         "Émietter grossièrement le saumon.",
         "Faire chauffer une poêle et ajouter le riz.",
         "Casser un œuf et mélanger rapidement.",
         "Ajouter le saumon puis la sauce soja.",
-        "Mélanger et servir."
+        "Mélanger et servir.",
       ]
     },
     {
@@ -922,14 +922,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Filets de poisson blanc", quantity: "2", category: "Poisson" },
         { name: "Citron", quantity: "1", category: "Fruits" },
         { name: "Tomate", quantity: "1", category: "Légumes" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
+        { name: "Épicerie", quantity: "- Sel, poivre", category: "" },
       ],
       steps: [
         "Préchauffer le four à 200°C.",
         "Couper la tomate en rondelles.",
         "Poser chaque filet sur du papier cuisson.",
         "Ajouter tomate et citron par-dessus.",
-        "Fermer la papillote et cuire 12 à 15 minutes."
+        "Fermer la papillote et cuire 12 à 15 minutes.",
       ]
     },
     {
@@ -942,14 +942,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Pâtes", quantity: "250 g", category: "Pâtes" },
         { name: "Basilic", quantity: "1 poignée", category: "Légumes" },
         { name: "Parmesan", quantity: "1 càs", category: "Crèmerie" },
-        { name: "Huile d’olive", quantity: "1 càs", category: "Épicerie" }
+        { name: "Huile d’olive", quantity: "1 càs", category: "Épicerie" },
       ],
       steps: [
         "Cuire les pâtes.",
         "Mixer basilic, parmesan et huile.",
         "Égoutter les pâtes.",
         "Mélanger avec le pesto.",
-        "Servir aussitôt."
+        "Servir aussitôt.",
       ]
     },
     {
@@ -962,14 +962,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Nouilles", quantity: "200 g", category: "Pâtes" },
         { name: "Tofu ferme", quantity: "100 g", category: "Frais" },
         { name: "Brocoli", quantity: "1", category: "Légumes" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
+        { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
       ],
       steps: [
         "Cuire les nouilles.",
         "Couper tofu et brocoli en petits morceaux.",
         "Faire revenir le tofu 2 minutes.",
         "Ajouter le brocoli et cuire 5 minutes.",
-        "Ajouter les nouilles et la sauce soja."
+        "Ajouter les nouilles et la sauce soja.",
       ]
     },
     {
@@ -982,14 +982,14 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Pommes de terre", quantity: "2", category: "Légumes" },
         { name: "Oignon", quantity: "1", category: "Légumes" },
         { name: "Oeufs", quantity: "3", category: "Frais" },
-        { name: "Épicerie", quantity: "- Sel, poivre", category: "" }
+        { name: "Épicerie", quantity: "- Sel, poivre", category: "" },
       ],
       steps: [
         "Couper pommes de terre et oignon en fines lamelles.",
         "Les faire revenir 8 minutes.",
         "Battre les œufs dans un bol.",
         "Verser sur les légumes.",
-        "Cuire jusqu’à prise complète."
+        "Cuire jusqu’à prise complète.",
       ]
     },
     {
@@ -1002,18 +1002,17 @@ window.addEventListener("DOMContentLoaded", () => {
         { name: "Porc émincé", quantity: "200 g", category: "Viande" },
         { name: "Chou chinois", quantity: "2 feuilles", category: "Légumes" },
         { name: "Riz cuit", quantity: "2 bols", category: "Épicerie" },
-        { name: "Sauce soja", quantity: "1 càs", category: "Asie" }
+        { name: "Sauce soja", quantity: "1 càs", category: "Asie" },
       ],
       steps: [
         "Émincer le chou chinois.",
         "Faire revenir le porc dans une poêle.",
         "Ajouter le chou et cuire 2 minutes.",
         "Ajouter le riz puis la sauce soja.",
-        "Mélanger et servir."
+        "Mélanger et servir.",
       ]
-    }
+    },
   ];
-
 
   function loadJSON(key, fallback) {
     try {
@@ -1205,7 +1204,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     card.appendChild(tagRow);
 
-        const ratingRow = document.createElement("div");
+    const ratingRow = document.createElement("div");
     ratingRow.className = "button-row";
 
     const btnGood = document.createElement("button");
@@ -1235,21 +1234,25 @@ window.addEventListener("DOMContentLoaded", () => {
     ratingRow.appendChild(btnGood);
     ratingRow.appendChild(btnBad);
 
+    let anotherRow = null;
     if (options.showAnotherButton) {
-      const anotherRow = document.createElement("div");
+      anotherRow = document.createElement("div");
       anotherRow.className = "button-row";
       const btnAnother = document.createElement("button");
       btnAnother.className = "primary";
       btnAnother.textContent = "Autre idée";
       btnAnother.onclick = renderRandomRecipe;
       anotherRow.appendChild(btnAnother);
-      card.appendChild(anotherRow);
     }
 
-const ingTitle = document.createElement("div");
+    const ingTitle = document.createElement("div");
     ingTitle.className = "section-title";
     ingTitle.textContent = "Ingrédients";
     card.appendChild(ingTitle);
+
+    if (anotherRow) {
+      card.appendChild(anotherRow);
+    }
 
     const ingList = document.createElement("ul");
     (recipe.ingredients || []).forEach(ing => {
@@ -1273,6 +1276,8 @@ const ingTitle = document.createElement("div");
       stepsList.appendChild(li);
     });
     card.appendChild(stepsList);
+
+    card.appendChild(ratingRow);
 
     const editRow = document.createElement("div");
     editRow.className = "button-row";

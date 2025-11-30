@@ -4,51 +4,46 @@
   <meta charset="UTF-8">
   <title>PapaCook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta name="theme-color" content="#e5e7eb">
+  <meta name="theme-color" content="#f97316">
   <link rel="icon" href="data:;base64,iVBORw0KGgo=">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="app-shell">
     <header class="app-header">
-      <div class="logo-row">
-        <div class="logo-circle">👨‍🍳</div>
-        <div>
-          <h1>PapaCook</h1>
-          <div class="subtitle">
-            Des idées simples pour les soirs de semaine avec les enfants
+      <div class="header-top">
+        <div class="branding">
+          <div class="logo-circle">👨‍🍳</div>
+          <div class="brand-text">
+            <div class="brand-title">PapaCook</div>
+            <div class="brand-subtitle">by PapaFamily</div>
           </div>
         </div>
       </div>
+      <div class="header-tabs">
+        <button id="btn-random" class="tab-button is-active">
+          <span class="tab-icon">🍽️</span>
+          <span class="tab-label">Ce soir</span>
+        </button>
+        <button id="btn-planning" class="tab-button">
+          <span class="tab-icon">📅</span>
+          <span class="tab-label">Ma semaine</span>
+        </button>
+      </div>
     </header>
 
-    <main>
-      <div class="tabs-container">
-        <div class="header-tabs">
-          <button id="btn-random" class="tab-button is-active">
-            <span class="tab-icon">🍽️</span>
-            <span class="tab-label">Ce soir</span>
-          </button>
-          <button id="btn-planning" class="tab-button">
-            <span class="tab-icon">📅</span>
-            <span class="tab-label">Ma semaine</span>
-          </button>
-        </div>
-      </div>
+    <main class="app-main">
+      <section class="hero">
+        <h1>On mange quoi ce soir&nbsp;?</h1>
+        <p>Des idées simples, équilibrées, pensées pour les soirs de semaine avec les enfants.</p>
+      </section>
 
-      <div class="top-bar">
-        <div class="hint">
-          Astuce : ajoute PapaCook à l’écran d’accueil pour l’utiliser comme une vraie app 📱
-        </div>
-      </div>
-
-      <div id="content"></div>
+      <section id="content" class="content-area"></section>
     </main>
 
     <footer class="app-footer">
-      <span class="footer-title">PapaCook</span>
-      <span class="footer-text">pensé pour un papa et ses deux enfants 💛</span>
+      <span class="footer-title">PapaFamily</span>
+      <span class="footer-text">PapaCook · pensé pour un papa et ses deux enfants 💛</span>
     </footer>
   </div>
 
