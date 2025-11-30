@@ -4,45 +4,81 @@
   <meta charset="UTF-8">
   <title>PapaCook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta name="theme-color" content="#e5e7eb">
+  <meta name="theme-color" content="#f97316">
   <link rel="icon" href="data:;base64,iVBORw0KGgo=">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="app-shell">
     <header class="app-header">
-      <div class="logo-row">
-        <div class="logo-circle">👨‍🍳</div>
-        <div>
-          <h1>PapaCook</h1>
-          <div class="subtitle">
-            Des idées simples pour les soirs de semaine avec les enfants
+      <div class="header-top">
+        <div class="branding">
+          <div class="logo-circle">👨‍🍳</div>
+          <div class="brand-text">
+            <div class="brand-title">PapaCook</div>
+            <div class="brand-subtitle">by PapaFamily</div>
           </div>
         </div>
       </div>
+      <div class="header-tabs">
+        <button id="btn-random" class="tab-button is-active">Ce soir</button>
+        <button id="btn-planning" class="tab-button">Ma semaine</button>
+      </div>
     </header>
 
-    <main>
-      <div class="top-bar">
-        <div class="button-row">
-          <button class="primary" id="btn-random">Recette aléatoire</button>
-          <button class="primary" id="btn-planning">Organisation de la semaine</button>
+    <main class="app-main">
+      <section class="hero">
+        <h1>On mange quoi ce soir&nbsp;?</h1>
+        <p>Des idées simples, équilibrées, pensées pour les soirs de semaine avec les enfants.</p>
+        <div class="hero-actions">
+          <button class="primary hero-main" type="button">Proposer une recette</button>
+          <button class="secondary hero-secondary" type="button">Planifier la semaine</button>
         </div>
-        <div class="hint">
-          Astuce : ajoute PapaCook à l’écran d’accueil pour l’utiliser comme une vraie app 📱
-        </div>
-      </div>
+      </section>
 
-      <div id="content"></div>
+      <section id="content" class="content-area"></section>
     </main>
 
+    <nav class="bottom-nav">
+      <button id="nav-random" class="nav-item is-active" type="button">
+        <span class="nav-icon">🍽️</span>
+        <span class="nav-label">Ce soir</span>
+      </button>
+      <button id="nav-week" class="nav-item" type="button">
+        <span class="nav-icon">📅</span>
+        <span class="nav-label">Semaine</span>
+      </button>
+    </nav>
+
     <footer class="app-footer">
-      <span class="footer-title">PapaCook</span>
-      <span class="footer-text">pensé pour un papa et ses deux enfants 💛</span>
+      <span class="footer-title">PapaFamily</span>
+      <span class="footer-text">PapaCook · pensé pour un papa et ses deux enfants 💛</span>
     </footer>
   </div>
 
   <script src="app.js"></script>
+  <script>
+    // Pont entre les gros boutons de la hero + la bottom nav et la logique existante
+    window.addEventListener("DOMContentLoaded", function () {
+      const btnRandom = document.getElementById("btn-random");
+      const btnPlanning = document.getElementById("btn-planning");
+      const heroMain = document.querySelector(".hero-main");
+      const heroSecondary = document.querySelector(".hero-secondary");
+      const navRandom = document.getElementById("nav-random");
+      const navWeek = document.getElementById("nav-week");
+
+      function clickRandom() {
+        if (btnRandom) btnRandom.click();
+      }
+      function clickWeek() {
+        if (btnPlanning) btnPlanning.click();
+      }
+
+      if (heroMain) heroMain.addEventListener("click", clickRandom);
+      if (heroSecondary) heroSecondary.addEventListener("click", clickWeek);
+      if (navRandom) navRandom.addEventListener("click", clickRandom);
+      if (navWeek) navWeek.addEventListener("click", clickWeek);
+    });
+  </script>
 </body>
 </html>

@@ -1926,8 +1926,46 @@ window.addEventListener("DOMContentLoaded", () => {
     contentDiv.appendChild(card);
   }
 
-  document.getElementById("btn-random").onclick = renderRandomRecipe;
-  document.getElementById("btn-planning").onclick = renderWeek;
+  const btnRandom = document.getElementById("btn-random");
+  const btnPlanning = document.getElementById("btn-planning");
+  const navRandom = document.getElementById("nav-random");
+  const navWeek = document.getElementById("nav-week");
 
+  function setActiveView(view) {
+    if (btnRandom) btnRandom.classList.toggle("is-active", view === "random");
+    if (btnPlanning) btnPlanning.classList.toggle("is-active", view === "week");
+    if (navRandom) navRandom.classList.toggle("is-active", view === "random");
+    if (navWeek) navWeek.classList.toggle("is-active", view === "week");
+  }
+
+  if (btnRandom) {
+    btnRandom.onclick = () => {
+      setActiveView("random");
+      renderRandomRecipe();
+    };
+  }
+
+  if (btnPlanning) {
+    btnPlanning.onclick = () => {
+      setActiveView("week");
+      renderWeek();
+    };
+  }
+
+  if (navRandom) {
+    navRandom.onclick = () => {
+      setActiveView("random");
+      renderRandomRecipe();
+    };
+  }
+
+  if (navWeek) {
+    navWeek.onclick = () => {
+      setActiveView("week");
+      renderWeek();
+    };
+  }
+
+  setActiveView("random");
   renderRandomRecipe();
 });
