@@ -1238,11 +1238,69 @@ window.addEventListener("DOMContentLoaded", () => {
     if (options.showAnotherButton) {
       anotherRow = document.createElement("div");
       anotherRow.className = "button-row";
+
       const btnAnother = document.createElement("button");
       btnAnother.className = "primary";
       btnAnother.textContent = "Autre idée";
       btnAnother.onclick = renderRandomRecipe;
       anotherRow.appendChild(btnAnother);
+
+      const btnTransfer = document.createElement("button");
+      btnTransfer.className = "secondary";
+      btnTransfer.textContent = "Transférer à Ma semaine";
+      btnTransfer.onclick = () => {
+        let freeIndex = -1;
+        for (let i = 0; i < DAYS.length; i++) {
+          if (!currentWeekIncluded[i]) {
+            freeIndex = i;
+            break;
+          }
+        }
+
+        if (freeIndex === -1) {
+          contentDiv.innerHTML = "";
+          const cardMsg = document.createElement("div");
+          cardMsg.className = "card";
+
+          const titleMsg = document.createElement("h2");
+          titleMsg.textContent = "Semaine déjà pleine";
+          cardMsg.appendChild(titleMsg);
+
+          const msg = document.createElement("p");
+          msg.textContent = "Semaine déjà pleine, décocher d'abord un jour de la semaine.";
+          cardMsg.appendChild(msg);
+
+          const rowButtons = document.createElement("div");
+          rowButtons.className = "button-row";
+
+          const btnBackRecipe = document.createElement("button");
+          btnBackRecipe.textContent = "Retour à la recette";
+          btnBackRecipe.onclick = () => {
+            renderRecipeDetail(recipe, options);
+          };
+          rowButtons.appendChild(btnBackRecipe);
+
+          const btnGotoWeek = document.createElement("button");
+          btnGotoWeek.className = "primary";
+          btnGotoWeek.textContent = "Retour à la semaine";
+          btnGotoWeek.onclick = () => {
+            setActiveView("week");
+            renderWeek();
+          };
+          rowButtons.appendChild(btnGotoWeek);
+
+          cardMsg.appendChild(rowButtons);
+          contentDiv.appendChild(cardMsg);
+          return;
+        }
+
+        currentWeekPlan[freeIndex] = recipe;
+        currentWeekIncluded[freeIndex] = true;
+        saveWeekState();
+        setActiveView("week");
+        renderWeek();
+      };
+      anotherRow.appendChild(btnTransfer);
     }
 
     const ingTitle = document.createElement("div");
