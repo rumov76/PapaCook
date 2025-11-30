@@ -103,7 +103,7 @@ button {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.35rem;
-  background: #0f172a;
+  background: #020617;
   padding: 0.18rem;
   border-radius: var(--radius-pill);
   border: 1px solid #020617;
@@ -112,7 +112,7 @@ button {
 .tab-button {
   border-radius: var(--radius-pill);
   border: none;
-  background: transparent;
+  background: #111827;
   padding: 0.45rem 0.5rem;
   font-size: 0.9rem;
   color: #e5e7eb;
@@ -133,18 +133,12 @@ button {
 }
 
 .tab-button.is-active {
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.4);
-}
-
-#btn-random.is-active {
   background: linear-gradient(135deg, #f97316, #fb923c);
   color: #111827;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.45);
 }
 
-#btn-planning.is-active {
-  background: #111827;
-  color: #f9fafb;
-}
+.app-main {
 .app-main {
   flex: 1;
   padding-top: 0.4rem;

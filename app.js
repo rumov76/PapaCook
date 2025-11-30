@@ -1221,8 +1221,6 @@ window.addEventListener("DOMContentLoaded", () => {
       ratingRow.appendChild(btnAnother);
     }
 
-    card.appendChild(ratingRow);
-
     const ingTitle = document.createElement("div");
     ingTitle.className = "section-title";
     ingTitle.textContent = "Ingrédients";
@@ -1250,6 +1248,8 @@ window.addEventListener("DOMContentLoaded", () => {
       stepsList.appendChild(li);
     });
     card.appendChild(stepsList);
+
+    card.appendChild(ratingRow);
 
     const editRow = document.createElement("div");
     editRow.className = "button-row";
