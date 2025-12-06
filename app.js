@@ -4523,6 +4523,7 @@ if (options.showAnotherButton) {
       // Applique la valeur courante si encore valide
       selectSubCategory.value = currentSubCategoryFilter || "";
       selectSubCategory.style.display = "";
+      selectSubCategory.style.gridColumn = "1 / -1";
     } else {
       // Famille Quotidien : pas de sous-filtre
       currentSubCategoryFilter = "";
