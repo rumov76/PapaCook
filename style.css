@@ -476,10 +476,6 @@ button.danger {
     flex-direction: column;
   }
 
-  .button-row {
-    flex-direction: column;
-  }
-
   .day-row {
     flex-direction: column;
     align-items: stretch;
