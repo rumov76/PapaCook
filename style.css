@@ -321,9 +321,23 @@ button.danger {
   margin-top: 0.5rem;
 }
 
+
 .button-row > button {
-  flex: 1 1 auto;
+  flex: 1 1 40%;
 }
+
+.button-row > select {
+  flex: 1 1 60%;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: #f9fafb;
+}
+
+
+
 
 /* === WEEK PLANNING === */
 
