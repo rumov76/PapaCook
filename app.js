@@ -4488,6 +4488,7 @@ if (options.showAnotherButton) {
 
   const selectCategory = document.createElement("select");
   const selectSubCategory = document.createElement("select");
+  selectSubCategory.style.width = "100%";
 
   // Remplit le select principal (famille)
   function refreshFamilyOptions() {
@@ -4523,7 +4524,8 @@ if (options.showAnotherButton) {
       // Applique la valeur courante si encore valide
       selectSubCategory.value = currentSubCategoryFilter || "";
       selectSubCategory.style.display = "";
-      selectSubCategory.style.gridColumn = "1 / -1";
+      selectSubCategory.style.gridRow = "2";
+      selectSubCategory.style.gridColumn = "2";
     } else {
       // Famille Quotidien : pas de sous-filtre
       currentSubCategoryFilter = "";
@@ -4548,6 +4550,8 @@ if (options.showAnotherButton) {
   anotherRow.appendChild(selectSubCategory);
 
   const btnTransfer = document.createElement("button");
+  btnTransfer.style.gridRow = "2";
+  btnTransfer.style.gridColumn = "1";
   btnTransfer.className = "secondary";
   btnTransfer.textContent = "Transférer à Ma semaine";
   btnTransfer.onclick = () => {
