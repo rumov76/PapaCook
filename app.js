@@ -7,9 +7,10 @@ window.addEventListener("DOMContentLoaded", () => {
   };
 
   const DAYS = ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"];
-
+const CATEGORY_ALL = "Tout"; // valeur legacy, non utilisée directement pour le filtrage
 // Filtre par "famille" de recettes (Quotidien, Monde, Saisons)
 let currentCategoryFilter = "Quotidien";
+let currentSubCategoryFilter = ""; // pays (Monde) ou saison (Saisons)
 let allCategories = ["Quotidien", "Monde", "Saisons"];
 
 function computeAllCategories() {
@@ -25,7 +26,7 @@ function ensureCategoriesInitialized() {
 }
 
 
-    const baseRecipes = [
+const baseRecipes = [
     {
       id: "r1",
       name: "Saumon au four soja-miel",
@@ -3040,6 +3041,7 @@ function ensureCategoriesInitialized() {
         "Cuire 3 minutes.",
       ],
     },
+
     {
       id: "r151",
       name: "Salade estivale pastèque & feta",
@@ -3976,7 +3978,8 @@ function ensureCategoriesInitialized() {
     "r148": "Chine",
     "r149": "Chine",
     "r150": "Chine",
-      "r151": "Été",
+  
+    "r151": "Été",
     "r152": "Été",
     "r153": "Été",
     "r154": "Été",
@@ -4018,197 +4021,198 @@ function ensureCategoriesInitialized() {
     "r190": "Printemps",
 };
 
-  const recipeFamilies = {
-    "r1": "Quotidien",
-    "r2": "Quotidien",
-    "r3": "Quotidien",
-    "r4": "Quotidien",
-    "r5": "Quotidien",
-    "r6": "Quotidien",
-    "r7": "Quotidien",
-    "r8": "Quotidien",
-    "r9": "Quotidien",
-    "r10": "Quotidien",
-    "r11": "Quotidien",
-    "r12": "Quotidien",
-    "r13": "Quotidien",
-    "r14": "Quotidien",
-    "r15": "Quotidien",
-    "r16": "Quotidien",
-    "r17": "Quotidien",
-    "r18": "Quotidien",
-    "r19": "Quotidien",
-    "r20": "Quotidien",
-    "r21": "Quotidien",
-    "r22": "Quotidien",
-    "r23": "Quotidien",
-    "r24": "Quotidien",
-    "r25": "Quotidien",
-    "r26": "Quotidien",
-    "r27": "Quotidien",
-    "r28": "Quotidien",
-    "r29": "Quotidien",
-    "r30": "Quotidien",
-    "r31": "Quotidien",
-    "r32": "Quotidien",
-    "r33": "Quotidien",
-    "r34": "Quotidien",
-    "r35": "Quotidien",
-    "r36": "Quotidien",
-    "r37": "Quotidien",
-    "r38": "Quotidien",
-    "r39": "Quotidien",
-    "r40": "Quotidien",
-    "r41": "Quotidien",
-    "r42": "Quotidien",
-    "r43": "Quotidien",
-    "r44": "Quotidien",
-    "r45": "Quotidien",
-    "r46": "Quotidien",
-    "r47": "Quotidien",
-    "r48": "Quotidien",
-    "r49": "Quotidien",
-    "r50": "Quotidien",
-    "r51": "Quotidien",
-    "r52": "Quotidien",
-    "r53": "Quotidien",
-    "r54": "Quotidien",
-    "r55": "Quotidien",
-    "r56": "Quotidien",
-    "r57": "Quotidien",
-    "r58": "Quotidien",
-    "r59": "Quotidien",
-    "r60": "Quotidien",
-    "r61": "Monde",
-    "r62": "Monde",
-    "r63": "Monde",
-    "r64": "Monde",
-    "r65": "Monde",
-    "r66": "Monde",
-    "r67": "Monde",
-    "r68": "Monde",
-    "r69": "Monde",
-    "r70": "Monde",
-    "r71": "Monde",
-    "r72": "Monde",
-    "r73": "Monde",
-    "r74": "Monde",
-    "r75": "Monde",
-    "r76": "Monde",
-    "r77": "Monde",
-    "r78": "Monde",
-    "r79": "Monde",
-    "r80": "Monde",
-    "r81": "Monde",
-    "r82": "Monde",
-    "r83": "Monde",
-    "r84": "Monde",
-    "r85": "Monde",
-    "r86": "Monde",
-    "r87": "Monde",
-    "r88": "Monde",
-    "r89": "Monde",
-    "r90": "Monde",
-    "r91": "Monde",
-    "r92": "Monde",
-    "r93": "Monde",
-    "r94": "Monde",
-    "r95": "Monde",
-    "r96": "Monde",
-    "r97": "Monde",
-    "r98": "Monde",
-    "r99": "Monde",
-    "r100": "Monde",
-    "r101": "Monde",
-    "r102": "Monde",
-    "r103": "Monde",
-    "r104": "Monde",
-    "r105": "Monde",
-    "r106": "Monde",
-    "r107": "Monde",
-    "r108": "Monde",
-    "r109": "Monde",
-    "r110": "Monde",
-    "r111": "Monde",
-    "r112": "Monde",
-    "r113": "Monde",
-    "r114": "Monde",
-    "r115": "Monde",
-    "r116": "Monde",
-    "r117": "Monde",
-    "r118": "Monde",
-    "r119": "Monde",
-    "r120": "Monde",
-    "r121": "Monde",
-    "r122": "Monde",
-    "r123": "Monde",
-    "r124": "Monde",
-    "r125": "Monde",
-    "r126": "Monde",
-    "r127": "Monde",
-    "r128": "Monde",
-    "r129": "Monde",
-    "r130": "Monde",
-    "r131": "Monde",
-    "r132": "Monde",
-    "r133": "Monde",
-    "r134": "Monde",
-    "r135": "Monde",
-    "r136": "Monde",
-    "r137": "Monde",
-    "r138": "Monde",
-    "r139": "Monde",
-    "r140": "Monde",
-    "r141": "Monde",
-    "r142": "Monde",
-    "r143": "Monde",
-    "r144": "Monde",
-    "r145": "Monde",
-    "r146": "Monde",
-    "r147": "Monde",
-    "r148": "Monde",
-    "r149": "Monde",
-    "r150": "Monde",
-      "r151": "Saisons",
-    "r152": "Saisons",
-    "r153": "Saisons",
-    "r154": "Saisons",
-    "r155": "Saisons",
-    "r156": "Saisons",
-    "r157": "Saisons",
-    "r158": "Saisons",
-    "r159": "Saisons",
-    "r160": "Saisons",
-    "r161": "Saisons",
-    "r162": "Saisons",
-    "r163": "Saisons",
-    "r164": "Saisons",
-    "r165": "Saisons",
-    "r166": "Saisons",
-    "r167": "Saisons",
-    "r168": "Saisons",
-    "r169": "Saisons",
-    "r170": "Saisons",
-    "r171": "Saisons",
-    "r172": "Saisons",
-    "r173": "Saisons",
-    "r174": "Saisons",
-    "r175": "Saisons",
-    "r176": "Saisons",
-    "r177": "Saisons",
-    "r178": "Saisons",
-    "r179": "Saisons",
-    "r180": "Saisons",
-    "r181": "Saisons",
-    "r182": "Saisons",
-    "r183": "Saisons",
-    "r184": "Saisons",
-    "r185": "Saisons",
-    "r186": "Saisons",
-    "r187": "Saisons",
-    "r188": "Saisons",
-    "r189": "Saisons",
-    "r190": "Saisons",
+
+const recipeFamilies = {
+  "r1": "Quotidien",
+  "r2": "Quotidien",
+  "r3": "Quotidien",
+  "r4": "Quotidien",
+  "r5": "Quotidien",
+  "r6": "Quotidien",
+  "r7": "Quotidien",
+  "r8": "Quotidien",
+  "r9": "Quotidien",
+  "r10": "Quotidien",
+  "r11": "Quotidien",
+  "r12": "Quotidien",
+  "r13": "Quotidien",
+  "r14": "Quotidien",
+  "r15": "Quotidien",
+  "r16": "Quotidien",
+  "r17": "Quotidien",
+  "r18": "Quotidien",
+  "r19": "Quotidien",
+  "r20": "Quotidien",
+  "r21": "Quotidien",
+  "r22": "Quotidien",
+  "r23": "Quotidien",
+  "r24": "Quotidien",
+  "r25": "Quotidien",
+  "r26": "Quotidien",
+  "r27": "Quotidien",
+  "r28": "Quotidien",
+  "r29": "Quotidien",
+  "r30": "Quotidien",
+  "r31": "Quotidien",
+  "r32": "Quotidien",
+  "r33": "Quotidien",
+  "r34": "Quotidien",
+  "r35": "Quotidien",
+  "r36": "Quotidien",
+  "r37": "Quotidien",
+  "r38": "Quotidien",
+  "r39": "Quotidien",
+  "r40": "Quotidien",
+  "r41": "Quotidien",
+  "r42": "Quotidien",
+  "r43": "Quotidien",
+  "r44": "Quotidien",
+  "r45": "Quotidien",
+  "r46": "Quotidien",
+  "r47": "Quotidien",
+  "r48": "Quotidien",
+  "r49": "Quotidien",
+  "r50": "Quotidien",
+  "r51": "Quotidien",
+  "r52": "Quotidien",
+  "r53": "Quotidien",
+  "r54": "Quotidien",
+  "r55": "Quotidien",
+  "r56": "Quotidien",
+  "r57": "Quotidien",
+  "r58": "Quotidien",
+  "r59": "Quotidien",
+  "r60": "Quotidien",
+  "r61": "Monde",
+  "r62": "Monde",
+  "r63": "Monde",
+  "r64": "Monde",
+  "r65": "Monde",
+  "r66": "Monde",
+  "r67": "Monde",
+  "r68": "Monde",
+  "r69": "Monde",
+  "r70": "Monde",
+  "r71": "Monde",
+  "r72": "Monde",
+  "r73": "Monde",
+  "r74": "Monde",
+  "r75": "Monde",
+  "r76": "Monde",
+  "r77": "Monde",
+  "r78": "Monde",
+  "r79": "Monde",
+  "r80": "Monde",
+  "r81": "Monde",
+  "r82": "Monde",
+  "r83": "Monde",
+  "r84": "Monde",
+  "r85": "Monde",
+  "r86": "Monde",
+  "r87": "Monde",
+  "r88": "Monde",
+  "r89": "Monde",
+  "r90": "Monde",
+  "r91": "Monde",
+  "r92": "Monde",
+  "r93": "Monde",
+  "r94": "Monde",
+  "r95": "Monde",
+  "r96": "Monde",
+  "r97": "Monde",
+  "r98": "Monde",
+  "r99": "Monde",
+  "r100": "Monde",
+  "r101": "Monde",
+  "r102": "Monde",
+  "r103": "Monde",
+  "r104": "Monde",
+  "r105": "Monde",
+  "r106": "Monde",
+  "r107": "Monde",
+  "r108": "Monde",
+  "r109": "Monde",
+  "r110": "Monde",
+  "r111": "Monde",
+  "r112": "Monde",
+  "r113": "Monde",
+  "r114": "Monde",
+  "r115": "Monde",
+  "r116": "Monde",
+  "r117": "Monde",
+  "r118": "Monde",
+  "r119": "Monde",
+  "r120": "Monde",
+  "r121": "Monde",
+  "r122": "Monde",
+  "r123": "Monde",
+  "r124": "Monde",
+  "r125": "Monde",
+  "r126": "Monde",
+  "r127": "Monde",
+  "r128": "Monde",
+  "r129": "Monde",
+  "r130": "Monde",
+  "r131": "Monde",
+  "r132": "Monde",
+  "r133": "Monde",
+  "r134": "Monde",
+  "r135": "Monde",
+  "r136": "Monde",
+  "r137": "Monde",
+  "r138": "Monde",
+  "r139": "Monde",
+  "r140": "Monde",
+  "r141": "Monde",
+  "r142": "Monde",
+  "r143": "Monde",
+  "r144": "Monde",
+  "r145": "Monde",
+  "r146": "Monde",
+  "r147": "Monde",
+  "r148": "Monde",
+  "r149": "Monde",
+  "r150": "Monde",
+  "r151": "Saisons",
+  "r152": "Saisons",
+  "r153": "Saisons",
+  "r154": "Saisons",
+  "r155": "Saisons",
+  "r156": "Saisons",
+  "r157": "Saisons",
+  "r158": "Saisons",
+  "r159": "Saisons",
+  "r160": "Saisons",
+  "r161": "Saisons",
+  "r162": "Saisons",
+  "r163": "Saisons",
+  "r164": "Saisons",
+  "r165": "Saisons",
+  "r166": "Saisons",
+  "r167": "Saisons",
+  "r168": "Saisons",
+  "r169": "Saisons",
+  "r170": "Saisons",
+  "r171": "Saisons",
+  "r172": "Saisons",
+  "r173": "Saisons",
+  "r174": "Saisons",
+  "r175": "Saisons",
+  "r176": "Saisons",
+  "r177": "Saisons",
+  "r178": "Saisons",
+  "r179": "Saisons",
+  "r180": "Saisons",
+  "r181": "Saisons",
+  "r182": "Saisons",
+  "r183": "Saisons",
+  "r184": "Saisons",
+  "r185": "Saisons",
+  "r186": "Saisons",
+  "r187": "Saisons",
+  "r188": "Saisons",
+  "r189": "Saisons",
+  "r190": "Saisons",
 };
 
 
@@ -4266,21 +4270,38 @@ function ensureCategoriesInitialized() {
   
 function withCategory(recipe) {
   const cat = recipeCategories[recipe.id];
+  if (cat) {
+    return { ...recipe, cuisineCategory: cat };
+  }
+  return recipe;
+}
+
+function withFamily(recipe) {
   const fam = recipeFamilies[recipe.id];
-  const extra = {};
-  if (cat) extra.cuisineCategory = cat;
-  if (fam) extra.family = fam;
-  return Object.keys(extra).length ? { ...recipe, ...extra } : recipe;
+  if (fam) {
+    return { ...recipe, family: fam };
+  }
+  return recipe;
 }
 
 function getAllRecipes() {
-  const base = baseRecipes.map(r => withCategory(applyOverrides(r)));
-  const custom = customRecipes.map(r => withCategory(applyOverrides(r)));
+  const base = baseRecipes.map(r => withFamily(withCategory(applyOverrides(r))));
+  const custom = customRecipes.map(r => withFamily(withCategory(applyOverrides(r))));
   return base.concat(custom);
 }
 
-
-  function shuffle(array) {
+function getSubCategoriesForFamily(family) {
+  const all = getAllRecipes();
+  const set = new Set();
+  all.forEach(r => {
+    const fam = r.family || "Quotidien";
+    if (fam === family && r.cuisineCategory) {
+      set.add(r.cuisineCategory);
+    }
+  });
+  return Array.from(set).sort();
+}
+function shuffle(array) {
     const a = array.slice();
     for (let i = a.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -4464,18 +4485,66 @@ if (options.showAnotherButton) {
   anotherRow.appendChild(btnAnother);
 
   ensureCategoriesInitialized();
+
   const selectCategory = document.createElement("select");
-  allCategories.forEach(cat => {
-    const opt = document.createElement("option");
-    opt.value = cat;
-    opt.textContent = cat;
-    selectCategory.appendChild(opt);
-  });
-  selectCategory.value = currentCategoryFilter;
+  const selectSubCategory = document.createElement("select");
+
+  // Remplit le select principal (famille)
+  function refreshFamilyOptions() {
+    selectCategory.innerHTML = "";
+    allCategories.forEach(cat => {
+      const opt = document.createElement("option");
+      opt.value = cat;
+      opt.textContent = cat;
+      selectCategory.appendChild(opt);
+    });
+    selectCategory.value = currentCategoryFilter;
+  }
+
+  // Remplit le sous-select (pays ou saison) en fonction de la famille
+  function refreshSubCategoryOptions() {
+    const family = currentCategoryFilter;
+    selectSubCategory.innerHTML = "";
+
+    if (family === "Monde" || family === "Saisons") {
+      const placeholder = document.createElement("option");
+      placeholder.value = "";
+      placeholder.textContent = family === "Monde" ? "Tous les pays" : "Toutes les saisons";
+      selectSubCategory.appendChild(placeholder);
+
+      const subs = getSubCategoriesForFamily(family);
+      subs.forEach(sub => {
+        const opt = document.createElement("option");
+        opt.value = sub;
+        opt.textContent = sub;
+        selectSubCategory.appendChild(opt);
+      });
+
+      // Applique la valeur courante si encore valide
+      selectSubCategory.value = currentSubCategoryFilter || "";
+      selectSubCategory.style.display = "";
+    } else {
+      // Famille Quotidien : pas de sous-filtre
+      currentSubCategoryFilter = "";
+      selectSubCategory.style.display = "none";
+    }
+  }
+
+  refreshFamilyOptions();
+  refreshSubCategoryOptions();
+
   selectCategory.onchange = () => {
     currentCategoryFilter = selectCategory.value;
+    currentSubCategoryFilter = "";
+    refreshSubCategoryOptions();
   };
+
+  selectSubCategory.onchange = () => {
+    currentSubCategoryFilter = selectSubCategory.value;
+  };
+
   anotherRow.appendChild(selectCategory);
+  anotherRow.appendChild(selectSubCategory);
 
   const btnTransfer = document.createElement("button");
   btnTransfer.className = "secondary";
@@ -4596,13 +4665,26 @@ function renderRandomRecipe() {
       contentDiv.innerHTML = "<p>Aucune recette disponible.</p>";
       return;
     }
-    // Filtre par famille (Quotidien / Monde / Saisons)
+
+    // Filtre principal par famille (Quotidien / Monde / Saisons)
     if (currentCategoryFilter) {
-      const filtered = source.filter(r => (r.family || "Quotidien") === currentCategoryFilter);
-      if (filtered.length > 0) {
-        source = filtered;
+      const filteredByFamily = source.filter(r => {
+        const fam = r.family || "Quotidien";
+        return fam === currentCategoryFilter;
+      });
+      if (filteredByFamily.length > 0) {
+        source = filteredByFamily;
       }
     }
+
+    // Sous-filtre par pays (Monde) ou saison (Saisons)
+    if (currentSubCategoryFilter && (currentCategoryFilter === "Monde" || currentCategoryFilter === "Saisons")) {
+      const filteredBySub = source.filter(r => r.cuisineCategory === currentSubCategoryFilter);
+      if (filteredBySub.length > 0) {
+        source = filteredBySub;
+      }
+    }
+
     const recipe = source[Math.floor(Math.random() * source.length)];
     renderRecipeDetail(recipe, { showAnotherButton: true });
   }
