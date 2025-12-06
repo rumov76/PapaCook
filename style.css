@@ -498,3 +498,23 @@ button.danger {
     flex: 1 1 auto;
   }
 }
+
+
+.button-row-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+
+.button-row-ce-soir > button:first-child {
+  flex: 1 1 45%;
+}
+
+.button-row-ce-soir > select {
+  flex: 1 1 55%;
+}
+
+.button-row-ce-soir > button:last-child {
+  flex: 1 1 100%;
+}

@@ -3440,10 +3440,11 @@ function getAllRecipes() {
     ratingRow.appendChild(btnBad);
 
     
+
 let anotherRow = null;
 if (options.showAnotherButton) {
   anotherRow = document.createElement("div");
-  anotherRow.className = "button-row";
+  anotherRow.className = "button-row button-row-ce-soir";
 
   const btnAnother = document.createElement("button");
   btnAnother.className = "primary";
