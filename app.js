@@ -4850,23 +4850,95 @@ function renderRandomRecipe() {
     backRow.appendChild(btnBack);
     card.appendChild(backRow);
 
+    // --- Shopping list categorisation ---
+    // Some recipe sources may not provide ingredient categories.
+    // To preserve the previous UX (Viande / Poisson / Légumes / Épicerie / Pâtes / Crèmerie / etc.),
+    // we infer a category when it's missing.
+
+    function stripAccents(s) {
+      try {
+        return (s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      } catch (e) {
+        return s || "";
+      }
+    }
+
+    function inferIngredientCategory(name) {
+      const n = stripAccents((name || "").toLowerCase());
+
+      const has = (...words) => words.some(w => n.includes(stripAccents(w.toLowerCase())));
+
+      // Proteins
+      if (has("saumon","cabillaud","thon","crevette","crevettes","poisson","sardine","anchois","merlu","truite","lotte","moules","calamar")) return "Poisson";
+      if (has("poulet","boeuf","bœuf","porc","dinde","agneau","veau","jambon","bacon","lardon","lardons","saucisse","steak","viande hachee","viande hachée","chorizo")) return "Viande";
+
+      // Vegetables & fruits
+      if (has("carotte","oignon","ail","echalote","échalote","poireau","courgette","tomate","poivron","salade","laitue","brocoli","chou","champignon","epinard","épinard","haricot","petit pois","petits pois","concombre","pomme de terre","patate","aubergine","courge","potimarron","fenouil")) return "Légumes";
+      if (has("citron","orange","pomme","banane","fraise","framboise","mangue","ananas","avocat","poire","raisin","kiwi")) return "Fruits";
+
+      // Dairy
+      if (has("lait","creme","crème","fromage","beurre","yaourt","yogourt","parmesan","mozzarella","feta","fêta","oeuf","œuf","oeufs","œufs")) return "Crèmerie";
+
+      // Starches
+      if (has("pates","pâtes","spaghetti","penne","tagliatelle","riz","quinoa","semoule","couscous","nouilles","ramen","udon","tortilla","pain pita")) return "Pâtes";
+
+      // Pantry / groceries
+      if (has("sel","poivre","huile","vinaigre","sucre","farine","moutarde","ketchup","mayonnaise","sauce soja","soja","miso","curry","paprika","cumin","herbes","epices","épices","bouillon","tomate concentree","concentré","pate tomate","tomates pelées","coco","lait de coco","miel","sauce","tamari")) return "Épicerie";
+
+      // Bakery
+      if (has("pain","baguette","brioche","wrap","tortillas","chapati","naan")) return "Boulangerie";
+
+      // Frozen
+      if (has("surgele","surgelé","congele","congelé")) return "Surgelés";
+
+      // Drinks
+      if (has("eau","vin","biere","bière","jus","soda")) return "Boissons";
+
+      return "Autre";
+    }
+
+    function normalizeIngredientForList(ing) {
+      let name = (ing?.name || "").trim();
+      let quantity = (ing?.quantity || "").trim();
+      let category = (ing?.category || "").trim();
+
+      // Handle a common legacy format where category was put in `name`
+      // and the actual ingredient was written as "- <ingredient>" in `quantity`.
+      // Example: { name: "Épicerie", quantity: "- Sel", category: "" }
+      if (!category && quantity && /^-\s*/.test(quantity) && name) {
+        const candidateCat = name;
+        const cleanedName = quantity.replace(/^-\s*/, "").trim();
+        if (cleanedName) {
+          category = candidateCat;
+          name = cleanedName;
+          quantity = "";
+        }
+      }
+
+      if (!category) category = inferIngredientCategory(name);
+      if (!name) name = "(Ingrédient)";
+
+      return { name, quantity, category };
+    }
+
     const map = {};
 
     currentWeekPlan.forEach((recipe, index) => {
       if (!recipe) return;
       if (!currentWeekIncluded[index]) return;
       (recipe.ingredients || []).forEach(ing => {
-        const cat = ing.category || "Autre";
+        const norm = normalizeIngredientForList(ing);
+        const cat = norm.category || "Autre";
         if (!map[cat]) map[cat] = {};
-        if (!map[cat][ing.name]) {
-          map[cat][ing.name] = ing.quantity || "";
+        if (!map[cat][norm.name]) {
+          map[cat][norm.name] = norm.quantity || "";
         } else {
-          const existing = map[cat][ing.name];
-          const add = ing.quantity || "";
+          const existing = map[cat][norm.name];
+          const add = norm.quantity || "";
           if (existing && add) {
-            map[cat][ing.name] = existing + " + " + add;
+            map[cat][norm.name] = existing + " + " + add;
           } else {
-            map[cat][ing.name] = existing || add;
+            map[cat][norm.name] = existing || add;
           }
         }
       });
