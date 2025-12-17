@@ -11,6 +11,12 @@ const CATEGORY_ALL = "Tout"; // valeur legacy, non utilisée directement pour le
 // Filtre par "famille" de recettes (Quotidien, Monde, Saisons)
 let currentCategoryFilter = "Quotidien";
 let currentSubCategoryFilter = ""; // pays (Monde) ou saison (Saisons)
+
+// Historique "Ce soir" (pour revenir aux recettes précédentes)
+let ceSoirHistory = []; // pile: { recipe, categoryFilter, subCategoryFilter }
+let ceSoirCurrentRecipe = null;
+// État des filtres au moment où la recette "Ce soir" a été choisie (pour historique retour)
+let ceSoirCurrentRecipeState = { categoryFilter: currentCategoryFilter, subCategoryFilter: currentSubCategoryFilter };
 let allCategories = ["Quotidien", "Monde", "Saisons"];
 
 function computeAllCategories() {
@@ -4565,7 +4571,36 @@ function shuffle(array) {
 
     const title = document.createElement("h2");
     title.textContent = recipe.name;
-    headerRow.appendChild(title);
+    const leftGroup = document.createElement("div");
+    leftGroup.style.display = "flex";
+    leftGroup.style.alignItems = "center";
+    leftGroup.appendChild(title);
+    // Bouton "retour" dans l'onglet "Ce soir"
+    if (options.showAnotherButton) {
+      const btnBackRecipe = document.createElement("button");
+      btnBackRecipe.className = "btn-back-recipe";
+      btnBackRecipe.type = "button";
+      btnBackRecipe.textContent = "←";
+      btnBackRecipe.title = "Revenir à la recette précédente";
+      btnBackRecipe.style.marginLeft = "10px";
+      btnBackRecipe.style.padding = "6px 10px";
+      btnBackRecipe.style.lineHeight = "1";
+      btnBackRecipe.style.fontSize = "16px";
+      btnBackRecipe.disabled = ceSoirHistory.length === 0;
+      btnBackRecipe.onclick = () => {
+        if (ceSoirHistory.length === 0) return;
+        const prev = ceSoirHistory.pop();
+        // Sync des filtres pour que les 2 selects reflètent bien la recette affichée
+        currentCategoryFilter = prev.categoryFilter || "Quotidien";
+        currentSubCategoryFilter = prev.subCategoryFilter || "";
+        ceSoirCurrentRecipe = prev.recipe;
+        ceSoirCurrentRecipeState = { categoryFilter: currentCategoryFilter, subCategoryFilter: currentSubCategoryFilter };
+        renderRecipeDetail(prev.recipe, { showAnotherButton: true });
+      };
+      leftGroup.appendChild(btnBackRecipe);
+    }
+
+    headerRow.appendChild(leftGroup);
     card.appendChild(headerRow);
 
     if (options.fromWeek || options.fromForgotten) {
@@ -4721,10 +4756,14 @@ if (options.showAnotherButton) {
     currentCategoryFilter = selectCategory.value;
     currentSubCategoryFilter = "";
     refreshSubCategoryOptions();
+    // Affiche automatiquement une recette correspondant au filtre choisi
+    renderRandomRecipe();
   };
 
   selectSubCategory.onchange = () => {
     currentSubCategoryFilter = selectSubCategory.value;
+    // Affiche automatiquement une recette correspondant au sous-filtre choisi
+    renderRandomRecipe();
   };
 
   anotherRow.appendChild(selectCategory);
@@ -4799,10 +4838,6 @@ const ingTitle = document.createElement("div");
     ingTitle.textContent = "Ingrédients";
     card.appendChild(ingTitle);
 
-    if (anotherRow) {
-      card.appendChild(anotherRow);
-    }
-
     const ingList = document.createElement("ul");
     (recipe.ingredients || []).forEach(ing => {
       const li = document.createElement("li");
@@ -4844,6 +4879,15 @@ const ingTitle = document.createElement("div");
   
 function renderRandomRecipe() {
     ensureCategoriesInitialized();
+
+    // Empile la recette actuelle dans l'historique "Ce soir" avant d'en afficher une nouvelle
+    if (ceSoirCurrentRecipe) {
+      ceSoirHistory.push({
+        recipe: ceSoirCurrentRecipe,
+        categoryFilter: ceSoirCurrentRecipeState.categoryFilter,
+        subCategoryFilter: ceSoirCurrentRecipeState.subCategoryFilter
+      });
+    }
     const all = getAllRecipes();
     const usable = all.filter(r => getRating(r.id) !== "aOublier");
     let source = usable.length > 0 ? usable : all;
@@ -4872,6 +4916,9 @@ function renderRandomRecipe() {
     }
 
     const recipe = source[Math.floor(Math.random() * source.length)];
+
+    ceSoirCurrentRecipe = recipe;
+    ceSoirCurrentRecipeState = { categoryFilter: currentCategoryFilter, subCategoryFilter: currentSubCategoryFilter };
     renderRecipeDetail(recipe, { showAnotherButton: true });
   }
 
@@ -4913,15 +4960,8 @@ function renderRandomRecipe() {
       renderShoppingList();
     };
 
-    const btnForgotten = document.createElement("button");
-    btnForgotten.textContent = "Recettes oubliées";
-    btnForgotten.onclick = () => {
-      renderForgottenRecipes();
-    };
-
     buttonBar.appendChild(btnNewWeek);
     buttonBar.appendChild(btnList);
-    buttonBar.appendChild(btnForgotten);
     card.appendChild(buttonBar);
 
     DAYS.forEach((dayName, index) => {
@@ -4997,6 +5037,14 @@ function renderRandomRecipe() {
     };
 
     footerButtons.appendChild(btnAddRecipe);
+
+    const btnForgotten = document.createElement("button");
+    btnForgotten.textContent = "Recettes oubliées";
+    btnForgotten.onclick = () => {
+      renderForgottenRecipes();
+    };
+
+    footerButtons.appendChild(btnForgotten);
     card.appendChild(footerButtons);
 
     contentDiv.appendChild(card);
