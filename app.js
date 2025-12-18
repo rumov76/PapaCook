@@ -4636,6 +4636,25 @@ function shuffle(array) {
       results.className = "searchResults";
       results.style.display = "none";
 
+
+      // iOS/Safari: certains focus ne déclenchent pas toujours :focus-within sur le parent.
+      // On force donc l'état "expanded" via une classe CSS.
+      function setSearchExpanded(expanded) {
+        searchBox.classList.toggle("is-expanded", !!expanded);
+      }
+
+      input.addEventListener("focus", () => {
+        setSearchExpanded(true);
+      });
+
+      // Tap/clic dans la barre (icône, fond, etc.) -> focus + expand
+      searchBox.addEventListener("click", (e) => {
+        if (e.target === input) return;
+        if (e.target === clearBtn) return;
+        setSearchExpanded(true);
+        try { input.focus({ preventScroll: true }); } catch { input.focus(); }
+      });
+
       function hideResults() {
         results.style.display = "none";
         results.innerHTML = "";
@@ -4745,7 +4764,11 @@ ceSoirCurrentRecipeState = { categoryFilter: currentCategoryFilter, subCategoryF
 
       input.addEventListener("blur", () => {
         // Laisse le temps aux clics dans la liste de passer
-        setTimeout(() => hideResults(), 150);
+        setTimeout(() => {
+          hideResults();
+          const q = (input.value || "").trim();
+          if (!q) setSearchExpanded(false);
+        }, 150);
       });
 
       results.addEventListener("mousedown", (e) => {
@@ -4757,6 +4780,7 @@ ceSoirCurrentRecipeState = { categoryFilter: currentCategoryFilter, subCategoryF
         input.value = "";
         clearBtn.style.display = "none";
         hideResults();
+        setSearchExpanded(true);
         input.focus();
       };
 

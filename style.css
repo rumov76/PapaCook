@@ -564,6 +564,11 @@ button.danger {
   width: min(260px, 70vw);
 }
 
+/* iOS/Safari: certains focus ne déclenchent pas toujours :focus-within -> on force via JS */
+.searchBox.is-expanded {
+  width: min(260px, 70vw);
+}
+
 .searchIcon {
   display: inline-flex;
   align-items: center;
@@ -686,6 +691,8 @@ button.danger {
   .searchBox { width: 120px; max-width: 120px; }
 
   .searchBox:focus-within { width: min(240px, 78vw); }
+
+  .searchBox.is-expanded { width: min(240px, 78vw); }
 
   .searchInput { font-size: 16px; } /* évite le zoom iOS */
 }
