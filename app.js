@@ -4567,11 +4567,13 @@ function shuffle(array) {
     card.className = "card";
 
     const headerRow = document.createElement("div");
-    headerRow.className = "flex-between";
+    headerRow.className = "flex-between recipeHeaderRow";
 
     const title = document.createElement("h2");
+    title.className = "recipeTitle";
     title.textContent = recipe.name;
     const leftGroup = document.createElement("div");
+    leftGroup.className = "recipeHeaderLeft";
     leftGroup.style.display = "flex";
     leftGroup.style.alignItems = "center";
     leftGroup.appendChild(title);

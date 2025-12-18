@@ -550,14 +550,13 @@ button.danger {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.35rem 0.55rem;
+  gap: 0.3rem;
+  padding: 0.28rem 0.45rem;
   border: 1px solid var(--border-subtle);
   border-radius: 999px;
   background: var(--card-bg);
-  min-width: 220px;
-  max-width: 340px;
-  width: 100%;
+  width: 220px; /* taille "raisonnable" desktop */
+  max-width: 260px;
 }
 
 .searchIcon {
@@ -567,19 +566,20 @@ button.danger {
 }
 
 .searchIcon svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   fill: var(--text-muted);
   display: block;
 }
 
 .searchInput {
   width: 100%;
-  min-width: 120px;
+  min-width: 90px;
   border: none;
   outline: none;
   background: transparent;
   font-size: 14px;
+  line-height: 1.15;
   color: var(--text);
 }
 
@@ -652,10 +652,32 @@ button.danger {
   font-size: 13px;
 }
 
+
+/* Header recette (page détail) : garder la recherche à côté du bouton retour, même sur mobile */
+.recipeHeaderRow {
+  flex-wrap: nowrap;
+}
+
+.recipeHeaderLeft {
+  flex: 1 1 auto;
+  min-width: 0; /* autorise l'ellipsis */
+}
+
+.recipeTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* Mobile: laisse respirer le header */
 @media (max-width: 420px) {
+  /* On peut laisser flex-wrap ailleurs, mais pas sur l'en-tête de recette */
   .flex-between { flex-wrap: wrap; }
-  .searchWrap { width: 100%; justify-content: flex-end; }
-  .searchBox { min-width: 180px; max-width: 100%; }
+  .recipeHeaderRow { flex-wrap: nowrap; }
+
+  /* Recherche compacte et sur la même ligne que le bouton ← */
+  .searchWrap { flex: 0 0 auto; }
+  .searchBox { width: 150px; max-width: 150px; }
+  .searchInput { font-size: 16px; } /* évite le zoom iOS */
 }
 
