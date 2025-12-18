@@ -4601,6 +4601,172 @@ function shuffle(array) {
     }
 
     headerRow.appendChild(leftGroup);
+
+    // Barre de recherche (page "Ce soir") — option B : recherche dans toutes les recettes
+    if (options.showAnotherButton) {
+      const rightGroup = document.createElement("div");
+      rightGroup.className = "searchWrap";
+
+      const searchBox = document.createElement("div");
+      searchBox.className = "searchBox";
+
+      const searchIcon = document.createElement("span");
+      searchIcon.className = "searchIcon";
+      // Icône loupe (SVG inline)
+      searchIcon.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 18a8 8 0 1 1 5.293-14.003A8 8 0 0 1 10 18Zm0-2a6 6 0 1 0-.001-12.001A6 6 0 0 0 10 16Zm10.707 5.293-5.02-5.02a1 1 0 1 0-1.414 1.414l5.02 5.02a1 1 0 0 0 1.414-1.414Z"/></svg>';
+
+      const input = document.createElement("input");
+      input.className = "searchInput";
+      input.type = "search";
+      input.inputMode = "search";
+      input.autocomplete = "off";
+      input.spellcheck = false;
+      input.placeholder = "Rechercher…";
+
+      const clearBtn = document.createElement("button");
+      clearBtn.className = "searchClear";
+      clearBtn.type = "button";
+      clearBtn.textContent = "×";
+      clearBtn.title = "Effacer";
+      clearBtn.style.display = "none";
+
+      const results = document.createElement("div");
+      results.className = "searchResults";
+      results.style.display = "none";
+
+      function hideResults() {
+        results.style.display = "none";
+        results.innerHTML = "";
+      }
+
+      function renderResults(items) {
+        results.innerHTML = "";
+        if (!items.length) {
+          const empty = document.createElement("div");
+          empty.className = "searchResultEmpty";
+          empty.textContent = "Aucun résultat";
+          results.appendChild(empty);
+          results.style.display = "block";
+          return;
+        }
+
+        items.forEach((r) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "searchResultItem";
+
+          const t = document.createElement("span");
+          t.className = "srTitle";
+          t.textContent = r.name || "";
+          btn.appendChild(t);
+
+          if (r.cuisineCategory) {
+            const meta = document.createElement("span");
+            meta.className = "srMeta";
+            meta.textContent = r.cuisineCategory;
+            btn.appendChild(meta);
+          }
+
+          btn.onclick = () => {
+            // Ajoute la recette actuelle dans l'historique "Ce soir" avant d'ouvrir la sélection
+            if (ceSoirCurrentRecipe) {
+              ceSoirHistory.push({
+                recipe: ceSoirCurrentRecipe,
+                categoryFilter: ceSoirCurrentRecipeState.categoryFilter,
+                subCategoryFilter: ceSoirCurrentRecipeState.subCategoryFilter
+              });
+            }
+            ceSoirCurrentRecipe = r;
+
+// Synchronise les selects (famille + sous-catégorie) avec la recette choisie (Option B : recherche globale)
+currentCategoryFilter = (r.family || "Quotidien");
+if (currentCategoryFilter === "Monde" || currentCategoryFilter === "Saisons") {
+  currentSubCategoryFilter = (r.cuisineCategory || "");
+} else {
+  currentSubCategoryFilter = "";
+}
+
+ceSoirCurrentRecipeState = { categoryFilter: currentCategoryFilter, subCategoryFilter: currentSubCategoryFilter };
+            renderRecipeDetail(r, { showAnotherButton: true });
+          };
+          results.appendChild(btn);
+        });
+        results.style.display = "block";
+      }
+
+      function computeMatches(q) {
+        const all = getAllRecipes(); // option B : dans tout
+        const query = q.toLowerCase();
+        const scored = [];
+        for (const r of all) {
+          const name = (r.name || "").toLowerCase();
+          if (!name) continue;
+          if (name.includes(query)) {
+            const starts = name.startsWith(query) ? 0 : 1;
+            scored.push({ r, starts, name });
+          }
+        }
+        scored.sort((a, b) => (a.starts - b.starts) || a.name.localeCompare(b.name, "fr", { sensitivity: "base" }));
+        return scored.map(x => x.r);
+      }
+
+      input.addEventListener("input", () => {
+        const q = (input.value || "").trim();
+        clearBtn.style.display = q ? "inline-flex" : "none";
+        if (!q) return hideResults();
+        renderResults(computeMatches(q));
+      });
+
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          input.blur();
+          hideResults();
+        } else if (e.key === "Enter") {
+          const q = (input.value || "").trim();
+          if (!q) return;
+          const hits = computeMatches(q);
+          if (hits.length) {
+            const first = hits[0];
+            if (ceSoirCurrentRecipe) {
+              ceSoirHistory.push({
+                recipe: ceSoirCurrentRecipe,
+                categoryFilter: ceSoirCurrentRecipeState.categoryFilter,
+                subCategoryFilter: ceSoirCurrentRecipeState.subCategoryFilter
+              });
+            }
+            ceSoirCurrentRecipe = first;
+            ceSoirCurrentRecipeState = { categoryFilter: currentCategoryFilter, subCategoryFilter: currentSubCategoryFilter };
+            renderRecipeDetail(first, { showAnotherButton: true });
+          }
+        }
+      });
+
+      input.addEventListener("blur", () => {
+        // Laisse le temps aux clics dans la liste de passer
+        setTimeout(() => hideResults(), 150);
+      });
+
+      results.addEventListener("mousedown", (e) => {
+        // Empêche le blur immédiat lors du clic dans les résultats
+        e.preventDefault();
+      });
+
+      clearBtn.onclick = () => {
+        input.value = "";
+        clearBtn.style.display = "none";
+        hideResults();
+        input.focus();
+      };
+
+      searchBox.appendChild(searchIcon);
+      searchBox.appendChild(input);
+      searchBox.appendChild(clearBtn);
+      searchBox.appendChild(results);
+
+      rightGroup.appendChild(searchBox);
+      headerRow.appendChild(rightGroup);
+    }
+
     card.appendChild(headerRow);
 
     if (options.fromWeek || options.fromForgotten) {
