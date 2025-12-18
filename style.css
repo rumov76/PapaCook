@@ -555,8 +555,13 @@ button.danger {
   border: 1px solid var(--border-subtle);
   border-radius: 999px;
   background: var(--card-bg);
-  width: 220px; /* taille "raisonnable" desktop */
-  max-width: 260px;
+  width: 150px; /* compact par défaut */
+  max-width: 240px;
+  transition: width 160ms ease;
+}
+
+.searchBox:focus-within {
+  width: min(260px, 70vw);
 }
 
 .searchIcon {
@@ -664,20 +669,24 @@ button.danger {
 }
 
 .recipeTitle {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: initial;
 }
 
 /* Mobile: laisse respirer le header */
 @media (max-width: 420px) {
+
   /* On peut laisser flex-wrap ailleurs, mais pas sur l'en-tête de recette */
   .flex-between { flex-wrap: wrap; }
   .recipeHeaderRow { flex-wrap: nowrap; }
 
   /* Recherche compacte et sur la même ligne que le bouton ← */
   .searchWrap { flex: 0 0 auto; }
-  .searchBox { width: 150px; max-width: 150px; }
+  .searchBox { width: 120px; max-width: 120px; }
+
+  .searchBox:focus-within { width: min(240px, 78vw); }
+
   .searchInput { font-size: 16px; } /* évite le zoom iOS */
 }
 
