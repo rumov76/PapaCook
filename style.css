@@ -705,3 +705,40 @@ button.danger {
 .day-recipe:active {
   cursor: grabbing;
 }
+
+
+/* === Drag & Drop affordance (Ma semaine) === */
+.day-recipe[draggable="true"] {
+  position: relative;
+  padding-left: 1.25rem; /* room for handle */
+}
+
+.day-recipe[draggable="true"]::before {
+  content: "⠿";
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  font-size: 1rem;
+  line-height: 1;
+  opacity: 0.55;
+}
+
+.day-recipe[draggable="true"]:hover {
+  background: rgba(249, 115, 22, 0.08);
+  border-radius: 10px;
+}
+
+.day-recipe[draggable="true"] {
+  cursor: grab;
+}
+
+.day-recipe[draggable="true"]:active {
+  cursor: grabbing;
+}
+
+.day-recipe[draggable="true"]:focus-visible {
+  outline: 2px dashed rgba(249, 115, 22, 0.7);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
