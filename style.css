@@ -692,3 +692,16 @@ button.danger {
   .searchInput { font-size: 16px; } /* évite le zoom iOS */
 }
 
+
+
+/* Drag & Drop planning */
+.day-row.drag-over {
+  outline: 2px dashed #ff9800;
+  background: rgba(255,152,0,0.08);
+}
+.day-recipe {
+  cursor: grab;
+}
+.day-recipe:active {
+  cursor: grabbing;
+}

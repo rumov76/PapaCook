@@ -5171,6 +5171,16 @@ function renderRandomRecipe() {
       dRecipe.className = "day-recipe";
       dRecipe.textContent = recipe ? recipe.name : "—";
 
+      // Drag & Drop (Option B) — allow moving recipes between days
+      dRecipe.draggable = true;
+      dRecipe.addEventListener("dragstart", (e) => {
+        try {
+          e.dataTransfer.setData("text/plain", String(index));
+          e.dataTransfer.effectAllowed = "move";
+        } catch (_) {}
+      });
+
+
       const controls = document.createElement("div");
       controls.style.display = "flex";
       controls.style.gap = "0.25rem";
@@ -5212,6 +5222,41 @@ function renderRandomRecipe() {
       controls.appendChild(includeLabel);
       controls.appendChild(btnChange);
       controls.appendChild(btnDetail);
+
+      // Drop zone handlers (swap recipes + included flags)
+      row.addEventListener("dragover", (e) => {
+        e.preventDefault(); // required for drop
+        row.classList.add("drag-over");
+      });
+      row.addEventListener("dragenter", (e) => {
+        e.preventDefault();
+        row.classList.add("drag-over");
+      });
+      row.addEventListener("dragleave", (e) => {
+        // only remove if leaving the row entirely
+        if (!row.contains(e.relatedTarget)) row.classList.remove("drag-over");
+      });
+      row.addEventListener("drop", (e) => {
+        e.preventDefault();
+        row.classList.remove("drag-over");
+        let fromIndex = null;
+        try {
+          fromIndex = parseInt(e.dataTransfer.getData("text/plain"), 10);
+        } catch (_) {}
+        if (Number.isNaN(fromIndex) || fromIndex === null) return;
+        if (fromIndex === index) return;
+
+        const tmpRecipe = currentWeekPlan[fromIndex];
+        currentWeekPlan[fromIndex] = currentWeekPlan[index];
+        currentWeekPlan[index] = tmpRecipe;
+
+        const tmpInc = currentWeekIncluded[fromIndex];
+        currentWeekIncluded[fromIndex] = currentWeekIncluded[index];
+        currentWeekIncluded[index] = tmpInc;
+
+        saveWeekState();
+        renderWeek();
+      });
 
       row.appendChild(dName);
       row.appendChild(dRecipe);
