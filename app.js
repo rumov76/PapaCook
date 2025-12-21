@@ -5319,11 +5319,58 @@ function renderRandomRecipe() {
 
     const map = {};
 
+    // Catégorisation automatique des ingrédients pour la liste de courses.
+    // L'Excel n'ayant pas de classification, on utilise des heuristiques basées sur le nom.
+    function inferShoppingCategory(name) {
+      const n = (name || "").toLowerCase();
+      const has = (arr) => arr.some(w => n.includes(w));
+
+      // Asie / exotique
+      if (has(["sauce soja", "soja", "miso", "sésame", "sesame", "nouilles", "ramen", "udon", "gingembre", "wasabi", "nori", "curry", "coco", "citron vert", "coriandre"])) {
+        return "Asie";
+      }
+
+      // Poisson / fruits de mer
+      if (has(["saumon", "thon", "cabillaud", "colin", "lieu", "poisson", "sardine", "crevette", "moule", "palourde", "saint-jacques", "st-jacques", "calamar", "encornet"])) {
+        return "Poisson";
+      }
+
+      // Viande / charcuterie
+      if (has(["poulet", "boeuf", "bœuf", "porc", "veau", "agneau", "dinde", "lardon", "lardons", "jambon", "saucisse", "steak", "viande"])) {
+        return "Viande";
+      }
+
+      // Crèmerie
+      if (has(["lait", "crème", "creme", "beurre", "yaourt", "yogourt", "fromage", "feta", "mozz", "parmesan", "emmental", "gruy", "chèvre", "chevre", "oeuf", "œuf", "œufs", "oeufs"])) {
+        return "Crèmerie";
+      }
+
+      // Légumes / fruits
+      if (has(["salade", "tomate", "tomates", "oignon", "oignons", "ail", "carotte", "carottes", "courgette", "courgettes", "poivron", "poivrons", "concombre", "aubergine", "aubergines", "champignon", "champignons", "épinard", "epinard", "épinards", "epinards", "brocoli", "brocolis", "pomme de terre", "pommes de terre", "patate", "courge", "butternut", "haricot", "haricots", "lentille", "lentilles", "citron", "citrons"])) {
+        return "Légumes";
+      }
+
+      // Frais (herbes, produits à prendre au frais)
+      if (has(["basilic", "persil", "aneth", "thym", "ciboulette", "menthe"])) {
+        return "Frais";
+      }
+
+      // Épicerie (sec / conserves)
+      if (has(["riz", "pâte", "pates", "pâtes", "spaghetti", "penne", "coquillettes", "tortilla", "wrap", "chapelure", "huile", "vinaigre", "sel", "poivre", "sucre", "miel", "moutarde", "cumin", "paprika", "origan", "tomates concassées", "concassées", "boîte", "boite", "conserve", "olives", "pesto"])) {
+        return "Epicerie";
+      }
+
+      return "Autre";
+    }
+
+    const preferredCategoryOrder = ["Crèmerie", "Frais", "Légumes", "Viande", "Poisson", "Asie", "Epicerie", "Autre"];
+
     currentWeekPlan.forEach((recipe, index) => {
       if (!recipe) return;
       if (!currentWeekIncluded[index]) return;
       (recipe.ingredients || []).forEach(ing => {
-        const cat = ing.category || "Autre";
+        const rawCat = (ing.category || "").trim();
+        const cat = rawCat ? rawCat : inferShoppingCategory(ing.name);
         if (!map[cat]) map[cat] = {};
         if (!map[cat][ing.name]) {
           map[cat][ing.name] = ing.quantity || "";
@@ -5339,7 +5386,14 @@ function renderRandomRecipe() {
       });
     });
 
-    const categories = Object.keys(map).sort();
+    const categories = Object.keys(map).sort((a, b) => {
+      const ia = preferredCategoryOrder.indexOf(a);
+      const ib = preferredCategoryOrder.indexOf(b);
+      const ra = ia === -1 ? 999 : ia;
+      const rb = ib === -1 ? 999 : ib;
+      if (ra !== rb) return ra - rb;
+      return a.localeCompare(b, "fr", { sensitivity: "base" });
+    });
     categories.forEach(cat => {
       const catTitle = document.createElement("div");
       catTitle.className = "section-title";
