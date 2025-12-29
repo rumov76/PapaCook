@@ -35,6 +35,7 @@ function ensureCategoriesInitialized() {
 const baseRecipes = [
     {
       id: "v1",
+      photo: "images/v1.webp",
       name: "Poulet citron & thym (poêle express)",
       type: RecipeType.VIANDE,
       durationMinutes: 25,
@@ -5029,6 +5030,21 @@ if (anotherRow) {
 const ingTitle = document.createElement("div");
     ingTitle.className = "section-title";
     ingTitle.textContent = "Ingrédients";
+    
+
+    // --- PHOTO RECETTE (juste avant Ingrédients) ---
+    if (recipe.photo) {
+      const img = document.createElement("img");
+      img.className = "recipe-photo";
+      img.src = recipe.photo;
+      img.alt = recipe.name ? `Photo: ${recipe.name}` : "Photo recette";
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.referrerPolicy = "no-referrer";
+      img.onerror = () => { img.style.display = "none"; };
+      card.appendChild(img);
+    }
+
     card.appendChild(ingTitle);
 
     const ingList = document.createElement("ul");

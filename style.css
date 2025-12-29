@@ -746,3 +746,15 @@ button.danger {
   border-radius: 10px;
 }
 
+
+
+/* Photo recette (affichée juste avant Ingrédients) */
+.recipe-photo{
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  margin: 0.55rem 0 0.65rem;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  display:block;
+}
