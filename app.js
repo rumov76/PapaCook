@@ -4056,6 +4056,7 @@ const baseRecipes = [
     },
     {
       id: "mi1",
+      photo: "images/mi1.webp",
       name: "Filets de perche",
       type: RecipeType.POISSON,
       durationMinutes: 10,
@@ -4072,6 +4073,7 @@ const baseRecipes = [
     },
     {
       id: "mi2",
+      photo: "images/mi2.webp",
       name: "Röstis",
       type: RecipeType.VEGE,
       durationMinutes: 35,
