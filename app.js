@@ -4056,7 +4056,6 @@ const baseRecipes = [
     },
     {
       id: "mi1",
-      photo: "images/mi1.webp",
       name: "Filets de perche",
       type: RecipeType.POISSON,
       durationMinutes: 10,
@@ -4073,7 +4072,6 @@ const baseRecipes = [
     },
     {
       id: "mi2",
-      photo: "images/mi2.webp",
       name: "Röstis",
       type: RecipeType.VEGE,
       durationMinutes: 35,
@@ -4093,6 +4091,7 @@ const baseRecipes = [
     },
     {
       id: "mi3",
+      photo: "images/mi3.webp",
       name: "Boulettes de viande",
       type: RecipeType.VIANDE,
       durationMinutes: 35,
@@ -4115,6 +4114,7 @@ const baseRecipes = [
     },
     {
       id: "mi4",
+      photo: "images/mi4.webp",
       name: "Poulet au paprika",
       type: RecipeType.VIANDE,
       durationMinutes: 30,
@@ -4145,6 +4145,7 @@ const baseRecipes = [
     },
     {
       id: "mi5",
+      photo: "images/mi5.webp",
       name: "Gratin de poireaux - pommes de terre et jambon",
       type: RecipeType.VEGE,
       durationMinutes: 50,
@@ -4168,6 +4169,7 @@ const baseRecipes = [
     },
     {
       id: "mi6",
+      photo: "images/mi6.webp",
       name: "Gratin brocolis et pommes de terre",
       type: RecipeType.VEGE,
       durationMinutes: 45,
@@ -4191,6 +4193,7 @@ const baseRecipes = [
     },
     {
       id: "mi7",
+      photo: "images/mi7.webp",
       name: "Gratin de légumes",
       type: RecipeType.VEGE,
       durationMinutes: 30,
